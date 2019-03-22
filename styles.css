@@ -1,0 +1,91 @@
+body {
+    background-color:gainsboro;
+}
+* {
+    margin:0px;
+}
+header {
+    background-color:springgreen;
+    padding:10px;
+}
+img {
+    width:30px;
+    height:30px;
+}
+nav {
+    background-color:springgreen;
+    padding:10px;
+}
+button {
+    background-color:white;
+    border-style:none;
+    font-size:100%;
+    padding:5px;
+    width:25vw;
+}
+button:focus {
+    outline:0;
+}
+.tabactive {
+    background-color:aquamarine;
+}
+#bodycontainer {
+    background-color:white;
+    margin-left:2%;
+    margin-right:2%;
+    margin-top:2%;
+    padding:10px;
+}
+#contact {
+    display:none;
+}
+#info {
+    display:none;
+}
+footer {
+    position:relative;
+    margin-top:2%;
+    background-color:#191919;
+    color:aqua;
+    width:100vw;
+    padding-top:7px;
+    padding-bottom:7px;
+    font-size:75%;
+}
+progress::-webkit-progress-value {
+    background:#13FF9D;
+}
+progress {
+    background-color:;
+    border-style:solid;
+    border-color:black;
+    border-width:1%;
+    height:5vh;
+}
+h2 {
+    color:red;
+}
+#scratch::-webkit-progress-value {
+    background-color:orange;
+}
+#html::-webkit-progress-value {
+    background-color:red;
+}
+#css::-webkit-progress-value {
+    background-color:aqua;
+}
+#js::-webkit-progress-value {
+    background-color:yellow;
+}
+#jeroo::-webkit-progress-value {
+    background-color:springgren;
+}
+#java::-webkit-progress-value {
+    background-color:orange;
+}
+a {
+    text-decoration:none;
+    color:aqua;
+    text-shadow:1px 1px 2px black;
+    display:block;
+}
