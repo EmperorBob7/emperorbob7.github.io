@@ -43,7 +43,7 @@ button:focus {
     display:none;
 }
 footer {
-    position:relative;
+    bottom:0;    position:absolute;
     margin-top:2%;
     background-color:#191919;
     color:aqua;
