@@ -2,76 +2,24 @@
 <html>
     <head>
         <title>Page Title</title>
-        <link rel="stylesheet" href="styles.css">
+        <style>
+            body {
+                padding:0;
+            }
+        </style>
         <script>
-                alert("Still in work but its public so you can see my journey on making my new blog :D");
-    function home() {
-        document.getElementById("homebtn").className = "tabactive";
-        document.getElementById("contactbtn").className = "";
-        document.getElementById("infobtn").className = "";
-        document.getElementById("home").style.display = "block";
-        document.getElementById("info").style.display = "none";
-        document.getElementById("contact").style.display = "none";
-    }
-    function contact() {
-        document.getElementById("contactbtn").className = "tabactive";
-        document.getElementById("homebtn").className = "";
-        document.getElementById("infobtn").className = "";
-        document.getElementById("home").style.display = "none";
-        document.getElementById("info").style.display = "none";
-        document.getElementById("contact").style.display = "block";
-    }
-    function info() {
-        document.getElementById("infobtn").className = "tabactive";
-        document.getElementById("homebtn").className = "";
-        document.getElementById("contactbtn").className = "";
-        document.getElementById("home").style.display = "none";
-        document.getElementById("info").style.display = "block";
-        document.getElementById("contact").style.display = "none";
-    }
+            var ctx;
+            var canvas;
+            window.onload = function() {
+                canvas = document.getElementById("cv");
+                ctx = canvas.getContext("2d");
+                var img = document.getElementById("original");
+                ctx.drawImage(img,0,0);
+            }
         </script>
     </head>
-    <body>
-        <header><h4><img src="https://www.w3.org/html/logo/downloads/HTML5_Badge_512.png"/>Bob's Blog</h4></header>
-        <nav align="center">
-            
-        <button id="homebtn" class="tabactive" onclick="home()">Home</button>
-        <button id="contactbtn" onclick="contact()">Contact</button>
-        <button id="infobtn" onclick="info()">Info</button>
-        </nav>
-        <div id="bodycontainer" align="center">
-            <div id="home">
-                1
-                <br />
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi posuere, elit sed finibus suscipit, sem massa laoreet lorem, eu congue turpis lectus a leo. Ut rhoncus ullamcorper mauris vitae maximus. Cras faucibus elit justo, vitae tristique magna dignissim a. Aliquam commodo tellus sed arcu fringilla, a fringilla purus pharetra. Suspendisse porta bibendum quam, malesuada maximus mi pharetra in. Aliquam sed urna sit amet lacus commodo condimentum. Nunc ornare turpis eu velit pellentesque, quis vestibulum libero euismod. Nullam laoreet vel lectus a eleifend. Maecenas massa metus, tempor ut consequat at, cursus id massa. Nam imperdiet, lectus eget consequat sagittis, risus augue pellentesque augue, eget consequat diam augue vel erat.
-            </div>
-            <div id="contact">
-                2
-                <br />
-                Here are several ways you can contact me!
-                <br />
-                <a href="mailto:emperorbob7@gmail.com">Email</a>
-                <a href="https://youtube.com/emperorbob">Youtube</a>
-            </div>
-            <div id="info">
-                <h2>Skills</h2>
-                <hr>
-                <h4>Scratch</h4>
-                <progress max="100" value="100" align="left" id="scratch"></progress>
-                <h4>HTML</h4>
-                <progress max="100" value="100" align="left" id="html"></progress>
-                <h4>CSS</h4>
-                <progress max="100" value="100" align="left" id="css"></progress>
-                <h4>JS</h4>
-                <progress max="100" value="100" align="left" id="js"></progress>
-                <h4>Jeroo</h4>
-                <progress max="100" value="100" align="left" id="jeroo"></progress>
-                <h4>Java</h4>
-                <progress max="100" value="60" align="left" id="java"></progress>
-            </div>
-        </div>
-        <footer>
-            &copy;EmperorBob 2018
-        </footer>
+    <body align="center">
+        <canvas width="1920px" height="1080px" style="border:1px solid black;" id="cv"></canvas>
     </body>
+    <img src="https://cdn.discordapp.com/attachments/571784589882949692/586283372939182263/unknown-14.png" style="display:none;" id="original"/>
 </html>
