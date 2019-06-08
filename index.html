@@ -4,7 +4,7 @@
         <title>Page Title</title>
         <style>
             body {
-                padding:0;
+                padding:10;
             }
         </style>
         <script>
@@ -14,12 +14,12 @@
                 canvas = document.getElementById("cv");
                 ctx = canvas.getContext("2d");
                 var img = document.getElementById("original");
-                ctx.drawImage(img,0,0);
+                ctx.drawImage(img,0,0,1280,720);
             }
         </script>
     </head>
     <body align="center">
-        <canvas width="1920px" height="1080px" style="border:1px solid black;" id="cv"></canvas>
+        <canvas width="1280px" height="720px" style="border:1px solid black;" id="cv"></canvas>
     </body>
     <img src="https://cdn.discordapp.com/attachments/571784589882949692/586283372939182263/unknown-14.png" style="display:none;" id="original"/>
 </html>
