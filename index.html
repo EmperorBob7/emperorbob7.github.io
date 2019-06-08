@@ -9,10 +9,21 @@
                 font-family:arial;
                 color:#00bd8b;
             }
+            input {
+                width:200px;
+                display:block;
+                margin-bottom:5px;
+            }
+            #parameters input {
+                display:inline;
+                margin-bottom:5px;
+            }
         </style>
         <script>
             var ctx;
             var canvas;
+            var name, ranking, emblem;
+            var trion, attack, defense, mobility, skill, range, command, tactics;
             window.onload = function() {
                 canvas = document.getElementById("cv");
                 ctx = canvas.getContext("2d");
@@ -23,7 +34,25 @@
     </head>
     <body align="center">
         <h1>World Trigger Character</h1>
+        <div id="form" align="center">
+            <input type="text" placeholder="OC Name"/>
+            <input type="number" placeholder="Squad Ranking" min="1"/>
+            <input type="url" placeholder="Squad Emblem Logo"/>
+        </div>
+        <div id="parameters" align="center">
+            <h3>Parameters</h3>
+            <input type="number" placeholder="Trion" />
+            <input type="number" placeholder="Attack" />
+            <input type="number" placeholder="Defense" />
+            <br />
+            <input type="number" placeholder="Mobility" />
+            <input type="number" placeholder="Skill" />
+            <input type="number" placeholder="Range" />
+            <br />
+            <input type="number" placeholder="Command" />
+            <input type="number" placeholder="Special Tactics" />
+        </div>
         <canvas width="1280px" height="720px" style="border:2px solid black;" id="cv"></canvas>
-        <img src="https://cdn.discordapp.com/attachments/571784589882949692/586283372939182263/unknown-14.png" style="display:none;" id="original"/>
+        <img src="https://cdn.discordapp.com/attachments/571784589882949692/586772171758764042/unknown.png" style="display:none;" id="original"/>
     </body>
 </html>
