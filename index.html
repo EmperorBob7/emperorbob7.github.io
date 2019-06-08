@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
     <head>
-        <title>Page Title</title>
+        <title>World Trigger OC Template</title>
         <style>
             body {
                 padding:10;
@@ -17,6 +17,13 @@
             #parameters input {
                 display:inline;
                 margin-bottom:5px;
+            }
+            table, th, td {
+              border: 2px solid cyan;
+              border-collapse: collapse;
+            }
+            select {
+                width:150px;
             }
         </style>
         <script>
@@ -52,6 +59,519 @@
             <input type="number" placeholder="Command" />
             <input type="number" placeholder="Special Tactics" />
         </div>
+        <div id="triggers" align="center">
+            <table>
+                <tr>
+                    <th>Main</th>
+                    <th>Sub</th>
+                </tr>
+                <tr>
+                    <td>
+                        <select>
+                            <option value="0">Free Trigger</option>
+                            <option value="1">Shield</option>
+                            <option value="2">Bagworm</option>
+                            <option value="3">Raygust</option>
+                            <option value="4">Kogetsu</option>
+                            <option value="5">Scorpion</option>
+                            <option value="6">Speargetsu</option>
+                            <option value="7">Asteroid</option>
+                            <option value="8">Hound</option>
+                            <option value="9">Meteora</option>
+                            <option value="10">Viper</option>
+                            <option value="11">Egret</option>
+                            <option value="12">Ibis</option>
+                            <option value="13">Lightning</option>
+                            <option value="14">Gen'Yo</option>
+                            <option value="15">Lead Bullet</option>
+                            <option value="16">Senku</option>
+                            <option value="17">Starmaker</option>
+                            <option value="18">Thruster</option>
+                            <option value="19">Escudo</option>
+                            <option value="20">Chameleon</option>
+                            <option value="21">Dummy Beacon</option>
+                            <option value="22">Grasshopper</option>
+                            <option value="23">Silencer</option>
+                            <option value="24">Spider</option>
+                            <option value="25">Teleporter</option>
+                            
+                            <option value="26">Assault Rifle Viper</option>
+                            <option value="27">Assault Rifle Hound</option>
+                            <option value="28">Assault Rifle Asteroid</option>
+                            <option value="29">Assault Rifle Meteora</option>
+                            <option value="30">Assault Rifle Gimlet</option>
+                            <option value="31">Assault Rifle Salamander</option>
+                            <option value="32">Assault Rifle Tomahawk</option>
+                            
+                            <option value="33">Grenade Launcher Viper</option>
+                            <option value="34">Grenade Launcher Hound</option>
+                            <option value="35">Grenade Launcher Asteroid</option>
+                            <option value="36">Grenade Launcher Meteora</option>
+                            <option value="37">Grenade Launcher Gimlet</option>
+                            <option value="38">Grenade Launcher Salamander</option>
+                            <option value="39">Grenade Launcher Tomahawk</option>
+                            
+                            <option value="40">Shotgun Viper</option>
+                            <option value="41">Shotgun Hound</option>
+                            <option value="42">Shotgun Asteroid</option>
+                            <option value="43">Shotgun Meteora</option>
+                            <option value="44">Shotgun Gimlet</option>
+                            <option value="45">Shotgun Salamander</option>
+                            <option value="46">Shotgun Tomahawk</option>
+                            
+                            <option value="47">Handgun Viper</option>
+                            <option value="48">Handgun Hound</option>
+                            <option value="49">Handgun Asteroid</option>
+                            <option value="50">Handgun Meteora</option>
+                            <option value="51">Handgun Gimlet</option>
+                            <option value="52">Handgun Salamander</option>
+                            <option value="53">Handgun Tomahawk</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select>
+                            <option value="0">Free Trigger</option>
+                            <option value="1">Shield</option>
+                            <option value="2">Bagworm</option>
+                            <option value="3">Raygust</option>
+                            <option value="4">Kogetsu</option>
+                            <option value="5">Scorpion</option>
+                            <option value="6">Speargetsu</option>
+                            <option value="7">Asteroid</option>
+                            <option value="8">Hound</option>
+                            <option value="9">Meteora</option>
+                            <option value="10">Viper</option>
+                            <option value="11">Egret</option>
+                            <option value="12">Ibis</option>
+                            <option value="13">Lightning</option>
+                            <option value="14">Gen'Yo</option>
+                            <option value="15">Lead Bullet</option>
+                            <option value="16">Senku</option>
+                            <option value="17">Starmaker</option>
+                            <option value="18">Thruster</option>
+                            <option value="19">Escudo</option>
+                            <option value="20">Chameleon</option>
+                            <option value="21">Dummy Beacon</option>
+                            <option value="22">Grasshopper</option>
+                            <option value="23">Silencer</option>
+                            <option value="24">Spider</option>
+                            <option value="25">Teleporter</option>
+                            
+                            <option value="26">Assault Rifle Viper</option>
+                            <option value="27">Assault Rifle Hound</option>
+                            <option value="28">Assault Rifle Asteroid</option>
+                            <option value="29">Assault Rifle Meteora</option>
+                            <option value="30">Assault Rifle Gimlet</option>
+                            <option value="31">Assault Rifle Salamander</option>
+                            <option value="32">Assault Rifle Tomahawk</option>
+                            
+                            <option value="33">Grenade Launcher Viper</option>
+                            <option value="34">Grenade Launcher Hound</option>
+                            <option value="35">Grenade Launcher Asteroid</option>
+                            <option value="36">Grenade Launcher Meteora</option>
+                            <option value="37">Grenade Launcher Gimlet</option>
+                            <option value="38">Grenade Launcher Salamander</option>
+                            <option value="39">Grenade Launcher Tomahawk</option>
+                            
+                            <option value="40">Shotgun Viper</option>
+                            <option value="41">Shotgun Hound</option>
+                            <option value="42">Shotgun Asteroid</option>
+                            <option value="43">Shotgun Meteora</option>
+                            <option value="44">Shotgun Gimlet</option>
+                            <option value="45">Shotgun Salamander</option>
+                            <option value="46">Shotgun Tomahawk</option>
+                            
+                            <option value="47">Handgun Viper</option>
+                            <option value="48">Handgun Hound</option>
+                            <option value="49">Handgun Asteroid</option>
+                            <option value="50">Handgun Meteora</option>
+                            <option value="51">Handgun Gimlet</option>
+                            <option value="52">Handgun Salamander</option>
+                            <option value="53">Handgun Tomahawk</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <select>
+                            <option value="0">Free Trigger</option>
+                            <option value="1">Shield</option>
+                            <option value="2">Bagworm</option>
+                            <option value="3">Raygust</option>
+                            <option value="4">Kogetsu</option>
+                            <option value="5">Scorpion</option>
+                            <option value="6">Speargetsu</option>
+                            <option value="7">Asteroid</option>
+                            <option value="8">Hound</option>
+                            <option value="9">Meteora</option>
+                            <option value="10">Viper</option>
+                            <option value="11">Egret</option>
+                            <option value="12">Ibis</option>
+                            <option value="13">Lightning</option>
+                            <option value="14">Gen'Yo</option>
+                            <option value="15">Lead Bullet</option>
+                            <option value="16">Senku</option>
+                            <option value="17">Starmaker</option>
+                            <option value="18">Thruster</option>
+                            <option value="19">Escudo</option>
+                            <option value="20">Chameleon</option>
+                            <option value="21">Dummy Beacon</option>
+                            <option value="22">Grasshopper</option>
+                            <option value="23">Silencer</option>
+                            <option value="24">Spider</option>
+                            <option value="25">Teleporter</option>
+                            
+                            <option value="26">Assault Rifle Viper</option>
+                            <option value="27">Assault Rifle Hound</option>
+                            <option value="28">Assault Rifle Asteroid</option>
+                            <option value="29">Assault Rifle Meteora</option>
+                            <option value="30">Assault Rifle Gimlet</option>
+                            <option value="31">Assault Rifle Salamander</option>
+                            <option value="32">Assault Rifle Tomahawk</option>
+                            
+                            <option value="33">Grenade Launcher Viper</option>
+                            <option value="34">Grenade Launcher Hound</option>
+                            <option value="35">Grenade Launcher Asteroid</option>
+                            <option value="36">Grenade Launcher Meteora</option>
+                            <option value="37">Grenade Launcher Gimlet</option>
+                            <option value="38">Grenade Launcher Salamander</option>
+                            <option value="39">Grenade Launcher Tomahawk</option>
+                            
+                            <option value="40">Shotgun Viper</option>
+                            <option value="41">Shotgun Hound</option>
+                            <option value="42">Shotgun Asteroid</option>
+                            <option value="43">Shotgun Meteora</option>
+                            <option value="44">Shotgun Gimlet</option>
+                            <option value="45">Shotgun Salamander</option>
+                            <option value="46">Shotgun Tomahawk</option>
+                            
+                            <option value="47">Handgun Viper</option>
+                            <option value="48">Handgun Hound</option>
+                            <option value="49">Handgun Asteroid</option>
+                            <option value="50">Handgun Meteora</option>
+                            <option value="51">Handgun Gimlet</option>
+                            <option value="52">Handgun Salamander</option>
+                            <option value="53">Handgun Tomahawk</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select>
+                            <option value="0">Free Trigger</option>
+                            <option value="1">Shield</option>
+                            <option value="2">Bagworm</option>
+                            <option value="3">Raygust</option>
+                            <option value="4">Kogetsu</option>
+                            <option value="5">Scorpion</option>
+                            <option value="6">Speargetsu</option>
+                            <option value="7">Asteroid</option>
+                            <option value="8">Hound</option>
+                            <option value="9">Meteora</option>
+                            <option value="10">Viper</option>
+                            <option value="11">Egret</option>
+                            <option value="12">Ibis</option>
+                            <option value="13">Lightning</option>
+                            <option value="14">Gen'Yo</option>
+                            <option value="15">Lead Bullet</option>
+                            <option value="16">Senku</option>
+                            <option value="17">Starmaker</option>
+                            <option value="18">Thruster</option>
+                            <option value="19">Escudo</option>
+                            <option value="20">Chameleon</option>
+                            <option value="21">Dummy Beacon</option>
+                            <option value="22">Grasshopper</option>
+                            <option value="23">Silencer</option>
+                            <option value="24">Spider</option>
+                            <option value="25">Teleporter</option>
+                            
+                            <option value="26">Assault Rifle Viper</option>
+                            <option value="27">Assault Rifle Hound</option>
+                            <option value="28">Assault Rifle Asteroid</option>
+                            <option value="29">Assault Rifle Meteora</option>
+                            <option value="30">Assault Rifle Gimlet</option>
+                            <option value="31">Assault Rifle Salamander</option>
+                            <option value="32">Assault Rifle Tomahawk</option>
+                            
+                            <option value="33">Grenade Launcher Viper</option>
+                            <option value="34">Grenade Launcher Hound</option>
+                            <option value="35">Grenade Launcher Asteroid</option>
+                            <option value="36">Grenade Launcher Meteora</option>
+                            <option value="37">Grenade Launcher Gimlet</option>
+                            <option value="38">Grenade Launcher Salamander</option>
+                            <option value="39">Grenade Launcher Tomahawk</option>
+                            
+                            <option value="40">Shotgun Viper</option>
+                            <option value="41">Shotgun Hound</option>
+                            <option value="42">Shotgun Asteroid</option>
+                            <option value="43">Shotgun Meteora</option>
+                            <option value="44">Shotgun Gimlet</option>
+                            <option value="45">Shotgun Salamander</option>
+                            <option value="46">Shotgun Tomahawk</option>
+                            
+                            <option value="47">Handgun Viper</option>
+                            <option value="48">Handgun Hound</option>
+                            <option value="49">Handgun Asteroid</option>
+                            <option value="50">Handgun Meteora</option>
+                            <option value="51">Handgun Gimlet</option>
+                            <option value="52">Handgun Salamander</option>
+                            <option value="53">Handgun Tomahawk</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <select>
+                            <option value="0">Free Trigger</option>
+                            <option value="1">Shield</option>
+                            <option value="2">Bagworm</option>
+                            <option value="3">Raygust</option>
+                            <option value="4">Kogetsu</option>
+                            <option value="5">Scorpion</option>
+                            <option value="6">Speargetsu</option>
+                            <option value="7">Asteroid</option>
+                            <option value="8">Hound</option>
+                            <option value="9">Meteora</option>
+                            <option value="10">Viper</option>
+                            <option value="11">Egret</option>
+                            <option value="12">Ibis</option>
+                            <option value="13">Lightning</option>
+                            <option value="14">Gen'Yo</option>
+                            <option value="15">Lead Bullet</option>
+                            <option value="16">Senku</option>
+                            <option value="17">Starmaker</option>
+                            <option value="18">Thruster</option>
+                            <option value="19">Escudo</option>
+                            <option value="20">Chameleon</option>
+                            <option value="21">Dummy Beacon</option>
+                            <option value="22">Grasshopper</option>
+                            <option value="23">Silencer</option>
+                            <option value="24">Spider</option>
+                            <option value="25">Teleporter</option>
+                            
+                            <option value="26">Assault Rifle Viper</option>
+                            <option value="27">Assault Rifle Hound</option>
+                            <option value="28">Assault Rifle Asteroid</option>
+                            <option value="29">Assault Rifle Meteora</option>
+                            <option value="30">Assault Rifle Gimlet</option>
+                            <option value="31">Assault Rifle Salamander</option>
+                            <option value="32">Assault Rifle Tomahawk</option>
+                            
+                            <option value="33">Grenade Launcher Viper</option>
+                            <option value="34">Grenade Launcher Hound</option>
+                            <option value="35">Grenade Launcher Asteroid</option>
+                            <option value="36">Grenade Launcher Meteora</option>
+                            <option value="37">Grenade Launcher Gimlet</option>
+                            <option value="38">Grenade Launcher Salamander</option>
+                            <option value="39">Grenade Launcher Tomahawk</option>
+                            
+                            <option value="40">Shotgun Viper</option>
+                            <option value="41">Shotgun Hound</option>
+                            <option value="42">Shotgun Asteroid</option>
+                            <option value="43">Shotgun Meteora</option>
+                            <option value="44">Shotgun Gimlet</option>
+                            <option value="45">Shotgun Salamander</option>
+                            <option value="46">Shotgun Tomahawk</option>
+                            
+                            <option value="47">Handgun Viper</option>
+                            <option value="48">Handgun Hound</option>
+                            <option value="49">Handgun Asteroid</option>
+                            <option value="50">Handgun Meteora</option>
+                            <option value="51">Handgun Gimlet</option>
+                            <option value="52">Handgun Salamander</option>
+                            <option value="53">Handgun Tomahawk</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select>
+                            <option value="0">Free Trigger</option>
+                            <option value="1">Shield</option>
+                            <option value="2">Bagworm</option>
+                            <option value="3">Raygust</option>
+                            <option value="4">Kogetsu</option>
+                            <option value="5">Scorpion</option>
+                            <option value="6">Speargetsu</option>
+                            <option value="7">Asteroid</option>
+                            <option value="8">Hound</option>
+                            <option value="9">Meteora</option>
+                            <option value="10">Viper</option>
+                            <option value="11">Egret</option>
+                            <option value="12">Ibis</option>
+                            <option value="13">Lightning</option>
+                            <option value="14">Gen'Yo</option>
+                            <option value="15">Lead Bullet</option>
+                            <option value="16">Senku</option>
+                            <option value="17">Starmaker</option>
+                            <option value="18">Thruster</option>
+                            <option value="19">Escudo</option>
+                            <option value="20">Chameleon</option>
+                            <option value="21">Dummy Beacon</option>
+                            <option value="22">Grasshopper</option>
+                            <option value="23">Silencer</option>
+                            <option value="24">Spider</option>
+                            <option value="25">Teleporter</option>
+                            
+                            <option value="26">Assault Rifle Viper</option>
+                            <option value="27">Assault Rifle Hound</option>
+                            <option value="28">Assault Rifle Asteroid</option>
+                            <option value="29">Assault Rifle Meteora</option>
+                            <option value="30">Assault Rifle Gimlet</option>
+                            <option value="31">Assault Rifle Salamander</option>
+                            <option value="32">Assault Rifle Tomahawk</option>
+                            
+                            <option value="33">Grenade Launcher Viper</option>
+                            <option value="34">Grenade Launcher Hound</option>
+                            <option value="35">Grenade Launcher Asteroid</option>
+                            <option value="36">Grenade Launcher Meteora</option>
+                            <option value="37">Grenade Launcher Gimlet</option>
+                            <option value="38">Grenade Launcher Salamander</option>
+                            <option value="39">Grenade Launcher Tomahawk</option>
+                            
+                            <option value="40">Shotgun Viper</option>
+                            <option value="41">Shotgun Hound</option>
+                            <option value="42">Shotgun Asteroid</option>
+                            <option value="43">Shotgun Meteora</option>
+                            <option value="44">Shotgun Gimlet</option>
+                            <option value="45">Shotgun Salamander</option>
+                            <option value="46">Shotgun Tomahawk</option>
+                            
+                            <option value="47">Handgun Viper</option>
+                            <option value="48">Handgun Hound</option>
+                            <option value="49">Handgun Asteroid</option>
+                            <option value="50">Handgun Meteora</option>
+                            <option value="51">Handgun Gimlet</option>
+                            <option value="52">Handgun Salamander</option>
+                            <option value="53">Handgun Tomahawk</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <select>
+                            <option value="0">Free Trigger</option>
+                            <option value="1">Shield</option>
+                            <option value="2">Bagworm</option>
+                            <option value="3">Raygust</option>
+                            <option value="4">Kogetsu</option>
+                            <option value="5">Scorpion</option>
+                            <option value="6">Speargetsu</option>
+                            <option value="7">Asteroid</option>
+                            <option value="8">Hound</option>
+                            <option value="9">Meteora</option>
+                            <option value="10">Viper</option>
+                            <option value="11">Egret</option>
+                            <option value="12">Ibis</option>
+                            <option value="13">Lightning</option>
+                            <option value="14">Gen'Yo</option>
+                            <option value="15">Lead Bullet</option>
+                            <option value="16">Senku</option>
+                            <option value="17">Starmaker</option>
+                            <option value="18">Thruster</option>
+                            <option value="19">Escudo</option>
+                            <option value="20">Chameleon</option>
+                            <option value="21">Dummy Beacon</option>
+                            <option value="22">Grasshopper</option>
+                            <option value="23">Silencer</option>
+                            <option value="24">Spider</option>
+                            <option value="25">Teleporter</option>
+                            
+                            <option value="26">Assault Rifle Viper</option>
+                            <option value="27">Assault Rifle Hound</option>
+                            <option value="28">Assault Rifle Asteroid</option>
+                            <option value="29">Assault Rifle Meteora</option>
+                            <option value="30">Assault Rifle Gimlet</option>
+                            <option value="31">Assault Rifle Salamander</option>
+                            <option value="32">Assault Rifle Tomahawk</option>
+                            
+                            <option value="33">Grenade Launcher Viper</option>
+                            <option value="34">Grenade Launcher Hound</option>
+                            <option value="35">Grenade Launcher Asteroid</option>
+                            <option value="36">Grenade Launcher Meteora</option>
+                            <option value="37">Grenade Launcher Gimlet</option>
+                            <option value="38">Grenade Launcher Salamander</option>
+                            <option value="39">Grenade Launcher Tomahawk</option>
+                            
+                            <option value="40">Shotgun Viper</option>
+                            <option value="41">Shotgun Hound</option>
+                            <option value="42">Shotgun Asteroid</option>
+                            <option value="43">Shotgun Meteora</option>
+                            <option value="44">Shotgun Gimlet</option>
+                            <option value="45">Shotgun Salamander</option>
+                            <option value="46">Shotgun Tomahawk</option>
+                            
+                            <option value="47">Handgun Viper</option>
+                            <option value="48">Handgun Hound</option>
+                            <option value="49">Handgun Asteroid</option>
+                            <option value="50">Handgun Meteora</option>
+                            <option value="51">Handgun Gimlet</option>
+                            <option value="52">Handgun Salamander</option>
+                            <option value="53">Handgun Tomahawk</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select>
+                            <option value="0">Free Trigger</option>
+                            <option value="1">Shield</option>
+                            <option value="2">Bagworm</option>
+                            <option value="3">Raygust</option>
+                            <option value="4">Kogetsu</option>
+                            <option value="5">Scorpion</option>
+                            <option value="6">Speargetsu</option>
+                            <option value="7">Asteroid</option>
+                            <option value="8">Hound</option>
+                            <option value="9">Meteora</option>
+                            <option value="10">Viper</option>
+                            <option value="11">Egret</option>
+                            <option value="12">Ibis</option>
+                            <option value="13">Lightning</option>
+                            <option value="14">Gen'Yo</option>
+                            <option value="15">Lead Bullet</option>
+                            <option value="16">Senku</option>
+                            <option value="17">Starmaker</option>
+                            <option value="18">Thruster</option>
+                            <option value="19">Escudo</option>
+                            <option value="20">Chameleon</option>
+                            <option value="21">Dummy Beacon</option>
+                            <option value="22">Grasshopper</option>
+                            <option value="23">Silencer</option>
+                            <option value="24">Spider</option>
+                            <option value="25">Teleporter</option>
+                            
+                            <option value="26">Assault Rifle Viper</option>
+                            <option value="27">Assault Rifle Hound</option>
+                            <option value="28">Assault Rifle Asteroid</option>
+                            <option value="29">Assault Rifle Meteora</option>
+                            <option value="30">Assault Rifle Gimlet</option>
+                            <option value="31">Assault Rifle Salamander</option>
+                            <option value="32">Assault Rifle Tomahawk</option>
+                            
+                            <option value="33">Grenade Launcher Viper</option>
+                            <option value="34">Grenade Launcher Hound</option>
+                            <option value="35">Grenade Launcher Asteroid</option>
+                            <option value="36">Grenade Launcher Meteora</option>
+                            <option value="37">Grenade Launcher Gimlet</option>
+                            <option value="38">Grenade Launcher Salamander</option>
+                            <option value="39">Grenade Launcher Tomahawk</option>
+                            
+                            <option value="40">Shotgun Viper</option>
+                            <option value="41">Shotgun Hound</option>
+                            <option value="42">Shotgun Asteroid</option>
+                            <option value="43">Shotgun Meteora</option>
+                            <option value="44">Shotgun Gimlet</option>
+                            <option value="45">Shotgun Salamander</option>
+                            <option value="46">Shotgun Tomahawk</option>
+                            
+                            <option value="47">Handgun Viper</option>
+                            <option value="48">Handgun Hound</option>
+                            <option value="49">Handgun Asteroid</option>
+                            <option value="50">Handgun Meteora</option>
+                            <option value="51">Handgun Gimlet</option>
+                            <option value="52">Handgun Salamander</option>
+                            <option value="53">Handgun Tomahawk</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <!--0-25 is regular 3-6 Atacker 7-10 Shooter 11-13 Sniper 14-18 Attachments 19-25 Extras 26-32 Assault Rifles 33-39 Grenade Launchers 40-46 Shotguns 47-53 Handguns-->
         <canvas width="1280px" height="720px" style="border:2px solid black;" id="cv"></canvas>
         <img src="https://cdn.discordapp.com/attachments/571784589882949692/586772171758764042/unknown.png" style="display:none;" id="original"/>
     </body>
