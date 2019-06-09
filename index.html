@@ -35,6 +35,7 @@
         <script>
             var ctx;
             var canvas;
+            var ty = 0;
             var name, ranking, emblem;
             var trion, attack, defense, mobility, skill, range, command, tactics, total;
             var img;
@@ -83,14 +84,56 @@
                     return texts[int];
                 }
             }
+            function getTrion(tz) {
+                var tr = tz;
+                if(tr > 10) {
+                    tr = 10;
+                }
+                switch(tr) {
+                    case "1":
+                        ty = 373;
+                    break;
+                    case "2":
+                        ty = 360;
+                    break;
+                    case "3":
+                        ty = 347;
+                    break;
+                    case "4":
+                        ty = 334;
+                    break;
+                    case "5":
+                        ty = 320;
+                    break;
+                    case "6":
+                        ty = 307;
+                    break;
+                    case "7":
+                        ty = 294;
+                    break;
+                    case "8":
+                        ty = 281;
+                    break;
+                    case "9":
+                        ty = 268;
+                    break;
+                    case "10":
+                        ty = 258;
+                    break;
+                    default:
+                        ty = 258;
+                }
+            }
             function draw() {
                 reset();
                 getTrigs();
                 getParams();
                 ctx.beginPath();
                 ctx.fillStyle = "black";
-                ctx.globalAlpha = .75;
-                ctx.moveTo(812,267);
+                ctx.globalAlpha = .6;
+                
+                getTrion(trion);
+                ctx.moveTo(812,ty);
                 ctx.lineTo(867,330);
                 ctx.lineTo(917,386);
                 ctx.lineTo(812,478);
@@ -98,6 +141,7 @@
                 ctx.lineTo(785,386);
                 ctx.lineTo(765,339);
                 ctx.fill();
+                ctx.globalAlpha = 1;
             }
         </script>
     </head>
