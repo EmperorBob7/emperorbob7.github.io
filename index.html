@@ -35,7 +35,7 @@
         <script>
             var ctx;
             var canvas;
-            var ty = 0;
+            var ty = 0, ax = 0, ay = 0;
             var name, ranking, emblem;
             var trion, attack, defense, mobility, skill, range, command, tactics, total;
             var img;
@@ -86,9 +86,6 @@
             }
             function getTrion(tz) {
                 var tr = tz;
-                if(tr > 10) {
-                    tr = 10;
-                }
                 switch(tr) {
                     case "1":
                         ty = 373;
@@ -118,10 +115,57 @@
                         ty = 268;
                     break;
                     case "10":
-                        ty = 258;
+                        ty = 257;
                     break;
                     default:
-                        ty = 258;
+                        ty = 257;
+                }
+            }
+            function getAttack(ar) {
+                switch(ar) {
+                    case "1":
+                        ax = 821;
+                        ay = 376;
+                    break;
+                    case "2":
+                        ax = 830;
+                        ay = 367;
+                    break;
+                    case "3":
+                        ax = 839;
+                        ay = 358;
+                    break;
+                    case "4":
+                        ax = 849;
+                        ay = 348;
+                    break;
+                    case "5":
+                        ax = 858;
+                        ay = 339;
+                    break;
+                    case "6":
+                        ax = 867;
+                        ay = 330;
+                    break;
+                    case "7":
+                        ax = 877;
+                        ay = 320;
+                    break;
+                    case "8":
+                        ax = 886;
+                        ay = 311;
+                    break;
+                    case "9":
+                        ax = 895;
+                        ay = 302;
+                    break;
+                    case "10":
+                        ax = 903;
+                        ay = 294;
+                    break;
+                    default:
+                        ax = 903;
+                        ay = 294;
                 }
             }
             function draw() {
@@ -133,8 +177,9 @@
                 ctx.globalAlpha = .6;
                 
                 getTrion(trion);
+                getAttack(attack);
                 ctx.moveTo(812,ty);
-                ctx.lineTo(867,330);
+                ctx.lineTo(ax,ay);
                 ctx.lineTo(917,386);
                 ctx.lineTo(812,478);
                 ctx.lineTo(783,414);
