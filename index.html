@@ -35,7 +35,7 @@
         <script>
             var ctx;
             var canvas;
-            var ty = 0, ax = 0, ay = 0, dx = 0, dy = 0, mx = 0, my = 0, sx = 0, sy = 0, rx = 0, ry = 0;
+            var ty = 0, ax = 0, ay = 0, dx = 0, dy = 0, mx = 0, my = 0, sx = 0, sy = 0, rx = 0, ry = 0, cx = 0, cy = 0, tx = 0, tty = 0;
             var name, ranking, emblem;
             var trion, attack, defense, mobility, skill, range, command, tactics, total;
             var img;
@@ -355,6 +355,98 @@
                         ry = 477;
                 }
             }
+            function getCommand(cr) {
+                switch(cr) {
+                    case "1":
+                        cx = 799;
+                        cy = 386;
+                    break;
+                    case "2":
+                        cx = 785;
+                        cy = 386;
+                    break;
+                    case "3":
+                        cx = 772;
+                        cy = 386;
+                    break;
+                    case "4":
+                        cx = 759;
+                        cy = 386;
+                    case "5":
+                        cx = 746;
+                        cy = 386;
+                    break;
+                    case "6":
+                        cx = 733;
+                        cy = 386;
+                    break;
+                    case "7":
+                        cx = 720;
+                        cy = 386;
+                    break;
+                    case "8":
+                        cx = 706;
+                        cy = 386;
+                    break;
+                    case "9":
+                        cx = 693;
+                        cy = 386;
+                    break;
+                    case "10":
+                        cx = 683;
+                        cy = 386;
+                    break;
+                    default:
+                        cx = 683;
+                        cy = 386;
+                }
+            }
+            function getTactics(tr) {
+                switch(tr) {
+                    case "1":
+                        tx = 802;
+                        tty = 376;
+                    break;
+                    case "2":
+                        tx = 793;
+                        tty = 367;
+                    break;
+                    case "3":
+                        tx = 783;
+                        tty = 357;
+                    break;
+                    case "4":
+                        tx = 774;
+                        tty = 348;
+                    case "5":
+                        tx = 765;
+                        tty = 339;
+                    break;
+                    case "6":
+                        tx = 756;
+                        tty = 330;
+                    break;
+                    case "7":
+                        tx = 746;
+                        tty = 320;
+                    break;
+                    case "8":
+                        tx = 737;
+                        tty = 311;
+                    break;
+                    case "9":
+                        tx = 728;
+                        tty = 302;
+                    break;
+                    case "10":
+                        tx = 721;
+                        tty = 295;
+                    break;
+                    default:
+                        tx = 721;
+                        tty = 295;
+                }
+            }
             function draw() {
                 reset();
                 getTrigs();
@@ -369,6 +461,8 @@
                 getMobility(mobility);
                 getSkill(skill);
                 getRange(range);
+                getCommand(command);
+                getTactics(tactics);
                 
                 ctx.moveTo(812,ty);
                 ctx.lineTo(ax,ay);
@@ -376,8 +470,8 @@
                 ctx.lineTo(mx,my);
                 ctx.lineTo(sx,sy);
                 ctx.lineTo(rx,ry);
-                ctx.lineTo(785,386);
-                ctx.lineTo(765,339);
+                ctx.lineTo(cx,cy);
+                ctx.lineTo(tx,tty);
                 ctx.fill();
                 ctx.globalAlpha = 1;
             }
