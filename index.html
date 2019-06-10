@@ -453,7 +453,23 @@
                 getParams();
                 ctx.beginPath();
                 ctx.fillStyle = "black";
-                ctx.globalAlpha = .6;
+                ctx.font = "normal normal bold 13px Arial";
+                ctx.fillText(trion,808,253);
+                ctx.fillText(attack,921,299);
+                ctx.fillText(defense,947,404);
+                ctx.fillText(mobility,923,503);
+                ctx.font = "normal normal bold 17px Arial";
+                ctx.fillText(skill,808,543);
+                ctx.font = "normal normal bold 19px Arial";
+                ctx.strokeStyle = "lightgray";
+                ctx.strokeText(skill,808,543);
+                ctx.font = "normal normal bold 13px Arial";
+                ctx.fillText(range,697,505);
+                ctx.fillText(command,669,405);
+                ctx.fillText(tactics,701,301);
+                ctx.font = "normal normal bold 26px Arial";
+                var sum = trion + "+" + attack + "+" + defense + "+" + mobility + "+" + skill + "+" + range + "+" + command + "+" + tactics;
+                ctx.fillText(eval(sum),719,554);
                 
                 getTrion(trion);
                 getAttack(attack);
@@ -464,6 +480,7 @@
                 getCommand(command);
                 getTactics(tactics);
                 
+                ctx.globalAlpha = .6;
                 ctx.moveTo(812,ty);
                 ctx.lineTo(ax,ay);
                 ctx.lineTo(dx,dy);
