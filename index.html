@@ -41,6 +41,7 @@
             var img;
             var triggers = [0,0,0,0,0,0,0,0];
             var texts = ["","DEFENSE TRIGGER","OPTION TRIGGER","ATTACKER TRIGGER","ATTACKER TRIGGER","ATTACKER TRIGGER","ATTACKER TRIGGER","GUNNER TRIGGER","GUNNER TRIGGER","GUNNER TRIGGER","GUNNER TRIGGER","SNIPER TRIGGER","SNIPER TRIGGER","SNIPER TRIGGER","OPTION TRIGGER","OPTION TRIGGER","OPTION TRIGGER","OPTION TRIGGER","OPTION TRIGGER","DEFENSE TRIGGER","OPTION TRIGGER","OPTION TRIGGER","OPTION TRIGGER","OPTION TRIGGER","OPTION TRIGGER","OPTION TRIGGER"];
+            var trigNames = ["","SHIELD","BAGWORM","RAYGUST","KOGETSU","SCORPION","KOGETSU:\nSPEAR","ASTEROID","HOUND","METEORA","VIPER","EGRET","IBIS","LIGHTNING","GEN'YO","LEAD BULLET","SENKU","STARMAKER","THRUSTER","ESCUDO","CHAMELEON","DUMMY BEACON",,"GRASSHOPPER","SILENCER","SPIDER","TELEPORTER"];
             //0-25 is regular 3-6 Attacker 7-10 Shooter 11-13 Sniper 14-18 Attachments 19-25 Extras 26-32 Assault Rifles 33-39 Grenade Launchers 40-46 Shotguns 47-53 Handguns
             
             window.onload = function() {
@@ -56,13 +57,13 @@
                 for(var i=0; i<4; i++) {
                     var e = document.getElementById("main" + (i+1));
                     var ret = e.options[e.selectedIndex].value;
-                    triggers[i] = ret;
+                    triggers[i] = parseInt(ret);
                 }
                 var z = 0;
                 for(var i=4; i<8; i++) {
                     var e = document.getElementById("sub" + (z+1));
                     var ret = e.options[e.selectedIndex].value;
-                    triggers[i] = ret;
+                    triggers[i] = parseInt(ret);
                     z++;
                 }
             }
@@ -447,11 +448,7 @@
                         tty = 296;
                 }
             }
-            function draw() {
-                reset();
-                getTrigs();
-                getParams();
-                ctx.beginPath();
+            function paramText() {
                 ctx.fillStyle = "black";
                 ctx.font = "normal normal bold 13px Arial";
                 ctx.fillText(trion,808,253);
@@ -470,6 +467,38 @@
                 ctx.font = "normal normal bold 26px Arial";
                 var sum = trion + "+" + attack + "+" + defense + "+" + mobility + "+" + skill + "+" + range + "+" + command + "+" + tactics;
                 ctx.fillText(eval(sum),719,554);
+            }
+            function trigText() {
+                ctx.fillStyle = "black";
+                ctx.font = "normal normal bold 10px Arial";
+                var textY = 264;
+                for(var i = 0; i<4; i++) {
+                    if(triggers[i] > 25) {
+                        ctx.fillText("GUNNER TRIGGER",418,textY);
+                    }
+                    else {
+                        ctx.fillText(texts[triggers[i]],418,textY);
+                    }
+                    textY += 71;
+                }
+                textY = 209;
+                for(var i = 4; i<8; i++) {
+                    if(triggers[i] > 25) {
+                        ctx.fillText("GUNNER TRIGGER",1106,textY);
+                    }
+                    else {
+                        ctx.fillText(texts[triggers[i]],1106,textY);
+                    }
+                    textY += 71;
+                }
+            }
+            function draw() {
+                reset();
+                getTrigs();
+                getParams();
+                paramText();
+                trigText();
+                ctx.beginPath();
                 
                 getTrion(trion);
                 getAttack(attack);
@@ -480,7 +509,7 @@
                 getCommand(command);
                 getTactics(tactics);
                 
-                ctx.globalAlpha = .6;
+                ctx.globalAlpha = .45;
                 ctx.moveTo(812,ty);
                 ctx.lineTo(ax,ay);
                 ctx.lineTo(dx,dy);
@@ -503,16 +532,16 @@
         </div>
         <div id="parameters" align="center">
             <h3>Parameters</h3>
-            <input type="number" placeholder="Trion" id="trion"/>
-            <input type="number" placeholder="Attack" id="attack"/>
-            <input type="number" placeholder="Defense" id="defense"/>
+            <input type="number" placeholder="Trion" id="trion" min="1"/>
+            <input type="number" placeholder="Attack" id="attack" min="1"/>
+            <input type="number" placeholder="Defense" id="defense" min="1"/>
             <br />
-            <input type="number" placeholder="Mobility" id="mobility"/>
-            <input type="number" placeholder="Skill" id="skill"/>
-            <input type="number" placeholder="Range" id="range"/>
+            <input type="number" placeholder="Mobility" id="mobility" min="1"/>
+            <input type="number" placeholder="Skill" id="skill" min="1"/>
+            <input type="number" placeholder="Range" id="range" min="1"/>
             <br />
-            <input type="number" placeholder="Command" id="command"/>
-            <input type="number" placeholder="Special Tactics" id="tactics"/>
+            <input type="number" placeholder="Command" id="command" min="1"/>
+            <input type="number" placeholder="Special Tactics" id="tactics" min="1"/>
         </div>
         <div id="triggers" align="center">
             <table>
@@ -529,7 +558,7 @@
                             <option value="3">Raygust</option>
                             <option value="4">Kogetsu</option>
                             <option value="5">Scorpion</option>
-                            <option value="6">Speargetsu</option>
+                            <option value="6">Kogetsu: Spear</option>
                             <option value="7">Asteroid</option>
                             <option value="8">Hound</option>
                             <option value="9">Meteora</option>
