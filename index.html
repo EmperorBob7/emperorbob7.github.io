@@ -9,6 +9,9 @@
                 font-family:arial;
                 color:#00bd8b;
             }
+            img {
+                display:none;
+            }
             input {
                 width:200px;
                 display:block;
@@ -39,12 +42,20 @@
             var name, ranking, emblem;
             var trion, attack, defense, mobility, skill, range, command, tactics, total;
             var img;
+            var opt = new Image(), shi = new Image(), sco = new Image(), ray = new Image(), kog = new Image(), speark = new Image(), egret = new Image(), ibis = new Image(), light = new Image(), viper = new Image(), hound = new Image(), aster = new Image(), mete = new Image(), escudo = new Image();
+            opt.src = "https://cdn.discordapp.com/attachments/571784589882949692/588223959292706817/1560313908255.png";
+            shi.src = "https://cdn.discordapp.com/attachments/571784589882949692/588226241895858176/1560314451213.png";
+            sco.src = "https://cdn.discordapp.com/attachments/571784589882949692/588228644481269761/1560315030622.png";
+            sco.onload = function() {
+                begin();
+            }
             var triggers = [0,0,0,0,0,0,0,0];
             var texts = ["","DEFENSE TRIGGER","OPTION TRIGGER","ATTACKER TRIGGER","ATTACKER TRIGGER","ATTACKER TRIGGER","ATTACKER TRIGGER","GUNNER TRIGGER","GUNNER TRIGGER","GUNNER TRIGGER","GUNNER TRIGGER","SNIPER TRIGGER","SNIPER TRIGGER","SNIPER TRIGGER","OPTION TRIGGER","OPTION TRIGGER","OPTION TRIGGER","OPTION TRIGGER","OPTION TRIGGER","DEFENSE TRIGGER","OPTION TRIGGER","OPTION TRIGGER","OPTION TRIGGER","OPTION TRIGGER","OPTION TRIGGER","OPTION TRIGGER"];
-            var trigNames = ["","SHIELD","BAGWORM","RAYGUST","KOGETSU","SCORPION","KOGETSU:\nSPEAR","ASTEROID","HOUND","METEORA","VIPER","EGRET","IBIS","LIGHTNING","GEN'YO","LEAD BULLET","SENKU","STARMAKER","THRUSTER","ESCUDO","CHAMELEON","DUMMY BEACON",,"GRASSHOPPER","SILENCER","SPIDER","TELEPORTER"];
+            var trigNames = ["","SHIELD","BAGWORM","RAYGUST","KOGETSU","SCORPION","KOGETSU:\nSPEAR","ASTEROID","HOUND","METEORA","VIPER","EGRET","IBIS","LIGHTNING","GEN'YO","LEAD BULLET","SENKU","STARMAKER","THRUSTER","ESCUDO","CHAMELEON","DUMMY BEACON","GRASSHOPPER","SILENCER","SPIDER","TELEPORTER"];
+            var trigImg = ["",shi,opt,ray,kog,sco,speark,aster,hound,mete,viper,egret,ibis,light,opt,opt,opt,opt,opt,escudo,opt,opt,opt,opt,opt,opt];
             //0-25 is regular 3-6 Attacker 7-10 Shooter 11-13 Sniper 14-18 Attachments 19-25 Extras 26-32 Assault Rifles 33-39 Grenade Launchers 40-46 Shotguns 47-53 Handguns
             
-            window.onload = function() {
+            function begin() {
                 canvas = document.getElementById("cv");
                 ctx = canvas.getContext("2d");
                 img = document.getElementById("original");
@@ -470,26 +481,44 @@
             }
             function trigText() {
                 ctx.fillStyle = "black";
-                ctx.font = "normal normal bold 10px Arial";
                 var textY = 264;
+                var imgY = 260;
+                var nameY = 290;
                 for(var i = 0; i<4; i++) {
+                    ctx.font = "normal normal bold 10px Arial";
                     if(triggers[i] > 25) {
                         ctx.fillText("GUNNER TRIGGER",418,textY);
+                        ctx.font = "normal normal bold 13px Arial";
+                        ctx.fillText(trigNames[triggers[i]],423,nameY);
                     }
                     else {
                         ctx.fillText(texts[triggers[i]],418,textY);
+                        ctx.drawImage(trigImg[triggers[i]],372,imgY,39,43);
+                        ctx.font = "normal normal bold 13px Arial";
+                        ctx.fillText(trigNames[triggers[i]],423,nameY);
                     }
                     textY += 71;
+                    imgY += 71;
+                    nameY += 71;
                 }
                 textY = 209;
+                imgY = 205;
+                nameY = 235;
                 for(var i = 4; i<8; i++) {
                     if(triggers[i] > 25) {
                         ctx.fillText("GUNNER TRIGGER",1106,textY);
+                        ctx.font = "normal normal bold 13px Arial";
+                        ctx.fillText(trigNames[triggers[i]],1111,nameY);
                     }
                     else {
                         ctx.fillText(texts[triggers[i]],1106,textY);
+                        ctx.drawImage(trigImg[triggers[i]],1060,imgY,39,43);
+                        ctx.font = "normal normal bold 13px Arial";
+                        ctx.fillText(trigNames[triggers[i]],1111,nameY);
                     }
                     textY += 71;
+                    imgY += 71;
+                    nameY += 71;
                 }
             }
             function draw() {
