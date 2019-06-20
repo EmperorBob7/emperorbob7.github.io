@@ -12,7 +12,7 @@
             body {
                 padding:10;
                 background-color:#222222;
-                font-family:crusader;
+                font-family:arial;
                 color:#00bd8b;
             }
             img {
@@ -36,6 +36,7 @@
             }
             button {
                 padding:5px;
+                margin-bottom:5px;
                 background-color:transparent;
                 color:aqua;
                 border:2px solid cyan;
@@ -48,11 +49,20 @@
             var name, ranking, emblem;
             var trion, attack, defense, mobility, skill, range, command, tactics, total;
             var img;
-            var opt = new Image(), shi = new Image(), sco = new Image(), ray = new Image(), kog = new Image(), speark = new Image(), egret = new Image(), ibis = new Image(), light = new Image(), viper = new Image(), hound = new Image(), aster = new Image(), mete = new Image(), escudo = new Image();
+            var opt = new Image(), shi = new Image(), sco = new Image(), ray = new Image(), kog = new Image(), speark = new Image(), egret = new Image(), ibis = new Image(), light = new Image(), viper = new Image(), hound = new Image(), aster = new Image(), mete = new Image(), escudo = new Image(), handgun = new Image();
             opt.src = "https://cdn.discordapp.com/attachments/571784589882949692/588223959292706817/1560313908255.png";
             shi.src = "https://cdn.discordapp.com/attachments/571784589882949692/588226241895858176/1560314451213.png";
             sco.src = "https://cdn.discordapp.com/attachments/571784589882949692/588228644481269761/1560315030622.png";
-            sco.onload = function() {
+            egret.src = "https://cdn.discordapp.com/attachments/571784589882949692/591051692724977665/importantIcon.png";
+            aster.src = "https://cdn.discordapp.com/attachments/571784589882949692/591053193702539314/importantIcon.png";
+            handgun.src = "https://cdn.discordapp.com/attachments/571784589882949692/591054144995983425/importantIcon.png";
+            kog.src = "https://cdn.discordapp.com/attachments/571784589882949692/591058852800233503/importantIcon.png";
+            ray.src = "https://cdn.discordapp.com/attachments/571784589882949692/591060849754374146/importantIcon.png";
+            viper.src = "https://cdn.discordapp.com/attachments/571784589882949692/591062402783772691/importantIcon.png";
+            mete.src = "https://cdn.discordapp.com/attachments/571784589882949692/591063097255526400/importantIcon.png";
+            hound.src = "https://cdn.discordapp.com/attachments/571784589882949692/591064834523660303/importantIcon.png";
+            speark.src = "https://cdn.discordapp.com/attachments/571784589882949692/591067006355374110/importantIcon.png";
+            speark.onload = function() {
                 begin();
             }
             var triggers = [0,0,0,0,0,0,0,0];
@@ -655,7 +665,7 @@
                             <option value="3">Raygust</option>
                             <option value="4">Kogetsu</option>
                             <option value="5">Scorpion</option>
-                            <option value="6">Speargetsu</option>
+                            <option value="6">Kogetsu: Spear</option>
                             <option value="7">Asteroid</option>
                             <option value="8">Hound</option>
                             <option value="9">Meteora</option>
@@ -719,7 +729,7 @@
                             <option value="3">Raygust</option>
                             <option value="4">Kogetsu</option>
                             <option value="5">Scorpion</option>
-                            <option value="6">Speargetsu</option>
+                            <option value="6">Kogetsu: Spear</option>
                             <option value="7">Asteroid</option>
                             <option value="8">Hound</option>
                             <option value="9">Meteora</option>
@@ -781,7 +791,7 @@
                             <option value="3">Raygust</option>
                             <option value="4">Kogetsu</option>
                             <option value="5">Scorpion</option>
-                            <option value="6">Speargetsu</option>
+                            <option value="6">Kogetsu: Spear</option>
                             <option value="7">Asteroid</option>
                             <option value="8">Hound</option>
                             <option value="9">Meteora</option>
@@ -845,7 +855,7 @@
                             <option value="3">Raygust</option>
                             <option value="4">Kogetsu</option>
                             <option value="5">Scorpion</option>
-                            <option value="6">Speargetsu</option>
+                            <option value="6">Kogetsu: Spear</option>
                             <option value="7">Asteroid</option>
                             <option value="8">Hound</option>
                             <option value="9">Meteora</option>
@@ -907,7 +917,7 @@
                             <option value="3">Raygust</option>
                             <option value="4">Kogetsu</option>
                             <option value="5">Scorpion</option>
-                            <option value="6">Speargetsu</option>
+                            <option value="6">Kogetsu: Spear</option>
                             <option value="7">Asteroid</option>
                             <option value="8">Hound</option>
                             <option value="9">Meteora</option>
@@ -971,7 +981,7 @@
                             <option value="3">Raygust</option>
                             <option value="4">Kogetsu</option>
                             <option value="5">Scorpion</option>
-                            <option value="6">Speargetsu</option>
+                            <option value="6">Kogetsu: Spear</option>
                             <option value="7">Asteroid</option>
                             <option value="8">Hound</option>
                             <option value="9">Meteora</option>
@@ -1033,7 +1043,7 @@
                             <option value="3">Raygust</option>
                             <option value="4">Kogetsu</option>
                             <option value="5">Scorpion</option>
-                            <option value="6">Speargetsu</option>
+                            <option value="6">Kogetsu: Spear</option>
                             <option value="7">Asteroid</option>
                             <option value="8">Hound</option>
                             <option value="9">Meteora</option>
