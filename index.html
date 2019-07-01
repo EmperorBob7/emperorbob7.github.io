@@ -49,7 +49,7 @@
             var name, ranking, emblem;
             var trion, attack, defense, mobility, skill, range, command, tactics, total;
             var img;
-            var opt = new Image(), shi = new Image(), sco = new Image(), ray = new Image(), kog = new Image(), speark = new Image(), egret = new Image(), ibis = new Image(), light = new Image(), viper = new Image(), hound = new Image(), aster = new Image(), mete = new Image(), escudo = new Image(), handgun = new Image();
+            var opt = new Image(), shi = new Image(), sco = new Image(), ray = new Image(), kog = new Image(), speark = new Image(), egret = new Image(), ibis = new Image(), light = new Image(), viper = new Image(), hound = new Image(), aster = new Image(), mete = new Image(), escudo = new Image(), handgun = new Image(), arifle = new Image(), shot = new Image(), grenade = new Image();
             opt.src = "https://cdn.discordapp.com/attachments/571784589882949692/588223959292706817/1560313908255.png";
             shi.src = "https://cdn.discordapp.com/attachments/571784589882949692/588226241895858176/1560314451213.png";
             sco.src = "https://cdn.discordapp.com/attachments/571784589882949692/588228644481269761/1560315030622.png";
@@ -62,13 +62,19 @@
             mete.src = "https://cdn.discordapp.com/attachments/571784589882949692/591063097255526400/importantIcon.png";
             hound.src = "https://cdn.discordapp.com/attachments/571784589882949692/591064834523660303/importantIcon.png";
             speark.src = "https://cdn.discordapp.com/attachments/571784589882949692/591067006355374110/importantIcon.png";
-            speark.onload = function() {
+            ibis.src = "https://cdn.discordapp.com/attachments/571784589882949692/595070798725906442/importantIcon.png";
+            light.src = "https://cdn.discordapp.com/attachments/571784589882949692/595071264087998496/importantIcon.png";
+            escudo.src = "https://cdn.discordapp.com/attachments/571784589882949692/595073834692902925/importantIcon.png";
+            arifle.src = "https://cdn.discordapp.com/attachments/571784589882949692/595073561467682818/importantIcon.png";
+            shot.src = "https://cdn.discordapp.com/attachments/571784589882949692/595074859860492318/importantIcon.png";
+            grenade.src = "https://cdn.discordapp.com/attachments/571784589882949692/595076936133246989/importantIcon.png";
+            grenade.onload = function() {
                 begin();
             }
             var triggers = [0,0,0,0,0,0,0,0];
             var texts = ["","DEFENSE TRIGGER","OPTION TRIGGER","ATTACKER TRIGGER","ATTACKER TRIGGER","ATTACKER TRIGGER","ATTACKER TRIGGER","GUNNER TRIGGER","GUNNER TRIGGER","GUNNER TRIGGER","GUNNER TRIGGER","SNIPER TRIGGER","SNIPER TRIGGER","SNIPER TRIGGER","OPTION TRIGGER","OPTION TRIGGER","OPTION TRIGGER","OPTION TRIGGER","OPTION TRIGGER","DEFENSE TRIGGER","OPTION TRIGGER","OPTION TRIGGER","OPTION TRIGGER","OPTION TRIGGER","OPTION TRIGGER","OPTION TRIGGER"];
-            var trigNames = ["","SHIELD","BAGWORM","RAYGUST","KOGETSU","SCORPION","KOGETSU:\nSPEAR","ASTEROID","HOUND","METEORA","VIPER","EGRET","IBIS","LIGHTNING","GEN'YO","LEAD BULLET","SENKU","STARMAKER","THRUSTER","ESCUDO","CHAMELEON","DUMMY BEACON","GRASSHOPPER","SILENCER","SPIDER","TELEPORTER"];
-            var trigImg = ["",shi,opt,ray,kog,sco,speark,aster,hound,mete,viper,egret,ibis,light,opt,opt,opt,opt,opt,escudo,opt,opt,opt,opt,opt,opt];
+            var trigNames = ["","SHIELD","BAGWORM","RAYGUST","KOGETSU","SCORPION","KOGETSU: SPEAR","ASTEROID","HOUND","METEORA","VIPER","EGRET","IBIS","LIGHTNING","GEN'YO","LEAD BULLET","SENKU","STARMAKER","THRUSTER","ESCUDO","CHAMELEON","DUMMY BEACON","GRASSHOPPER","SILENCER","SPIDER","TELEPORTER","Assault Rifle: Viper","Assault Rifle: Hound","Assault Rifle: Asteroid","Assault Rifle: Meteora","Assault Rifle: Gimlet","Assault Rifle: Salamander","Assault Rifle: Tomahawk","Grenade Gun: Viper","Grenade Gun: Hound","Grenade Gun: Asteroid","Grenade Gun: Meteora","Grenade Gun: Gimlet","Grenade Gun: Salamander","Grenade Gun: Tomahawk","Shotgun: Viper","Shotgun: Hound","Shotgun: Asteroid","Shotgun: Meteora","Shotgun: Gimlet","Shotgun: Salamander","Shotgun: Tomahawk","Handgun: Viper","Handgun: Hound","Handgun: Asteroid","Handgun: Meteora","Handgun: Gimlet","Handgun: Salamander","Handgun: Tomahawk"];
+            var trigImg = ["",shi,opt,ray,kog,sco,speark,aster,hound,mete,viper,egret,ibis,light,opt,opt,opt,opt,opt,escudo,opt,opt,opt,opt,opt,opt,arifle,arifle,arifle,arifle,arifle,arifle,arifle,grenade,grenade,grenade,grenade,grenade,grenade,grenade,shot,shot,shot,shot,shot,shot,shot,handgun,handgun,handgun,handgun,handgun,handgun,handgun];
             //0-25 is regular 3-6 Attacker 7-10 Shooter 11-13 Sniper 14-18 Attachments 19-25 Extras 26-32 Assault Rifles 33-39 Grenade Launchers 40-46 Shotguns 47-53 Handguns
             
             function begin() {
@@ -504,8 +510,9 @@
                     ctx.font = "normal normal bold 10px Arial";
                     if(triggers[i] > 25) {
                         ctx.fillText("GUNNER TRIGGER",418,textY);
-                        ctx.font = "normal normal bold 13px Arial";
-                        ctx.fillText(trigNames[triggers[i]],423,nameY);
+                        ctx.drawImage(trigImg[triggers[i]],372,imgY,39,43);
+                        ctx.font = "normal normal bold 11.5px Arial";
+                        ctx.fillText(trigNames[triggers[i]],420,nameY);
                     }
                     else {
                         ctx.fillText(texts[triggers[i]],418,textY);
@@ -521,10 +528,12 @@
                 imgY = 205;
                 nameY = 235;
                 for(var i = 4; i<8; i++) {
+                    ctx.font = "normal normal bold 10px Arial";
                     if(triggers[i] > 25) {
                         ctx.fillText("GUNNER TRIGGER",1106,textY);
-                        ctx.font = "normal normal bold 13px Arial";
-                        ctx.fillText(trigNames[triggers[i]],1111,nameY);
+                        ctx.font = "normal normal bold 11.5px Arial";
+                        ctx.drawImage(trigImg[triggers[i]],1060,imgY,39,43);
+                        ctx.fillText(trigNames[triggers[i]],1108,nameY);
                     }
                     else {
                         ctx.fillText(texts[triggers[i]],1106,textY);
@@ -541,9 +550,8 @@
                 reset();
                 getTrigs();
                 getParams();
-                paramText();
                 trigText();
-                ctx.beginPath();
+                paramText();
                 
                 getTrion(trion);
                 getAttack(attack);
@@ -554,6 +562,7 @@
                 getCommand(command);
                 getTactics(tactics);
                 
+                ctx.beginPath();
                 ctx.globalAlpha = .45;
                 ctx.moveTo(812,ty);
                 ctx.lineTo(ax,ay);
