@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
     <head>
         <title>World Trigger OC Template</title>
@@ -41,13 +41,22 @@
                 color:aqua;
                 border:2px solid cyan;
             }
+			p {
+				display:inline;
+				margin-right:50px;
+				margin-left:50px;
+			}
+			#parameters table,tr,td {
+				border: 0px;
+				border-collapse: collapse;
+			}
         </style>
         <script>
             var ctx;
             var canvas;
             var ty = 0, ax = 0, ay = 0, dx = 0, dy = 0, mx = 0, my = 0, sx = 0, sy = 0, rx = 0, ry = 0, cx = 0, cy = 0, tx = 0, tty = 0;
             var name, ranking, emblem;
-            var trion, attack, defense, mobility, skill, range, command, tactics, total;
+            var trion = "0", attack = "0", defense = "0", mobility = "0", skill = "0", range = "0", command = "0", tactics = "0", total = "0";
             var img;
             var opt = new Image(), shi = new Image(), sco = new Image(), ray = new Image(), kog = new Image(), speark = new Image(), egret = new Image(), ibis = new Image(), light = new Image(), viper = new Image(), hound = new Image(), aster = new Image(), mete = new Image(), escudo = new Image(), handgun = new Image(), arifle = new Image(), shot = new Image(), grenade = new Image();
             opt.src = "https://cdn.discordapp.com/attachments/571784589882949692/588223959292706817/1560313908255.png";
@@ -508,7 +517,10 @@
                 var nameY = 290;
                 for(var i = 0; i<4; i++) {
                     ctx.font = "normal normal bold 10px Arial";
-                    if(triggers[i] > 25) {
+					if(triggers[i] == 0) {
+						
+					}
+                    else if(triggers[i] > 25) {
                         ctx.fillText("GUNNER TRIGGER",418,textY);
                         ctx.drawImage(trigImg[triggers[i]],372,imgY,39,43);
                         ctx.font = "normal normal bold 11.5px Arial";
@@ -529,7 +541,10 @@
                 nameY = 235;
                 for(var i = 4; i<8; i++) {
                     ctx.font = "normal normal bold 10px Arial";
-                    if(triggers[i] > 25) {
+					if(triggers[i] == 0) {
+						
+					}
+                    else if(triggers[i] > 25) {
                         ctx.fillText("GUNNER TRIGGER",1106,textY);
                         ctx.font = "normal normal bold 11.5px Arial";
                         ctx.drawImage(trigImg[triggers[i]],1060,imgY,39,43);
@@ -546,8 +561,15 @@
                     nameY += 71;
                 }
             }
+			function writeName() {
+				var charName = document.getElementById("name").value;
+				ctx.fillStyle = "white";
+				ctx.font = "normal normal normal 45px crusader";
+				ctx.fillText(charName,339,92);
+			}
             function draw() {
                 reset();
+				writeName();
                 getTrigs();
                 getParams();
                 trigText();
@@ -580,22 +602,44 @@
     <body align="center">
         <h1>World Trigger Character</h1>
         <div id="form" align="center">
-            <input type="text" placeholder="OC Name" id="name"/>
+            <input type="text" placeholder="OC Name" id="name" style="text-transform: uppercase"/>
             <input type="number" placeholder="Squad Ranking" min="1" id="ranking"/>
             <input type="url" placeholder="Squad Emblem Logo" id="emblem"/>
         </div>
         <div id="parameters" align="center">
             <h3>Parameters</h3>
-            <input type="number" placeholder="Trion" id="trion" min="1"/>
-            <input type="number" placeholder="Attack" id="attack" min="1"/>
-            <input type="number" placeholder="Defense" id="defense" min="1"/>
-            <br />
-            <input type="number" placeholder="Mobility" id="mobility" min="1"/>
-            <input type="number" placeholder="Skill" id="skill" min="1"/>
-            <input type="number" placeholder="Range" id="range" min="1"/>
-            <br />
-            <input type="number" placeholder="Command" id="command" min="1"/>
-            <input type="number" placeholder="Special Tactics" id="tactics" min="1"/>
+			<table>
+				<tr>
+					<td>Trion</td>
+					<td>Attack</td>
+					<td>Defense</td>
+				</tr>
+				<tr>
+					<td><input type="number" value="0" id="trion" min="1"/></td>
+					<td><input type="number" value="0"="Attack" id="attack" min="1"/></td>
+					<td><input type="number" value="0"="Defense" id="defense" min="1"/></td>
+				</tr>
+				<tr>
+					<td>Mobility</td>
+					<td>Skill</td>
+					<td>Range</td>
+				</tr>
+				<tr>
+					<td><input type="number" value="0"="Mobility" id="mobility" min="1"/></td>
+					<td><input type="number" value="0"="Skill" id="skill" min="1"/></td>
+					<td><input type="number" value="0"="Range" id="range" min="1"/></td>
+				</tr>
+				<tr>
+					<td>Command</td>
+					<td>Tactics</td>
+					<td>Looks</td>
+				</tr>
+				<tr>
+					<td><input type="number" value="0"="Command" id="command" min="1"/></td>
+					<td><input type="number" value="0"="Special Tactics" id="tactics" min="1"/></td>
+					<td><input type="number" value="0"/></td>
+				</tr>
+			</table>
         </div>
         <div id="triggers" align="center">
             <table>
