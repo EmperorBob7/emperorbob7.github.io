@@ -58,7 +58,7 @@
             var name, ranking, emblem;
             var trion = "0", attack = "0", defense = "0", mobility = "0", skill = "0", range = "0", command = "0", tactics = "0", total = "0";
             var img;
-            var opt = new Image(), shi = new Image(), sco = new Image(), ray = new Image(), kog = new Image(), speark = new Image(), egret = new Image(), ibis = new Image(), light = new Image(), viper = new Image(), hound = new Image(), aster = new Image(), mete = new Image(), escudo = new Image(), handgun = new Image(), arifle = new Image(), shot = new Image(), grenade = new Image();
+            var free = new Image(), opt = new Image(), shi = new Image(), sco = new Image(), ray = new Image(), kog = new Image(), speark = new Image(), egret = new Image(), ibis = new Image(), light = new Image(), viper = new Image(), hound = new Image(), aster = new Image(), mete = new Image(), escudo = new Image(), handgun = new Image(), arifle = new Image(), shot = new Image(), grenade = new Image();
             opt.src = "https://cdn.discordapp.com/attachments/571784589882949692/588223959292706817/1560313908255.png";
             shi.src = "https://cdn.discordapp.com/attachments/571784589882949692/588226241895858176/1560314451213.png";
             sco.src = "https://cdn.discordapp.com/attachments/571784589882949692/588228644481269761/1560315030622.png";
@@ -77,7 +77,8 @@
             arifle.src = "https://cdn.discordapp.com/attachments/571784589882949692/595073561467682818/importantIcon.png";
             shot.src = "https://cdn.discordapp.com/attachments/571784589882949692/595074859860492318/importantIcon.png";
             grenade.src = "https://cdn.discordapp.com/attachments/571784589882949692/595076936133246989/importantIcon.png";
-            grenade.onload = function() {
+			free.src = "https://cdn.discordapp.com/attachments/571784589882949692/596152331616124928/importantIcon.png";
+            free.onload = function() {
                 begin();
             }
             var triggers = [0,0,0,0,0,0,0,0];
@@ -515,10 +516,11 @@
                 var textY = 264;
                 var imgY = 260;
                 var nameY = 290;
+				var freeY = 251;
                 for(var i = 0; i<4; i++) {
                     ctx.font = "normal normal bold 10px Arial";
 					if(triggers[i] == 0) {
-						
+						ctx.drawImage(free,361,freeY);
 					}
                     else if(triggers[i] > 25) {
                         ctx.fillText("GUNNER TRIGGER",418,textY);
@@ -535,14 +537,16 @@
                     textY += 71;
                     imgY += 71;
                     nameY += 71;
+					freeY += 71;
                 }
                 textY = 209;
                 imgY = 205;
                 nameY = 235;
+				freeY = 196;
                 for(var i = 4; i<8; i++) {
                     ctx.font = "normal normal bold 10px Arial";
 					if(triggers[i] == 0) {
-						
+						ctx.drawImage(free,1049,freeY);
 					}
                     else if(triggers[i] > 25) {
                         ctx.fillText("GUNNER TRIGGER",1106,textY);
@@ -559,6 +563,7 @@
                     textY += 71;
                     imgY += 71;
                     nameY += 71;
+					freeY += 71;
                 }
             }
 			function writeName() {
