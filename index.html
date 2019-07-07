@@ -86,7 +86,7 @@
                 begin();
             }
             var triggers = [0,0,0,0,0,0,0,0];
-            var texts = ["","DEFENSE TRIGGER","OPTION TRIGGER","ATTACKER TRIGGER","ATTACKER TRIGGER","ATTACKER TRIGGER","ATTACKER TRIGGER","GUNNER TRIGGER","GUNNER TRIGGER","GUNNER TRIGGER","GUNNER TRIGGER","SNIPER TRIGGER","SNIPER TRIGGER","SNIPER TRIGGER","OPTION TRIGGER","OPTION TRIGGER","OPTION TRIGGER","OPTION TRIGGER","OPTION TRIGGER","DEFENSE TRIGGER","OPTION TRIGGER","OPTION TRIGGER","OPTION TRIGGER","OPTION TRIGGER","OPTION TRIGGER","OPTION TRIGGER"];
+            var texts = ["","DEFENSE TRIGGER","OPTION TRIGGER","ATTACKER TRIGGER","ATTACKER TRIGGER","ATTACKER TRIGGER","ATTACKER TRIGGER","SHOOTER TRIGGER","SHOOTER TRIGGER","SHOOTER TRIGGER","SHOOTER TRIGGER","SNIPER TRIGGER","SNIPER TRIGGER","SNIPER TRIGGER","OPTION TRIGGER","OPTION TRIGGER","OPTION TRIGGER","OPTION TRIGGER","OPTION TRIGGER","DEFENSE TRIGGER","OPTION TRIGGER","OPTION TRIGGER","OPTION TRIGGER","OPTION TRIGGER","OPTION TRIGGER","OPTION TRIGGER"];
 			texts[54] = "TRAP TRIGGER";
 			texts[55] = "OPTION TRIGGER";
             var trigNames = ["","SHIELD","BAGWORM","RAYGUST","KOGETSU","SCORPION","KOGETSU: SPEAR","ASTEROID","HOUND","METEORA","VIPER","EGRET","IBIS","LIGHTNING","GEN'YO","LEAD BULLET","SENKU","STARMAKER","THRUSTER","ESCUDO","CHAMELEON","DUMMY BEACON","GRASSHOPPER","SILENCER","SPIDER","TELEPORTER","Assault Rifle: Viper","Assault Rifle: Hound","Assault Rifle: Asteroid","Assault Rifle: Meteora","Assault Rifle: Gimlet","Assault Rifle: Salamander","Assault Rifle: Tomahawk","Grenade Gun: Viper","Grenade Gun: Hound","Grenade Gun: Asteroid","Grenade Gun: Meteora","Grenade Gun: Gimlet","Grenade Gun: Salamander","Grenade Gun: Tomahawk","Shotgun: Viper","Shotgun: Hound","Shotgun: Asteroid","Shotgun: Meteora","Shotgun: Gimlet","Shotgun: Salamander","Shotgun: Tomahawk","Handgun: Viper","Handgun: Hound","Handgun: Asteroid","Handgun: Meteora","Handgun: Gimlet","Handgun: Salamander","Handgun: Tomahawk","SWITCHBOX","BAGWORM TAG"];
@@ -591,6 +591,11 @@
 				ctx.font = "normal normal normal 45px crusader";
 				ctx.fillText(charName,339,92);
 			}
+			function testing() {
+				var imgData = ctx.getImageData(613, 210, 394, 398);
+				var imgData2 = ctx.getImageData(1021, 162, 238, 322);
+				ctx.putImageData(imgData, 0, 0);
+			}
             function draw() {
                 reset();
 				writeName();
@@ -636,7 +641,7 @@
 				<tr>
 					<td>Trion</td>
 					<td>Attack</td>
-					<td>Defense</td>
+					<td>Defense & Support</td>
 				</tr>
 				<tr>
 					<td><input type="number" value="0" id="trion" min="1"/></td>
