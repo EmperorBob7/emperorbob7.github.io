@@ -58,6 +58,7 @@
             var name, ranking, emblem;
             var trion = "0", attack = "0", defense = "0", mobility = "0", skill = "0", range = "0", command = "0", tactics = "0", total = "0";
             var img = new Image();
+			var blocked = new Image();
             var switchbox = new Image(), free = new Image(), opt = new Image(), shi = new Image(), sco = new Image(), ray = new Image(), kog = new Image(), speark = new Image(), egret = new Image(), ibis = new Image(), light = new Image(), viper = new Image(), hound = new Image(), aster = new Image(), mete = new Image(), escudo = new Image(), handgun = new Image(), arifle = new Image(), shot = new Image(), grenade = new Image();
             opt.src = "https://cdn.discordapp.com/attachments/571784589882949692/588223959292706817/1560313908255.png";
             shi.src = "https://cdn.discordapp.com/attachments/571784589882949692/588226241895858176/1560314451213.png";
@@ -77,21 +78,24 @@
             arifle.src = "https://cdn.discordapp.com/attachments/571784589882949692/595073561467682818/importantIcon.png";
             shot.src = "https://cdn.discordapp.com/attachments/571784589882949692/595074859860492318/importantIcon.png";
             grenade.src = "https://cdn.discordapp.com/attachments/571784589882949692/595076936133246989/importantIcon.png";
-			free.src = "https://cdn.discordapp.com/attachments/571784589882949692/596152331616124928/importantIcon.png";
+			free.src = "https://cdn.discordapp.com/attachments/571784589882949692/596874086341410826/importantIcon.png";
 			switchbox.src = "https://cdn.discordapp.com/attachments/571784589882949692/596787826511577119/importantIcon.png";
-            switchbox.onload = function() {
+			img.src = "https://cdn.discordapp.com/attachments/571784589882949692/596882972901244928/importantIcon.png";
+			blocked.src = "https://cdn.discordapp.com/attachments/571784589882949692/597287816635875338/importantIcon.png";
+            img.onload = function() {
                 begin();
             }
             var triggers = [0,0,0,0,0,0,0,0];
-            var texts = ["","DEFENSE TRIGGER","OPTION TRIGGER","ATTACKER TRIGGER","ATTACKER TRIGGER","ATTACKER TRIGGER","ATTACKER TRIGGER","GUNNER TRIGGER","GUNNER TRIGGER","GUNNER TRIGGER","GUNNER TRIGGER","SNIPER TRIGGER","SNIPER TRIGGER","SNIPER TRIGGER","OPTION TRIGGER","OPTION TRIGGER","OPTION TRIGGER","OPTION TRIGGER","OPTION TRIGGER","DEFENSE TRIGGER","OPTION TRIGGER","OPTION TRIGGER","OPTION TRIGGER","OPTION TRIGGER","OPTION TRIGGER","OPTION TRIGGER","TRAP TRIGGER"];
-            var trigNames = ["","SHIELD","BAGWORM","RAYGUST","KOGETSU","SCORPION","KOGETSU: SPEAR","ASTEROID","HOUND","METEORA","VIPER","EGRET","IBIS","LIGHTNING","GEN'YO","LEAD BULLET","SENKU","STARMAKER","THRUSTER","ESCUDO","CHAMELEON","DUMMY BEACON","GRASSHOPPER","SILENCER","SPIDER","TELEPORTER","Assault Rifle: Viper","Assault Rifle: Hound","Assault Rifle: Asteroid","Assault Rifle: Meteora","Assault Rifle: Gimlet","Assault Rifle: Salamander","Assault Rifle: Tomahawk","Grenade Gun: Viper","Grenade Gun: Hound","Grenade Gun: Asteroid","Grenade Gun: Meteora","Grenade Gun: Gimlet","Grenade Gun: Salamander","Grenade Gun: Tomahawk","Shotgun: Viper","Shotgun: Hound","Shotgun: Asteroid","Shotgun: Meteora","Shotgun: Gimlet","Shotgun: Salamander","Shotgun: Tomahawk","Handgun: Viper","Handgun: Hound","Handgun: Asteroid","Handgun: Meteora","Handgun: Gimlet","Handgun: Salamander","Handgun: Tomahawk","SWITCHBOX"];
-            var trigImg = ["",shi,opt,ray,kog,sco,speark,aster,hound,mete,viper,egret,ibis,light,opt,opt,opt,opt,opt,escudo,opt,opt,opt,opt,opt,opt,arifle,arifle,arifle,arifle,arifle,arifle,arifle,grenade,grenade,grenade,grenade,grenade,grenade,grenade,shot,shot,shot,shot,shot,shot,shot,handgun,handgun,handgun,handgun,handgun,handgun,handgun,switchbox];
+            var texts = ["","DEFENSE TRIGGER","OPTION TRIGGER","ATTACKER TRIGGER","ATTACKER TRIGGER","ATTACKER TRIGGER","ATTACKER TRIGGER","GUNNER TRIGGER","GUNNER TRIGGER","GUNNER TRIGGER","GUNNER TRIGGER","SNIPER TRIGGER","SNIPER TRIGGER","SNIPER TRIGGER","OPTION TRIGGER","OPTION TRIGGER","OPTION TRIGGER","OPTION TRIGGER","OPTION TRIGGER","DEFENSE TRIGGER","OPTION TRIGGER","OPTION TRIGGER","OPTION TRIGGER","OPTION TRIGGER","OPTION TRIGGER","OPTION TRIGGER"];
+			texts[54] = "TRAP TRIGGER";
+			texts[55] = "OPTION TRIGGER";
+            var trigNames = ["","SHIELD","BAGWORM","RAYGUST","KOGETSU","SCORPION","KOGETSU: SPEAR","ASTEROID","HOUND","METEORA","VIPER","EGRET","IBIS","LIGHTNING","GEN'YO","LEAD BULLET","SENKU","STARMAKER","THRUSTER","ESCUDO","CHAMELEON","DUMMY BEACON","GRASSHOPPER","SILENCER","SPIDER","TELEPORTER","Assault Rifle: Viper","Assault Rifle: Hound","Assault Rifle: Asteroid","Assault Rifle: Meteora","Assault Rifle: Gimlet","Assault Rifle: Salamander","Assault Rifle: Tomahawk","Grenade Gun: Viper","Grenade Gun: Hound","Grenade Gun: Asteroid","Grenade Gun: Meteora","Grenade Gun: Gimlet","Grenade Gun: Salamander","Grenade Gun: Tomahawk","Shotgun: Viper","Shotgun: Hound","Shotgun: Asteroid","Shotgun: Meteora","Shotgun: Gimlet","Shotgun: Salamander","Shotgun: Tomahawk","Handgun: Viper","Handgun: Hound","Handgun: Asteroid","Handgun: Meteora","Handgun: Gimlet","Handgun: Salamander","Handgun: Tomahawk","SWITCHBOX","BAGWORM TAG"];
+            var trigImg = ["",shi,opt,ray,kog,sco,speark,aster,hound,mete,viper,egret,ibis,light,opt,opt,opt,opt,opt,escudo,opt,opt,opt,opt,opt,opt,arifle,arifle,arifle,arifle,arifle,arifle,arifle,grenade,grenade,grenade,grenade,grenade,grenade,grenade,shot,shot,shot,shot,shot,shot,shot,handgun,handgun,handgun,handgun,handgun,handgun,handgun,switchbox,opt];
             //0-25 is regular 3-6 Attacker 7-10 Shooter 11-13 Sniper 14-18 Attachments 19-25 Extras 26-32 Assault Rifles 33-39 Grenade Launchers 40-46 Shotguns 47-53 Handguns
             
             function begin() {
                 canvas = document.getElementById("cv");
                 ctx = canvas.getContext("2d");
-                img.src = "https://cdn.discordapp.com/attachments/571784589882949692/586772171758764042/unknown.png";
                 ctx.drawImage(img,0,0,1280,720);
             }
             function reset() {
@@ -530,9 +534,22 @@
 					if(triggers[i] == 0) {
 						ctx.drawImage(free,361,freeY);
 					}
-                    else if(triggers[i] > 25) {
+                    else if(triggers[i] > 25 && triggers[i] <= 53) {
                         drawGuns(418,372,420,i);
                     }
+					else if(triggers[i] == 55) {
+						ctx.fillText(texts[triggers[i]],418,textY);
+                        ctx.drawImage(trigImg[triggers[i]],372,imgY,39,43);
+                        ctx.font = "normal normal bold 13px Arial";
+                        ctx.fillText(trigNames[triggers[i]],423,nameY);
+						freeY += 71;
+						ctx.drawImage(blocked,361,freeY);
+						freeY += 71;
+						ctx.drawImage(blocked,361,freeY);
+						freeY += 71;
+						ctx.drawImage(blocked,361,freeY);
+						break;
+					}
                     else {
                         ctx.fillText(texts[triggers[i]],418,textY);
                         ctx.drawImage(trigImg[triggers[i]],372,imgY,39,43);
@@ -717,6 +734,7 @@
                             <option value="53">Handgun Tomahawk</option>
 							
 							<option value="54">Switchbox</option>
+							<option value="55">Bagworm Tag</option>
                         </select>
                     </td>
                     <td>
@@ -1180,6 +1198,5 @@
         </div>
         <!--0-25 is regular 3-6 Atacker 7-10 Shooter 11-13 Sniper 14-18 Attachments 19-25 Extras 26-32 Assault Rifles 33-39 Grenade Launchers 40-46 Shotguns 47-53 Handguns-->
         <canvas width="1280px" height="720px" style="border:2px solid black;" id="cv"></canvas>
-        <img src="https://cdn.discordapp.com/attachments/571784589882949692/586772171758764042/unknown.png" style="display:none;" id="original"/>
     </body>
 </html>
