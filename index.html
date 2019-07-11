@@ -6,7 +6,12 @@
         <style>
             @font-face {
                 font-family: 'crusader';
-                src: url('raidercrusadersemistraight.ttf') format('truetype');
+                src: url('GlaserBeckerStencilRegular.ttf') format('truetype');
+                font-style: normal;
+            }
+			@font-face {
+                font-family: 'stencil';
+                src: url('Stencil Regular.ttf') format('truetype');
                 font-style: normal;
             }
 
@@ -81,7 +86,7 @@
             grenade.src = "https://cdn.discordapp.com/attachments/571784589882949692/595076936133246989/importantIcon.png";
 			free.src = "https://cdn.discordapp.com/attachments/571784589882949692/596874086341410826/importantIcon.png";
 			switchbox.src = "https://cdn.discordapp.com/attachments/571784589882949692/596787826511577119/importantIcon.png";
-			img.src = "https://cdn.discordapp.com/attachments/571784589882949692/596882972901244928/importantIcon.png";
+			img.src = "https://cdn.discordapp.com/attachments/571784589882949692/598719851527405568/importantIcon.png";
 			blocked.src = "https://cdn.discordapp.com/attachments/571784589882949692/597287816635875338/importantIcon.png";
             img.onload = function() {
                 begin();
@@ -98,6 +103,37 @@
                 canvas = document.getElementById("cv");
                 ctx = canvas.getContext("2d");
                 ctx.drawImage(img,0,0,1280,720);
+				
+				writeName();
+				writeRank();
+				drawSquadEmblem();
+                getTrigs();
+                getParams();
+                trigText();
+                paramText();
+                
+                getTrion(trion);
+                getAttack(attack);
+                getDefense(defense);
+                getMobility(mobility);
+                getSkill(skill);
+                getRange(range);
+                getCommand(command);
+                getTactics(tactics);
+                
+                ctx.beginPath();
+                ctx.globalAlpha = .45;
+                ctx.moveTo(812,ty);
+                ctx.lineTo(ax,ay);
+                ctx.lineTo(dx,dy);
+                ctx.lineTo(mx,my);
+                ctx.lineTo(sx,sy);
+                ctx.lineTo(rx,ry);
+                ctx.lineTo(cx,cy);
+                ctx.lineTo(tx,tty);
+                ctx.fill();
+                ctx.globalAlpha = 1;
+				reset();
             }
             function reset() {
                 ctx.drawImage(img,0,0,1280,720);
@@ -589,8 +625,20 @@
 			function writeName() {
 				var charName = document.getElementById("name").value;
 				ctx.fillStyle = "white";
-				ctx.font = "normal normal normal 45px crusader";
-				ctx.fillText(charName,339,92);
+				ctx.font = "normal normal normal 59.6px crusader";
+				ctx.fillText(charName,340,89,629);
+			}
+			function writeRank() {
+				var rank = document.getElementById("ranking").value;
+				ctx.fillStyle = "white";
+				ctx.font = "normal normal normal 38px stencil";
+				ctx.fillText(rank,109,63);
+			}
+			function drawSquadEmblem() {
+				var emblemUrl = document.getElementById("emblem").value;
+				var emblem = new Image();
+				emblem.src = emblemUrl;
+				ctx.drawImage(emblem,31,73,131,122);
 			}
 			function testing() {
 				var imgData = ctx.getImageData(613, 210, 394, 398);
@@ -600,6 +648,8 @@
             function draw() {
                 reset();
 				writeName();
+				writeRank();
+				drawSquadEmblem();
                 getTrigs();
                 getParams();
                 trigText();
