@@ -56,6 +56,13 @@
 				border: 0px;
 				border-collapse: collapse;
 			}
+			#profile table,tr,td {
+				border: 0px;
+				border-collapse: collapse;
+			}
+			hr {
+				width:50%;
+			}
         </style>
         <script>
             var ctx;
@@ -95,8 +102,11 @@
             var texts = ["","DEFENSE TRIGGER","OPTION TRIGGER","ATTACKER TRIGGER","ATTACKER TRIGGER","ATTACKER TRIGGER","ATTACKER TRIGGER","SHOOTER TRIGGER","SHOOTER TRIGGER","SHOOTER TRIGGER","SHOOTER TRIGGER","SNIPER TRIGGER","SNIPER TRIGGER","SNIPER TRIGGER","OPTION TRIGGER","OPTION TRIGGER","OPTION TRIGGER","OPTION TRIGGER","OPTION TRIGGER","DEFENSE TRIGGER","OPTION TRIGGER","OPTION TRIGGER","OPTION TRIGGER","OPTION TRIGGER","OPTION TRIGGER","OPTION TRIGGER"];
 			texts[54] = "TRAP TRIGGER";
 			texts[55] = "OPTION TRIGGER";
-            var trigNames = ["","SHIELD","BAGWORM","RAYGUST","KOGETSU","SCORPION","KOGETSU: SPEAR","ASTEROID","HOUND","METEORA","VIPER","EGRET","IBIS","LIGHTNING","GEN'YO","LEAD BULLET","SENKU","STARMAKER","THRUSTER","ESCUDO","CHAMELEON","DUMMY BEACON","GRASSHOPPER","SILENCER","SPIDER","TELEPORTER","Assault Rifle: Viper","Assault Rifle: Hound","Assault Rifle: Asteroid","Assault Rifle: Meteora","Assault Rifle: Gimlet","Assault Rifle: Salamander","Assault Rifle: Tomahawk","Grenade Gun: Viper","Grenade Gun: Hound","Grenade Gun: Asteroid","Grenade Gun: Meteora","Grenade Gun: Gimlet","Grenade Gun: Salamander","Grenade Gun: Tomahawk","Shotgun: Viper","Shotgun: Hound","Shotgun: Asteroid","Shotgun: Meteora","Shotgun: Gimlet","Shotgun: Salamander","Shotgun: Tomahawk","Handgun: Viper","Handgun: Hound","Handgun: Asteroid","Handgun: Meteora","Handgun: Gimlet","Handgun: Salamander","Handgun: Tomahawk","SWITCHBOX","BAGWORM TAG"];
-            var trigImg = ["",shi,opt,ray,kog,sco,speark,aster,hound,mete,viper,egret,ibis,light,opt,opt,opt,opt,opt,escudo,opt,opt,opt,opt,opt,opt,arifle,arifle,arifle,arifle,arifle,arifle,arifle,grenade,grenade,grenade,grenade,grenade,grenade,grenade,shot,shot,shot,shot,shot,shot,shot,handgun,handgun,handgun,handgun,handgun,handgun,handgun,switchbox,opt];
+			texts[56] = "OPTION TRIGGER";
+			texts[57] = "OPTION TRIGGER";
+			texts[58] = "OPTION TRIGGER";
+            var trigNames = ["","SHIELD","BAGWORM","RAYGUST","KOGETSU","SCORPION","KOGETSU: SPEAR","ASTEROID","HOUND","METEORA","VIPER","EGRET","IBIS","LIGHTNING","GEN'YO","LEAD BULLET","SENKU","STARMAKER","THRUSTER","ESCUDO","CHAMELEON","DUMMY BEACON","GRASSHOPPER","SILENCER","SPIDER","TELEPORTER","Assault Rifle: Viper","Assault Rifle: Hound","Assault Rifle: Asteroid","Assault Rifle: Meteora","Assault Rifle: Gimlet","Assault Rifle: Salamander","Assault Rifle: Tomahawk","Grenade Gun: Viper","Grenade Gun: Hound","Grenade Gun: Asteroid","Grenade Gun: Meteora","Grenade Gun: Gimlet","Grenade Gun: Salamander","Grenade Gun: Tomahawk","Shotgun: Viper","Shotgun: Hound","Shotgun: Asteroid","Shotgun: Meteora","Shotgun: Gimlet","Shotgun: Salamander","Shotgun: Tomahawk","Handgun: Viper","Handgun: Hound","Handgun: Asteroid","Handgun: Meteora","Handgun: Gimlet","Handgun: Salamander","Handgun: Tomahawk","SWITCHBOX","BAGWORM TAG","IDATEN","GEIST","CONNECTOR"];
+            var trigImg = ["",shi,opt,ray,kog,sco,speark,aster,hound,mete,viper,egret,ibis,light,opt,opt,opt,opt,opt,escudo,opt,opt,opt,opt,opt,opt,arifle,arifle,arifle,arifle,arifle,arifle,arifle,grenade,grenade,grenade,grenade,grenade,grenade,grenade,shot,shot,shot,shot,shot,shot,shot,handgun,handgun,handgun,handgun,handgun,handgun,handgun,switchbox,opt,opt,opt,opt];
             //0-25 is regular 3-6 Attacker 7-10 Shooter 11-13 Sniper 14-18 Attachments 19-25 Extras 26-32 Assault Rifles 33-39 Grenade Launchers 40-46 Shotguns 47-53 Handguns
             
             function begin() {
@@ -688,6 +698,7 @@
         </div>
         <div id="parameters" align="center">
             <h3>Parameters</h3>
+			<hr />
 			<table>
 				<tr>
 					<td>Trion</td>
@@ -721,6 +732,43 @@
 				</tr>
 			</table>
         </div>
+		<div id="profile" align="center">
+		<h3>Profile</h3>
+		<hr />
+			<table>
+				<tr>
+					<td>Position</td>
+					<td>Age</td>
+					<td>Birthday</td>
+				</tr>
+				<tr>
+					<td><input type="text" id="position"/></td>
+					<td><input type="text" id="age"/></td>
+					<td><input type="text" id="birthday"/></td>
+				</tr>
+				<tr>
+					<td>Height</td>
+					<td>Blood</td>
+					<td>Zodiac</td>
+				</tr>
+				<tr>
+					<td><input type="text" id="height"/></td>
+					<td><input type="text" id="blood"/></td>
+					<td><input type="text" id="zodiac"/></td>
+				</tr>
+				<tr>
+					<td>Occupation</td>
+					<td>Likes</td>
+					<td>Faction</td>
+				</tr>
+				<tr>
+					<td><input type="text" id="occupation"/></td>
+					<td><input type="text" id="likes"/></td>
+					<td><input type="text" id="faction"/></td>
+				</tr>
+			</table>
+		</div>
+		<hr />
         <div id="triggers" align="center">
             <table>
                 <tr>
@@ -791,6 +839,9 @@
 							
 							<option value="54">Switchbox</option>
 							<option value="55">Bagworm Tag</option>
+							<option value="56">Idaten/Skanda</option>
+							<option value="57">Geist</option>
+							<option value="58">Connector</option>
                         </select>
                     </td>
                     <td>
@@ -855,6 +906,9 @@
                             <option value="53">Handgun Tomahawk</option>
 							
 							<option value="54">Switchbox</option>
+							<option value="56">Idaten/Skanda</option>
+							<option value="57">Geist</option>
+							<option value="58">Connector</option>
                         </select>
                     </td>
                 </tr>
@@ -921,6 +975,9 @@
                             <option value="53">Handgun Tomahawk</option>
 							
 							<option value="54">Switchbox</option>
+							<option value="56">Idaten/Skanda</option>
+							<option value="57">Geist</option>
+							<option value="58">Connector</option>
                         </select>
                     </td>
                     <td>
@@ -985,6 +1042,9 @@
                             <option value="53">Handgun Tomahawk</option>
 							
 							<option value="54">Switchbox</option>
+							<option value="56">Idaten/Skanda</option>
+							<option value="57">Geist</option>
+							<option value="58">Connector</option>
                         </select>
                     </td>
                 </tr>
@@ -1051,6 +1111,9 @@
                             <option value="53">Handgun Tomahawk</option>
 							
 							<option value="54">Switchbox</option>
+							<option value="56">Idaten/Skanda</option>
+							<option value="57">Geist</option>
+							<option value="58">Connector</option>
                         </select>
                     </td>
                     <td>
@@ -1115,6 +1178,9 @@
                             <option value="53">Handgun Tomahawk</option>
 							
 							<option value="54">Switchbox</option>
+							<option value="56">Idaten/Skanda</option>
+							<option value="57">Geist</option>
+							<option value="58">Connector</option>
                         </select>
                     </td>
                 </tr>
@@ -1181,6 +1247,9 @@
                             <option value="53">Handgun Tomahawk</option>
 							
 							<option value="54">Switchbox</option>
+							<option value="56">Idaten/Skanda</option>
+							<option value="57">Geist</option>
+							<option value="58">Connector</option>
                         </select>
                     </td>
                     <td>
@@ -1245,6 +1314,9 @@
                             <option value="53">Handgun Tomahawk</option>
 							
 							<option value="54">Switchbox</option>
+							<option value="56">Idaten/Skanda</option>
+							<option value="57">Geist</option>
+							<option value="58">Connector</option>
                         </select>
                     </td>
                 </tr>
