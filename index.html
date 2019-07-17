@@ -67,6 +67,7 @@
         <script>
             var ctx;
             var canvas;
+			var position = "", age = "", birthday = "", height = "", bloodtype = "", zodiac = "", occupation = "", likes = "", faction = "";
             var ty = 0, ax = 0, ay = 0, dx = 0, dy = 0, mx = 0, my = 0, sx = 0, sy = 0, rx = 0, ry = 0, cx = 0, cy = 0, tx = 0, tty = 0;
             var name, ranking, emblem;
             var trion = "0", attack = "0", defense = "0", mobility = "0", skill = "0", range = "0", command = "0", tactics = "0", total = "0";
@@ -93,12 +94,14 @@
             grenade.src = "https://cdn.discordapp.com/attachments/571784589882949692/595076936133246989/importantIcon.png";
 			free.src = "https://cdn.discordapp.com/attachments/571784589882949692/596874086341410826/importantIcon.png";
 			switchbox.src = "https://cdn.discordapp.com/attachments/571784589882949692/596787826511577119/importantIcon.png";
-			img.src = "https://cdn.discordapp.com/attachments/571784589882949692/598719851527405568/importantIcon.png";
+			img.src = "https://cdn.discordapp.com/attachments/571784589882949692/601154703010562053/importantIcon.png";
 			blocked.src = "https://cdn.discordapp.com/attachments/571784589882949692/597287816635875338/importantIcon.png";
             img.onload = function() {
                 begin();
             }
             var triggers = [0,0,0,0,0,0,0,0];
+			var orderProf = ["POSITION: ","AGE: ","BIRTHDAY: ","HEIGHT: ","BLOOD TYPE: ","ZODIAC: ","OCCUPATION: ","LIKES: ","FACTION: "];
+			var orderProf2 = [];
             var texts = ["","DEFENSE TRIGGER","OPTION TRIGGER","ATTACKER TRIGGER","ATTACKER TRIGGER","ATTACKER TRIGGER","ATTACKER TRIGGER","SHOOTER TRIGGER","SHOOTER TRIGGER","SHOOTER TRIGGER","SHOOTER TRIGGER","SNIPER TRIGGER","SNIPER TRIGGER","SNIPER TRIGGER","OPTION TRIGGER","OPTION TRIGGER","OPTION TRIGGER","OPTION TRIGGER","OPTION TRIGGER","DEFENSE TRIGGER","OPTION TRIGGER","OPTION TRIGGER","OPTION TRIGGER","OPTION TRIGGER","OPTION TRIGGER","OPTION TRIGGER"];
 			texts[54] = "TRAP TRIGGER";
 			texts[55] = "OPTION TRIGGER";
@@ -644,26 +647,54 @@
 				ctx.font = "normal normal normal 38px stencil";
 				ctx.fillText(rank,109,63);
 			}
+			var emblemUrl;
+			var emblem;
 			function drawSquadEmblem() {
-				var emblemUrl = document.getElementById("emblem").value;
-				var emblem = new Image();
+				emblemUrl = document.getElementById("emblem").value;
+				emblem = new Image();
 				emblem.src = emblemUrl;
-				ctx.drawImage(emblem,31,73,131,122);
+				emblem.onload = function() {
+					ctx.drawImage(emblem,30,73,133,121);
+				}
 			}
 			function testing() {
 				var imgData = ctx.getImageData(613, 210, 394, 398);
 				var imgData2 = ctx.getImageData(1021, 162, 238, 322);
 				ctx.putImageData(imgData, 0, 0);
 			}
+			function getProfile() {
+				position = document.getElementById("position").value.toUpperCase();
+				age = document.getElementById("age").value.toUpperCase();
+				birthday = document.getElementById("birthday").value.toUpperCase();
+				height = document.getElementById("height").value.toUpperCase();
+				bloodtype = document.getElementById("blood-type").value.toUpperCase();
+				zodiac = document.getElementById("zodiac").value.toUpperCase();
+				occupation = document.getElementById("occupation").value.toUpperCase();
+				likes = document.getElementById("likes").value.toUpperCase();
+				faction = document.getElementById("faction").value.toUpperCase();
+			}
+			function drawProfile() {
+				var outY = 570;
+				ctx.font = "normal normal normal 12px arial";
+				orderProf2 = [position,age,birthday,height,bloodtype,zodiac,occupation,likes,faction];
+				for(var i = 0; i<=8; i++) {
+					ctx.fillText(orderProf[i] + orderProf2[i],25,outY);
+					outY += 14;
+				}
+			}
             function draw() {
                 reset();
 				writeName();
 				writeRank();
 				drawSquadEmblem();
+				drawSquadEmblem();
                 getTrigs();
                 getParams();
                 trigText();
                 paramText();
+				
+				getProfile();
+				drawProfile();
                 
                 getTrion(trion);
                 getAttack(attack);
@@ -748,12 +779,12 @@
 				</tr>
 				<tr>
 					<td>Height</td>
-					<td>Blood</td>
+					<td>Blood-Type</td>
 					<td>Zodiac</td>
 				</tr>
 				<tr>
 					<td><input type="text" id="height"/></td>
-					<td><input type="text" id="blood"/></td>
+					<td><input type="text" id="blood-type"/></td>
 					<td><input type="text" id="zodiac"/></td>
 				</tr>
 				<tr>
