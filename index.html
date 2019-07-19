@@ -70,7 +70,7 @@
 			var position = "", age = "", birthday = "", height = "", bloodtype = "", zodiac = "", occupation = "", likes = "", faction = "";
             var ty = 0, ax = 0, ay = 0, dx = 0, dy = 0, mx = 0, my = 0, sx = 0, sy = 0, rx = 0, ry = 0, cx = 0, cy = 0, tx = 0, tty = 0;
             var name, ranking, emblem;
-            var trion = "0", attack = "0", defense = "0", mobility = "0", skill = "0", range = "0", command = "0", tactics = "0", total = "0";
+            var trion = "0", attack = "0", defense = "0", mobility = "0", skill = "0", range = "0", command = "0", tactics = "0", total = "0", reactions = "0", strategy = "0", specialtech = "0", recon = "0", attacker = "0", shooter = "0", sniper = "0", gunner = "0";
             var img = new Image();
 			var blocked = new Image();
             var switchbox = new Image(), free = new Image(), opt = new Image(), shi = new Image(), sco = new Image(), ray = new Image(), kog = new Image(), speark = new Image(), egret = new Image(), ibis = new Image(), light = new Image(), viper = new Image(), hound = new Image(), aster = new Image(), mete = new Image(), escudo = new Image(), handgun = new Image(), arifle = new Image(), shot = new Image(), grenade = new Image();
@@ -102,6 +102,8 @@
             var triggers = [0,0,0,0,0,0,0,0];
 			var orderProf = ["POSITION: ","AGE: ","BIRTHDAY: ","HEIGHT: ","BLOOD TYPE: ","ZODIAC: ","OCCUPATION: ","LIKES: ","FACTION: "];
 			var orderProf2 = [];
+			var orderStat = ["TRION: ","MOBILITY: ","REACTIONS: ","RECON: ","STRATEGY: ","SPECIAL TECHNIQUES: "];
+			var orderStat2 = [];
             var texts = ["","DEFENSE TRIGGER","OPTION TRIGGER","ATTACKER TRIGGER","ATTACKER TRIGGER","ATTACKER TRIGGER","ATTACKER TRIGGER","SHOOTER TRIGGER","SHOOTER TRIGGER","SHOOTER TRIGGER","SHOOTER TRIGGER","SNIPER TRIGGER","SNIPER TRIGGER","SNIPER TRIGGER","OPTION TRIGGER","OPTION TRIGGER","OPTION TRIGGER","OPTION TRIGGER","OPTION TRIGGER","DEFENSE TRIGGER","OPTION TRIGGER","OPTION TRIGGER","OPTION TRIGGER","OPTION TRIGGER","OPTION TRIGGER","OPTION TRIGGER"];
 			texts[54] = "TRAP TRIGGER";
 			texts[55] = "OPTION TRIGGER";
@@ -174,6 +176,14 @@
                 range = document.getElementById("range").value;
                 command = document.getElementById("command").value;
                 tactics = document.getElementById("tactics").value;
+				reactions = document.getElementById("reactions").value;
+				strategy = document.getElementById("strategy").value;
+				specialtech = document.getElementById("specialtech").value;
+				recon = document.getElementById("recon").value;
+				attacker = document.getElementById("attacker").value;
+				shooter = document.getElementById("shooter").value;
+				sniper = document.getElementById("sniper").value;
+				gunner = document.getElementById("gunner").value;
             }
             function paramText(int) {
                 if(int > 24) {
@@ -682,6 +692,55 @@
 					outY += 14;
 				}
 			}
+			function drawStats() {
+				var outY = 275;
+				ctx.font = "normal normal normal 12px arial";
+				orderStat2 = [trion,mobility,reactions,recon,strategy,specialtech];
+				if(parseInt(attacker) > 0 && parseInt(shooter) > 0 && parseInt(sniper) > 0 && parseInt(gunner) > 0) {
+					for(var i = 0; i<=5; i++) {
+					ctx.fillText(orderStat[i] + orderStat2[i],25,outY);
+					outY += 12;
+					}
+					if(parseInt(attacker) > 0) {
+						ctx.fillText("ATTACKER: " + attacker,25,outY);
+						outY += 12;
+					}
+					if(parseInt(shooter) > 0) {
+						ctx.fillText("SHOOTER: " + shooter,25,outY);
+						outY += 12;
+					}
+					if(parseInt(sniper) > 0) {
+						ctx.fillText("SNIPER: " + sniper,25,outY);
+						outY += 12;
+					}
+					if(parseInt(gunner) > 0) {
+						ctx.fillText("GUNNER: " + gunner,25,outY);
+						outY += 12;
+					}
+				}
+				else {
+					for(var i = 0; i<=5; i++) {
+						ctx.fillText(orderStat[i] + orderStat2[i],25,outY);
+						outY += 14;
+					}
+					if(parseInt(attacker) > 0) {
+						ctx.fillText("ATTACKER: " + attacker,25,outY);
+						outY += 14;
+					}
+					if(parseInt(shooter) > 0) {
+						ctx.fillText("SHOOTER: " + shooter,25,outY);
+						outY += 14;
+					}
+					if(parseInt(sniper) > 0) {
+						ctx.fillText("SNIPER: " + sniper,25,outY);
+						outY += 14;
+					}
+					if(parseInt(gunner) > 0) {
+						ctx.fillText("GUNNER: " + gunner,25,outY);
+						outY += 14;
+					}
+				}
+			}
             function draw() {
                 reset();
 				writeName();
@@ -695,6 +754,7 @@
 				
 				getProfile();
 				drawProfile();
+				drawStats();
                 
                 getTrion(trion);
                 getAttack(attack);
@@ -735,31 +795,50 @@
 					<td>Trion</td>
 					<td>Attack</td>
 					<td>Defense & Support</td>
+					<td>Mobility</td>
 				</tr>
 				<tr>
 					<td><input type="number" value="0" id="trion" min="1"/></td>
-					<td><input type="number" value="0"="Attack" id="attack" min="1"/></td>
-					<td><input type="number" value="0"="Defense" id="defense" min="1"/></td>
+					<td><input type="number" value="0" id="attack" min="1"/></td>
+					<td><input type="number" value="0" id="defense" min="1"/></td>
+					<td><input type="number" value="0" id="mobility" min="1"/></td>
 				</tr>
 				<tr>
-					<td>Mobility</td>
 					<td>Skill</td>
 					<td>Range</td>
-				</tr>
-				<tr>
-					<td><input type="number" value="0"="Mobility" id="mobility" min="1"/></td>
-					<td><input type="number" value="0"="Skill" id="skill" min="1"/></td>
-					<td><input type="number" value="0"="Range" id="range" min="1"/></td>
-				</tr>
-				<tr>
 					<td>Command</td>
 					<td>Tactics</td>
-					<td>Looks</td>
 				</tr>
 				<tr>
-					<td><input type="number" value="0"="Command" id="command" min="1"/></td>
-					<td><input type="number" value="0"="Special Tactics" id="tactics" min="1"/></td>
-					<td><input type="number" value="0"/></td>
+					
+					<td><input type="number" value="0" id="skill" min="1"/></td>
+					<td><input type="number" value="0" id="range" min="1"/></td>
+					<td><input type="number" value="0" id="command" min="1"/></td>
+					<td><input type="number" value="0" id="tactics" min="1"/></td>
+				</tr>
+				<tr>
+					<td>Reactions</td>
+					<td>Strategy</td>
+					<td>Special Techniques</td>
+					<td>Recon</td>
+				</tr>
+				<tr>
+					<td><input type="number" value="0" id="reactions" min="1"/></td>
+					<td><input type="number" value="0" id="strategy" min="1"/></td>
+					<td><input type="number" value="0" id="specialtech" min="1"/></td>
+					<td><input type="number" value="0" id="recon" min="1"/></td>
+				</tr>
+				<tr>
+					<td>Attacker</td>
+					<td>Shooter</td>
+					<td>Sniper</td>
+					<td>Gunner</td>
+				</tr>
+				<tr>
+					<td><input type="number" value="0" id="attacker" min="1"/></td>
+					<td><input type="number" value="0" id="shooter" min="1"/></td>
+					<td><input type="number" value="0" id="sniper" min="1"/></td>
+					<td><input type="number" value="0" id="gunner" min="1"/></td>
 				</tr>
 			</table>
         </div>
