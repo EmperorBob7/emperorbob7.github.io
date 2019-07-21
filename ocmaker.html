@@ -101,7 +101,9 @@
 			img.src = "https://cdn.discordapp.com/attachments/571784589882949692/601154703010562053/importantIcon.png";
 			blocked.src = "https://cdn.discordapp.com/attachments/571784589882949692/597287816635875338/importantIcon.png";
             img.onload = function() {
-                begin();
+				window.onload = function() {
+					begin();
+				}
             }
             var triggers = [0,0,0,0,0,0,0,0];
 			var orderProf = ["POSITION: ","AGE: ","BIRTHDAY: ","HEIGHT: ","BLOOD TYPE: ","ZODIAC: ","OCCUPATION: ","LIKES: ","FACTION: "];
