@@ -98,13 +98,14 @@
             grenade.src = "https://cdn.discordapp.com/attachments/571784589882949692/595076936133246989/importantIcon.png";
 			free.src = "https://cdn.discordapp.com/attachments/571784589882949692/596874086341410826/importantIcon.png";
 			switchbox.src = "https://cdn.discordapp.com/attachments/571784589882949692/596787826511577119/importantIcon.png";
-			img.src = "https://cdn.discordapp.com/attachments/571784589882949692/601154703010562053/importantIcon.png";
+			img.src = "https://cdn.discordapp.com/attachments/571784589882949692/606222154140221441/importantIcon.png";
 			blocked.src = "https://cdn.discordapp.com/attachments/571784589882949692/597287816635875338/importantIcon.png";
             img.onload = function() {
 				window.onload = function() {
 					begin();
 				}
             }
+			var SquadRank = "";
             var triggers = [0,0,0,0,0,0,0,0];
 			var orderProf = ["POSITION: ","AGE: ","BIRTHDAY: ","HEIGHT: ","BLOOD TYPE: ","ZODIAC: ","OCCUPATION: ","LIKES: ","FACTION: "];
 			var orderProf2 = [];
@@ -173,6 +174,11 @@
                     z++;
                 }
             }
+			function getRank() {
+				var e = document.getElementById("squadrank");
+				var ret = e.options[e.selectedIndex].value;
+				SquadRank = ret;
+			}
             function getParams() {
                 trion = document.getElementById("trion").value;
                 attack = document.getElementById("attack").value;
@@ -565,20 +571,22 @@
             function paramText() {
                 ctx.fillStyle = "black";
                 ctx.font = "normal normal bold 13px Arial";
-                ctx.fillText(trion,808,253);
-                ctx.fillText(attack,921,299);
-                ctx.fillText(defense,947,404);
-                ctx.fillText(mobility,923,503);
+				ctx.textAlign = "center";
+                ctx.fillText(trion,812,253);
+                ctx.fillText(attack,922,299);
+                ctx.fillText(defense,950,404);
+                ctx.fillText(mobility,928,503);
                 ctx.font = "normal normal bold 17px Arial";
-                ctx.fillText(skill,808,543);
+                ctx.fillText(skill,812,543);
                 ctx.font = "normal normal bold 19px Arial";
                 ctx.strokeStyle = "lightgray";
-                ctx.strokeText(skill,808,543);
+                ctx.strokeText(skill,812,543);
                 ctx.font = "normal normal bold 13px Arial";
                 ctx.fillText(range,697,505);
-                ctx.fillText(command,669,405);
-                ctx.fillText(tactics,701,301);
+                ctx.fillText(command,672,405);
+                ctx.fillText(tactics,701,304);
                 ctx.font = "normal normal bold 26px Arial";
+				ctx.textAlign = "start";
                 var sum = trion + "+" + attack + "+" + defense + "+" + mobility + "+" + skill + "+" + range + "+" + command + "+" + tactics;
                 ctx.fillText(eval(sum),719,554);
             }
@@ -661,7 +669,13 @@
 				var rank = document.getElementById("ranking").value;
 				ctx.fillStyle = "white";
 				ctx.font = "normal normal normal 38px stencil";
-				ctx.fillText(rank,109,63);
+				if(SquadRank == "A") {
+					ctx.fillText(rank,109,63);
+				}
+				else {
+					ctx.font = "normal normal normal 32px stencil";
+					ctx.fillText(rank,101,63,55);
+				}
 			}
 			var emblemUrl;
 			var emblem;
@@ -747,17 +761,23 @@
 					}
 				}
 			}
+			function drawRank() {
+				ctx.font = "normal normal normal 37px stencil";
+				ctx.fillStyle = "black";
+				ctx.fillText(SquadRank,50,63);
+			}
             function draw() {
                 reset();
 				writeName();
 				writeRank();
-				drawSquadEmblem();
 				drawSquadEmblem();
                 getTrigs();
                 getParams();
                 trigText();
                 paramText();
 				
+				getRank();
+				drawRank();
 				getProfile();
 				drawProfile();
 				drawStats();
@@ -795,6 +815,10 @@
             <input type="text" placeholder="OC Name" id="name" style="text-transform: uppercase"/>
             <input type="number" placeholder="Squad Ranking" min="1" id="ranking"/>
             <input type="url" placeholder="Squad Emblem Logo" id="emblem"/>
+			<select id="squadrank">
+				<option value="A">A-Rank</option>
+				<option value="B">B-Rank</option>
+			</select>
         </div>
         <div id="parameters" align="center">
             <h3>Parameters</h3>
