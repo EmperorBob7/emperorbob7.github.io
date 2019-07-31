@@ -707,10 +707,40 @@
 				var outY = 570;
 				ctx.font = "normal normal normal 12px arial";
 				orderProf2 = [position,age,birthday,height,bloodtype,zodiac,occupation,likes,faction];
-				for(var i = 0; i<=8; i++) {
+				for(var i = 0; i<=6; i++) {
 					ctx.fillText(orderProf[i] + orderProf2[i],25,outY);
-					outY += 14;
+					outY += 12;
 				}
+				getLines(likes,230);
+				for(var i = 0; i<lines.length; i++) {
+					if(i == 0) {
+						ctx.fillText("LIKES: " + lines[i],25,outY);
+					}
+					else {
+						ctx.fillText(lines[i],25,outY);
+					}
+					outY += 12;
+				}
+				ctx.fillText("FACTION: " + orderProf2[8],25,outY);
+			}
+			var lines = [];
+			function getLines(text, maxWidth) {
+				var words = text.split(" ");
+				lines = [];
+				var currentLine = words[0];
+
+				for (var i = 1; i < words.length; i++) {
+					var word = words[i];
+					var width = ctx.measureText(currentLine + " " + word).width;
+					if (width < maxWidth) {
+						currentLine += " " + word;
+					} else {
+						lines.push(currentLine);
+						currentLine = word;
+					}
+				}
+				lines.push(currentLine);
+				return lines;
 			}
 			function drawStats() {
 				var outY = 275;
