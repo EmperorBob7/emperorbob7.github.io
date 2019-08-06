@@ -117,8 +117,10 @@
 			texts[56] = "OPTION TRIGGER";
 			texts[57] = "OPTION TRIGGER";
 			texts[58] = "OPTION TRIGGER";
-            var trigNames = ["","SHIELD","BAGWORM","RAYGUST","KOGETSU","SCORPION","KOGETSU: SPEAR","ASTEROID","HOUND","METEORA","VIPER","EGRET","IBIS","LIGHTNING","GEN'YO","LEAD BULLET","SENKU","STARMAKER","THRUSTER","ESCUDO","CHAMELEON","DUMMY BEACON","GRASSHOPPER","SILENCER","SPIDER","TELEPORTER","Assault Rifle: Viper","Assault Rifle: Hound","Assault Rifle: Asteroid","Assault Rifle: Meteora","Assault Rifle: Gimlet","Assault Rifle: Salamander","Assault Rifle: Tomahawk","Grenade Gun: Viper","Grenade Gun: Hound","Grenade Gun: Asteroid","Grenade Gun: Meteora","Grenade Gun: Gimlet","Grenade Gun: Salamander","Grenade Gun: Tomahawk","Shotgun: Viper","Shotgun: Hound","Shotgun: Asteroid","Shotgun: Meteora","Shotgun: Gimlet","Shotgun: Salamander","Shotgun: Tomahawk","Handgun: Viper","Handgun: Hound","Handgun: Asteroid","Handgun: Meteora","Handgun: Gimlet","Handgun: Salamander","Handgun: Tomahawk","SWITCHBOX","BAGWORM TAG","IDATEN","GEIST","CONNECTOR"];
-            var trigImg = ["",shi,opt,ray,kog,sco,speark,aster,hound,mete,viper,egret,ibis,light,opt,opt,opt,opt,opt,escudo,opt,opt,opt,opt,opt,opt,arifle,arifle,arifle,arifle,arifle,arifle,arifle,grenade,grenade,grenade,grenade,grenade,grenade,grenade,shot,shot,shot,shot,shot,shot,shot,handgun,handgun,handgun,handgun,handgun,handgun,handgun,switchbox,opt,opt,opt,opt];
+			texts[59] = "ATTACKER TRIGGER";
+            texts[60] = "OPTION TRIGGER";
+            var trigNames = ["","SHIELD","BAGWORM","RAYGUST","KOGETSU","SCORPION","KOGETSU: SPEAR","ASTEROID","HOUND","METEORA","VIPER","EGRET","IBIS","LIGHTNING","GEN'YO","LEAD BULLET","SENKU","STARMAKER","THRUSTER","ESCUDO","CHAMELEON","DUMMY BEACON","GRASSHOPPER","SILENCER","SPIDER","TELEPORTER","Assault Rifle: Viper","Assault Rifle: Hound","Assault Rifle: Asteroid","Assault Rifle: Meteora","Assault Rifle: Gimlet","Assault Rifle: Salamander","Assault Rifle: Tomahawk","Grenade Gun: Viper","Grenade Gun: Hound","Grenade Gun: Asteroid","Grenade Gun: Meteora","Grenade Gun: Gimlet","Grenade Gun: Salamander","Grenade Gun: Tomahawk","Shotgun: Viper","Shotgun: Hound","Shotgun: Asteroid","Shotgun: Meteora","Shotgun: Gimlet","Shotgun: Salamander","Shotgun: Tomahawk","Handgun: Viper","Handgun: Hound","Handgun: Asteroid","Handgun: Meteora","Handgun: Gimlet","Handgun: Salamander","Handgun: Tomahawk","SWITCHBOX","BAGWORM TAG","IDATEN","GEIST","CONNECTOR","SOUGETSU","FULL ARMS"];
+            var trigImg = ["",shi,opt,ray,kog,sco,speark,aster,hound,mete,viper,egret,ibis,light,opt,opt,opt,opt,opt,escudo,opt,opt,opt,opt,opt,opt,arifle,arifle,arifle,arifle,arifle,arifle,arifle,grenade,grenade,grenade,grenade,grenade,grenade,grenade,shot,shot,shot,shot,shot,shot,shot,handgun,handgun,handgun,handgun,handgun,handgun,handgun,switchbox,opt,opt,opt,opt,opt,opt];
             //0-25 is regular 3-6 Attacker 7-10 Shooter 11-13 Sniper 14-18 Attachments 19-25 Extras 26-32 Assault Rifles 33-39 Grenade Launchers 40-46 Shotguns 47-53 Handguns
             
             function begin() {
@@ -796,6 +798,10 @@
 				ctx.fillStyle = "black";
 				ctx.fillText(SquadRank,50,63);
 			}
+			function RNG() {
+			    var Arr = ["Shield","Bagworm","Raygust","Kogetsu","Scorpion","Kogetsu: Spear","Asteroid","Hound","Meteora","Viper","Egret","Ibis","Lightning","Gen'Yo","Lead Bullet","Senku","Starmaker","Thruster","Escudo","Chameleon","Dummy Beacon","Grasshopper","Spider","Teleporter","Switchbox","Idaten/Skanda","Geist","Connector","Sogetsu","Full Arms","Assault Rifle","Shotgun","Handgun","Grenade Gun"];
+			    
+			}
             function draw() {
                 reset();
 				writeName();
@@ -1015,6 +1021,8 @@
 							<option value="56">Idaten/Skanda</option>
 							<option value="57">Geist</option>
 							<option value="58">Connector</option>
+<option value="59">Sougetsu</option>
+<option value="60">Full Arms</option>
                         </select>
                     </td>
                     <td>
@@ -1082,6 +1090,8 @@
 							<option value="56">Idaten/Skanda</option>
 							<option value="57">Geist</option>
 							<option value="58">Connector</option>
+<option value="59">Sougetsu</option>
+<option value="60">Full Arms</option>
                         </select>
                     </td>
                 </tr>
@@ -1151,6 +1161,8 @@
 							<option value="56">Idaten/Skanda</option>
 							<option value="57">Geist</option>
 							<option value="58">Connector</option>
+<option value="59">Sougetsu</option>
+<option value="60">Full Arms</option>
                         </select>
                     </td>
                     <td>
@@ -1218,6 +1230,8 @@
 							<option value="56">Idaten/Skanda</option>
 							<option value="57">Geist</option>
 							<option value="58">Connector</option>
+<option value="59">Sougetsu</option>
+<option value="60">Full Arms</option>
                         </select>
                     </td>
                 </tr>
@@ -1287,6 +1301,8 @@
 							<option value="56">Idaten/Skanda</option>
 							<option value="57">Geist</option>
 							<option value="58">Connector</option>
+<option value="59">Sougetsu</option>
+<option value="60">Full Arms</option>
                         </select>
                     </td>
                     <td>
@@ -1354,6 +1370,8 @@
 							<option value="56">Idaten/Skanda</option>
 							<option value="57">Geist</option>
 							<option value="58">Connector</option>
+<option value="59">Sougetsu</option>
+<option value="60">Full Arms</option>
                         </select>
                     </td>
                 </tr>
@@ -1423,6 +1441,8 @@
 							<option value="56">Idaten/Skanda</option>
 							<option value="57">Geist</option>
 							<option value="58">Connector</option>
+<option value="59">Sougetsu</option>
+<option value="60">Full Arms</option>
                         </select>
                     </td>
                     <td>
@@ -1490,6 +1510,8 @@
 							<option value="56">Idaten/Skanda</option>
 							<option value="57">Geist</option>
 							<option value="58">Connector</option>
+<option value="59">Sougetsu</option>
+<option value="60">Full Arms</option>
                         </select>
                     </td>
                 </tr>
