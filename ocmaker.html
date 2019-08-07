@@ -792,15 +792,98 @@
 						outY += 14;
 					}
 				}
-			}
+			}u
 			function drawRank() {
 				ctx.font = "normal normal normal 37px stencil";
 				ctx.fillStyle = "black";
 				ctx.fillText(SquadRank,50,63);
 			}
 			function RNG() {
-			    var Arr = ["Shield","Bagworm","Raygust","Kogetsu","Scorpion","Kogetsu: Spear","Asteroid","Hound","Meteora","Viper","Egret","Ibis","Lightning","Gen'Yo","Lead Bullet","Senku","Starmaker","Thruster","Escudo","Chameleon","Dummy Beacon","Grasshopper","Spider","Teleporter","Switchbox","Idaten/Skanda","Geist","Connector","Sogetsu","Full Arms","Assault Rifle","Shotgun","Handgun","Grenade Gun"];
-			    
+			    var Arr = ["Shield","Bagworm","Raygust","Kogetsu","Scorpion","Kogetsu: Spear","Asteroid","Hound","Meteora","Viper","Egret","Ibis","Lightning","Gen'Yo","Lead Bullet","Senku","Starmaker","Thruster","Escudo","Chameleon","Dummy Beacon","Grasshopper","Spider","Teleporter","Switchbox","Idaten","Geist","Connector","Sogetsu","Full Arms","Assault Rifle: Viper","Assault Rifle: Hound","Assault Rifle: Asteroid","Assault Rifle: Meteora","Grenade Gun: Viper","Grenade Gun: Hound","Grenade Gun: Asteroid","Grenade Gun: Meteora","Shotgun: Viper","Shotgun: Hound","Shotgun: Asteroid","Shotgun: Meteora","Handgun: Viper","Handgun: Hound","Handgun: Asteroid","Handgun: Meteora"];
+			    var Arr2 = ["Assault Rifle: Viper","Assault Rifle: Hound","Assault Rifle: Asteroid","Assault Rifle: Meteora","Grenade Gun: Viper","Grenade Gun: Hound","Grenade Gun: Asteroid","Grenade Gun: Meteora","Shotgun: Viper","Shotgun: Hound","Shotgun: Asteroid","Shotgun: Meteora","Handgun: Viper","Handgun: Hound","Handgun: Asteroid","Handgun: Meteora"];
+			    var icons = [shi,opt,ray,kog,sco,speark,aster,hound,mete,viper,egret,ibis,light,opt,opt,opt,opt,opt,escudo,opt,opt,opt,opt,opt,opt,opt,opt,opt,opt,opt,arifle,arifle,arifle,arifle,grenade,grenade,grenade,grenade,shot,shot,shot,shot,handgun,handgun,handgun,handgun];
+			    var def = "DEFENSE TRIGGER", atk = "ATTACKER TRIGGER", optt = "OPTION TRIGGER", snip = "SNIPER TRIGGER", shoot = "SHOOTER TRIGGER", gunne = "GUNNER TRIGGER";
+			    var types = [def,optt,atk,atk,atk,atk,shoot,shoot,shoot,shoot,snip,snip,snip,optt,optt,optt,optt,optt,def,optt,optt,optt,optt,optt,optt,optt,optt,optt,optt,optt,gunne,gunne,gunne,gunne,gunne,gunne,gunne,gunne,gunne,gunne,gunne,gunne,gunne,gunne,gunne,gunne];
+			    for(var i = 1; i<=8; i++) {
+			        var Numb = Math.floor(Math.random()*34);
+			        if(Numb >= 30) {
+			           var Numb2 = Math.floor(Math.random()*12) + 34;
+			           triggers[i-1] = Numb2;
+			        }
+			        else {
+			        	triggers[i-1] = Numb;
+			        }
+			    }
+			    ctx.fillStyle = "black";
+			    textY = 264;
+			    imgY = 260;
+			    nameY = 290;
+			    freeY = 251;
+			    for(var i = 0; i<4; i++) {
+			    	ctx.font = "normal normal bold 10px Arial";
+			    	ctx.fillText(types[triggers[i]],418,textY);
+			    	ctx.drawImage(icons[triggers[i]],372,imgY,39,43);
+			    	ctx.font = "normal normal bold 13px Arial";
+			    	ctx.fillText(Arr[triggers[i]],423,nameY);
+			    	
+			    	textY += 71;
+			    	imgY += 71;
+			    	nameY += 71;
+			    	freeY += 71;
+			    }
+			    textY = 209;
+			    imgY = 205;
+			    nameY = 235;
+			    freeY = 196;
+			    for(var i = 4; i<8; i++) {
+			    	ctx.font = "normal normal bold 10px Arial";
+			    	ctx.fillText(types[triggers[i]],1106,textY);
+			    	ctx.drawImage(icons[triggers[i]],1060,imgY,39,43);
+			    	ctx.font = "normal normal bold 13px Arial";
+			    	ctx.fillText(Arr[triggers[i]],1111,nameY);
+			    	
+			    	textY += 71;
+			    	imgY += 71;
+			    	nameY += 71;
+			    	freeY += 71;
+			    }
+			}
+			function rngDraw() {
+				reset();
+				writeName();
+				writeRank();
+				drawSquadEmblem();
+				getParams();
+				paramText();
+				
+				getRank();
+				drawRank();
+				getProfile();
+				drawProfile();
+				drawStats();
+				
+				getTrion(trion);
+				getAttack(attack);
+				getDefense(defense);
+				getMobility(mobility);
+				getSkill(skill);
+				getRange(range);
+				getCommand(command);
+				getTactics(tactics);
+				
+				ctx.beginPath();
+				ctx.globalAlpha = .45;
+				ctx.moveTo(812,ty);
+				ctx.lineTo(ax,ay);
+				ctx.lineTo(dx,dy);
+				ctx.lineTo(mx,my);
+				ctx.lineTo(sx,sy);
+				ctx.lineTo(rx,ry);
+				ctx.lineTo(cx,cy);
+				ctx.lineTo(tx,tty);
+				ctx.fill();
+				ctx.globalAlpha = 1;
+				RNG();
 			}
             function draw() {
                 reset();
@@ -843,6 +926,7 @@
         </script>
     </head>
     <body align="center">
+    	<button onclick="rngDraw()">Hit</button>
         <h1>World Trigger Character</h1>
 		<a href="OcEmblemTemplate.png" download="Oc Emblem Template.png">Download Emblem Template</a>
 		<br />
