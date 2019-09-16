@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+  <head>
+    <title>Game Test</title>
+	<style>
+		body {
+			padding:10;
+            background-color:#222222;
+            font-family:arial;
+            color:#00bd8b;
+		}
+		#canvas {
+			border:1px solid white;
+			background-color:gray;
+		}
+		button {
+			width:30px;
+			height:30px;
+			margin-right:28px;
+			display:inline-block;
+			background-color:transparent;
+			color:springgreen;
+			font-size:120%;
+		}
+		#gamepad {
+			margin:auto;
+		}
+	</style>
+	<script>
+		var ctx, canvas;
+		var user = {
+			x: 0,
+			y: 0
+		}
+		var keys = [];
+		window.onload = function() {
+			canvas = document.getElementById("canvas");
+			ctx = canvas.getContext("2d");
+			window.addEventListener("keydown",testKey);
+			window.addEventListener("keydown",testKey);
+			window.addEventListener("keyup", keysReleased, false);
+			ctx.fillStyle = "springgreen";
+			ctx.fillRect(user.x,user.y,10,10);
+		}
+		function testKey(event){
+		  var keyCode = event.keyCode;
+		  console.log(keys.length);
+		  keys[event.keyCode] = true;
+		  console.log(keys[87]);
+		  switch(keyCode){
+			case keys[68] && keys[83]:    //down and right
+				downRight();
+			break;
+			case keys[65] && keys[83]:    //down and left
+				downLeft();
+			break;
+			case keys[65] && keys[87]:    //up and left
+				upLeft();
+			break;
+			case keys[68] && keys[87]:    //up and right
+				upRight();
+			break;
+			case 68:  //d
+				right();
+			break;
+			case 83:  //s
+				down();
+			break;
+			case 65:  //a
+				left();
+			break;
+			case 87:  //w
+				up();
+			break;
+		  }
+		}
+		function up() {
+			ctx.fillStyle = "gray";
+			ctx.fillRect(user.x,user.y,10,10);
+			if(user.y == 0) {
+				
+			}
+			else {
+				user.y -= 10;
+			}
+			ctx.fillStyle = "springgreen";
+			ctx.fillRect(user.x,user.y,10,10);
+		}
+		function down() {
+			ctx.fillStyle = "gray";
+			ctx.fillRect(user.x,user.y,10,10);
+			if(user.y == 490) {
+				
+			}
+			else {
+				user.y += 10;
+			}
+			ctx.fillStyle = "springgreen";
+			ctx.fillRect(user.x,user.y,10,10);
+		}
+		function left() {
+			ctx.fillStyle = "gray";
+			ctx.fillRect(user.x,user.y,10,10);
+			if(user.x == 0) {
+				
+			}
+			else {
+				user.x -= 10;
+			}
+			ctx.fillStyle = "springgreen";
+			ctx.fillRect(user.x,user.y,10,10);
+		}
+		function right() {
+			ctx.fillStyle = "gray";
+			ctx.fillRect(user.x,user.y,10,10);
+			if(user.x == 490) {
+				
+			}
+			else {
+				user.x += 10;
+			}
+			ctx.fillStyle = "springgreen";
+			ctx.fillRect(user.x,user.y,10,10);
+		}
+		function upRight() {
+			ctx.fillStyle = "gray";
+			ctx.fillRect(user.x,user.y,10,10);
+			if(user.x == 490) {
+				
+			}
+			else {
+				user.x += 10;
+			}
+			if(user.y == 0) {
+				
+			}
+			else {
+				user.y -= 10;
+			}
+			ctx.fillStyle = "springgreen";
+			ctx.fillRect(user.x,user.y,10,10);
+		}
+		function upLeft() {
+			
+		}
+		function downLeft() {
+			
+		}
+		function downRight() {
+			
+		}
+		function keysReleased(e) {
+			alert("yeet");
+			keys[e.keyCode] = false;
+		}
+	</script>
+  </head>
+  <body align="center">
+	<canvas width="500px" height="500px" id="canvas"></canvas>
+	<div id="GamePad">
+		<button>↑</button>
+		<br />
+		<button>←</button>
+		<button>→</button>
+		<br />
+		<button>↓</button>
+	</div>
+  </body>
+</html>
