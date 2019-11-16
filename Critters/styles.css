@@ -1,0 +1,27 @@
+body {
+	color:#02bc8b;
+	background-color:#222222;
+	font-family:arial;
+	text-align:Center;
+}
+#gridContainer {
+	display: grid;
+	grid-template-columns: auto auto auto;
+	padding: 10px;
+	grid-column-gap: 50px;
+	grid-row-gap: 50px;
+}
+.grid-item {
+  background-color:gray;
+  border:1px solid white;
+  color:black;
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+}
+.grid-item:hover {
+	background-color:green;
+}
+a {
+	text-decoration:none;
+}
