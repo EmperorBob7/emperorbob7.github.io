@@ -1,0 +1,19 @@
+body {
+	text-align:center;
+	background-color:#333;
+	font-family:Arial;
+}
+table {
+	border-collapse:collapse;
+	margin:auto;
+}
+td {
+	border:1px solid black;
+	max-width:100px;
+	width:100px;
+	height:20px;
+	padding:2px;
+	overflow: hidden;
+    text-overflow:clip;
+    white-space: nowrap;
+}
