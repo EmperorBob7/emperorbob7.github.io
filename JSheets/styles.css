@@ -2,6 +2,12 @@ body {
 	text-align:center;
 	background-color:#333;
 	font-family:Arial;
+	padding:10px;
+	color:cyan;
+}
+* {
+	margin:0;
+	padding:0;
 }
 table {
 	border-collapse:collapse;
@@ -16,4 +22,23 @@ td {
 	overflow: hidden;
     text-overflow:clip;
     white-space: nowrap;
+}
+.colors {
+	background-color:white;
+	width:50px;
+	height:40px;
+	font-weight:bold;
+	display:inline-block;
+}
+.colors input {
+	width:48px;
+	border-style:none;
+	background-color:white;
+}
+.colors img {
+	display:block;
+	margin:auto;
+}
+.colors p {
+	color:black;
 }
