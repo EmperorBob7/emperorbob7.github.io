@@ -18,9 +18,15 @@
 			<img src="paintbucket.png" width="20px" height="18px"/>
 			<input type="color" id="bcSelector" onchange="bcChange()" value="#555555"/>
 		</div>
+		<!--Text Alignment-->
+		<button onclick="changeAlign('left')">Left</button>
+		<button onclick="changeAlign('center')">Center</button>
+		<button onclick="changeAlign('right')">Right</button>
 		<br /><br />
 		<table id="table"></table>
 		<p>Stable but useless build. Click a cell, type what you want, and press submit.</p>
 		<p id="a"></p>
+		<button onclick="saveDownload()">Save</button>
+		<input type="file" onchange="load(event)" />
 	</body>
 </html>
