@@ -36,21 +36,22 @@ window.onload = function() {
 }
 function saveDownload() {
 	var tl = 64;
-	var text = rows + "\u0192\n" + cols + "\u0192\n";
+	var ff = "\u0192\n";
+	var text = rows + ff + cols + ff;
 	for(var i = 1; i<=cols; i++) {
 		for(var j = 1; j<=rows; j++) {
 			var id = String.fromCharCode(tl+i)+j;
 			console.log(id);
-			text += t[id].value + "\u0192\n";
-			text += t[id].color + "\u0192\n";
-			text += t[id].backgroundColor + "\u0192\n";
-			text += t[id].textAlign + "\u0192\n";
+			text += t[id].value + ff;
+			text += t[id].color + ff;
+			text += t[id].backgroundColor + ff;
+			text += t[id].textAlign + ff;
 		}
 	}
 	text = text.substring(0,text.length-1);
 	var element = document.createElement('a');
 	
-    element.setAttribute('href', 'data:text/plain;charset=utf-16,' + encodeURIComponent(text));
+    element.setAttribute('href', 'data:text/bob;charset=utf-16,' + encodeURIComponent(text));
 	element.setAttribute('download', "JSheetFile.bob");
 	element.setAttribute("target","_blank");
 	element.style.display = 'none';
