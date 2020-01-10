@@ -79,7 +79,7 @@ function load(event) {
 			var tr = document.createElement("tr");
 			for(var j = 0; j<cols; j++) {
 				var td = document.createElement("td");
-				td.setAttribute("id",String.fromCharCode(letter+j)+(i+1));
+				td.setAttribute("id",String.fromCharCode(letter+i)+(j+1));
 				td.setAttribute("onclick","focusize(this.id)");
 				t[td.id] = new Cell(td.id);
 				td.innerHTML = con[counter++];
