@@ -51,8 +51,8 @@ function saveDownload() {
 	var tl = 64;
 	var ff = "\u0192\n";
 	var text = rows + ff + cols + ff;
-	for(var i = 1; i<=cols; i++) {
-		for(var j = 1; j<=rows; j++) {
+	for(var i = 1; i<=rows; i++) {
+		for(var j = 1; j<=cols; j++) {
 			var id = String.fromCharCode(tl+j)+i;
 			text += t[id].value + ff;
 			text += t[id].color + ff;
@@ -91,7 +91,7 @@ function load(event) {
 		var ttt = document.createElement("tr");
 		var th = document.createElement("th");
 		ttt.appendChild(th);
-		for(var i = 0; i<5; i++) {
+		for(var i = 0; i<cols; i++) {
 			th = document.createElement("th");
 			th.innerHTML = String.fromCharCode(letter+i);
 			ttt.appendChild(th);
@@ -101,7 +101,7 @@ function load(event) {
 		for(var i = 0; i<rows; i++) {
 			var tr = document.createElement("tr");
 			th = document.createElement("th");
-			th.innerHTML = i;
+			th.innerHTML = i+1;
 			tr.appendChild(th);
 			
 			for(var j = 0; j<cols; j++) {
@@ -119,7 +119,6 @@ function load(event) {
 				t[td.id].backgroundColor = td.style.backgroundColor;
 				
 				td.style.textAlign = con[counter++];
-				console.log(t[td.id]);
 				t[td.id].textAlign = td.style.textAlign;
 				tr.appendChild(td);
 			}
@@ -153,4 +152,44 @@ function bcChange() {
 function changeAlign(ta) {
 	t[selected].textAlign = ta;
 	document.getElementById(selected).style.textAlign = t[selected].textAlign;
+}
+function addRow() {
+	var table = document.getElementById("table");
+	var ttt = document.createElement("tr");
+	var th = document.createElement("th");
+	th.innerHTML = table.childElementCount;
+	ttt.appendChild(th);
+	table.appendChild(ttt);
+	rows++;
+	
+	for(var i = 0; i<cols; i++) {
+		var td = document.createElement("td");
+		td.setAttribute("id",String.fromCharCode(letter+i)+th.innerHTML);
+		td.setAttribute("onclick","focusize(this.id)");
+		t[td.id] = new Cell(td.id);
+		td.style.backgroundColor = t[td.id].backgroundColor;
+		td.style.color = t[td.id].color;
+		td.style.textAlign = t[td.id].textAlign;
+		td.innerHTML = t[td.id].value;
+		ttt.appendChild(td);
+	}
+}
+function addCol() {
+	cols++;
+	var table = document.getElementById("table");
+	var th = document.createElement("th");
+	th.innerHTML = String.fromCharCode(letter+cols-1);
+	table.children[0].appendChild(th);
+	
+	for(var i = 0; i<rows; i++) {
+		var td = document.createElement("td");
+		td.setAttribute("id",th.innerHTML+(i+1));
+		td.setAttribute("onclick","focusize(this.id)");
+		t[td.id] = new Cell(td.id);
+		td.style.backgroundColor = t[td.id].backgroundColor;
+		td.style.color = t[td.id].color;
+		td.style.textAlign = t[td.id].textAlign;
+		td.innerHTML = t[td.id].value;
+		table.children[i+1].appendChild(td);
+	}
 }
