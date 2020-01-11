@@ -7,7 +7,7 @@ class Cell {
 	constructor(id) {
 		this.id = id;
 		this.value = "";
-		this.color = "#000000";
+		this.color = "#ffffff";
 		this.backgroundColor = "#555555";
 		this.textAlign = "left";
 	}
@@ -15,8 +15,21 @@ class Cell {
 t["a"] = new Cell("a");
 window.onload = function() {
 	var table = document.getElementById("table");
+	var ttt = document.createElement("tr");
+	var th = document.createElement("th");
+	ttt.appendChild(th);
+	for(var i = 0; i<5; i++) {
+		th = document.createElement("th");
+		th.innerHTML = String.fromCharCode(letter+i);
+		ttt.appendChild(th);
+	}
+	table.appendChild(ttt);
+	
 	for(var i = 1; i<=5; i++) {
 		var tr = document.createElement("tr");
+		th = document.createElement("th");
+		th.innerHTML = i;
+		tr.appendChild(th);
 		for(var j = 0; j<5; j++) {
 			var td = document.createElement("td");
 			td.setAttribute("id",String.fromCharCode(letter+j)+(rows+1));
@@ -40,15 +53,14 @@ function saveDownload() {
 	var text = rows + ff + cols + ff;
 	for(var i = 1; i<=cols; i++) {
 		for(var j = 1; j<=rows; j++) {
-			var id = String.fromCharCode(tl+i)+j;
-			console.log(id);
+			var id = String.fromCharCode(tl+j)+i;
 			text += t[id].value + ff;
 			text += t[id].color + ff;
 			text += t[id].backgroundColor + ff;
 			text += t[id].textAlign + ff;
 		}
 	}
-	text = text.substring(0,text.length-1);
+	text = text.substring(0,text.length);
 	var element = document.createElement('a');
 	
     element.setAttribute('href', 'data:text/bob;charset=utf-16,' + encodeURIComponent(text));
@@ -75,11 +87,26 @@ function load(event) {
 		while (table.firstChild) {
 			table.removeChild(table.firstChild);
 		}
+		
+		var ttt = document.createElement("tr");
+		var th = document.createElement("th");
+		ttt.appendChild(th);
+		for(var i = 0; i<5; i++) {
+			th = document.createElement("th");
+			th.innerHTML = String.fromCharCode(letter+i);
+			ttt.appendChild(th);
+		}
+		table.appendChild(ttt);
+		
 		for(var i = 0; i<rows; i++) {
 			var tr = document.createElement("tr");
+			th = document.createElement("th");
+			th.innerHTML = i;
+			tr.appendChild(th);
+			
 			for(var j = 0; j<cols; j++) {
 				var td = document.createElement("td");
-				td.setAttribute("id",String.fromCharCode(letter+i)+(j+1));
+				td.setAttribute("id",String.fromCharCode(letter+j)+(i+1));
 				td.setAttribute("onclick","focusize(this.id)");
 				t[td.id] = new Cell(td.id);
 				td.innerHTML = con[counter++];
@@ -92,6 +119,7 @@ function load(event) {
 				t[td.id].backgroundColor = td.style.backgroundColor;
 				
 				td.style.textAlign = con[counter++];
+				console.log(t[td.id]);
 				t[td.id].textAlign = td.style.textAlign;
 				tr.appendChild(td);
 			}
