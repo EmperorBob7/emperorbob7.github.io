@@ -18,19 +18,19 @@ window.onload = function() {
 	var ttt = document.createElement("tr");
 	var th = document.createElement("th");
 	ttt.appendChild(th);
-	for(var i = 0; i<5; i++) {
+	for(var i = 0; i<26; i++) {
 		th = document.createElement("th");
 		th.innerHTML = String.fromCharCode(letter+i);
 		ttt.appendChild(th);
 	}
 	table.appendChild(ttt);
 	
-	for(var i = 1; i<=5; i++) {
+	for(var i = 1; i<=26; i++) {
 		var tr = document.createElement("tr");
 		th = document.createElement("th");
 		th.innerHTML = i;
 		tr.appendChild(th);
-		for(var j = 0; j<5; j++) {
+		for(var j = 0; j<26; j++) {
 			var td = document.createElement("td");
 			td.setAttribute("id",String.fromCharCode(letter+j)+(rows+1));
 			td.setAttribute("onclick","focusize(this.id)");
@@ -45,11 +45,11 @@ window.onload = function() {
 		cols++;
 		table.appendChild(tr);
 	}
-	//Sets up 5x5 Grid
+	//Sets up 10x10 Grid
 }
 function saveDownload() {
 	var tl = 64;
-	var ff = "\u0192\n";
+	var ff = "\u0192\\";
 	var text = rows + ff + cols + ff;
 	for(var i = 1; i<=rows; i++) {
 		for(var j = 1; j<=cols; j++) {
@@ -77,7 +77,7 @@ function load(event) {
 	var con = "";
 	reader.onload = function(event) {
 		con = event.target.result;
-		con = con.split("\u0192\n");
+		con = con.split("\u0192\\");
 		rows = con[0];
 		cols = con[1];
 		var counter = 2;
@@ -139,7 +139,17 @@ function submitVal() {
 	t[selected].value = document.getElementById("typer").value;
 	document.getElementById(selected).innerHTML = t[selected].value;
 	document.getElementById("typer").value = "";
+	if(t[selected].value.charAt(0) == '=') {
+		functionality();
+	}
 	selected = "a";
+}
+function functionality() {
+	var text = t[selected].value.substring(1);
+	const regex = /\w(1[0-9]|2[0-9]|[1-9])/g;
+	console.log(regex.test(text));
+	text = text.replace(regex,"t[\""+text.match(regex)+"\"]");
+	console.log(text);
 }
 function cChange() {
 	t[selected].color = document.getElementById("colorSelector").value;

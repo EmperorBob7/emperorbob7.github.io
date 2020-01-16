@@ -6,6 +6,11 @@
 		<link rel="stylesheet" type="text/css" href="styles.css">
 	</head>
 	<body>
+		<p>Stable but useless build. Click a cell, type what you want, and press submit.</p>
+		<p id="a"></p>
+		<button onclick="saveDownload()">Save</button>
+		<input type="file" onchange="load(event)" />
+		
 		<input type="text" id="typer"/>
 		<button onclick="submitVal()">Submit</button>
 		<!--Text Color Selector-->
@@ -27,10 +32,8 @@
 		<button onclick="addRow()">Add Row</button>
 		<button onclick="addCol()">Add Col</button>
 		<!---->
-		<table id="table"></table>
-		<p>Stable but useless build. Click a cell, type what you want, and press submit.</p>
-		<p id="a"></p>
-		<button onclick="saveDownload()">Save</button>
-		<input type="file" onchange="load(event)" />
+		<div id="holder">
+			<table id="table"></table>
+		</div>
 	</body>
 </html>
