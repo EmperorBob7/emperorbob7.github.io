@@ -6,28 +6,33 @@
 		<link rel="stylesheet" type="text/css" href="styles.css">
 	</head>
 	<body>
-		<p>Stable but useless build. Click a cell, type what you want, and press submit.</p>
-		<p id="a"></p>
-		<button onclick="saveDownload()">Save</button>
-		<input type="file" onchange="load(event)" />
-		
-		<input type="text" id="typer"/>
-		<button onclick="submitVal()">Submit</button>
-		<!--Text Color Selector-->
-		<div class="colors">
-			<p>A</p>
-			<input type="color" id="colorSelector" onchange="cChange()" value="#000000"/>
+		<a href="https://docs.google.com/document/d/1kiASjZccRIHNDZU5b7pGS5FVyejgapEHxYSO94SqfY0/edit?usp=sharing" target="_blank">User Function Sheet(Dark Theme Friendly)</a>
+		<div id="topBar">
+			<!--Element to prevent errors-->
+			<p id="a"></p>
+			<!--Save and Load :P-->
+			<button onclick="saveDownload()">Save</button>
+			<input type="file" onchange="load(event)" id="loadButton" style="display: none;"/>
+			<input type="button" value="Load" onclick="document.getElementById('loadButton').click();" />
+			<!--Input and Submit-->
+			<input type="text" id="typer" onkeydown="detectEnter(event)" onkeyup="releaseKey(event)"/>
+			<button onclick="submitVal()">Submit</button>
+			<!--Text Color Selector-->
+			<div class="colors">
+				<p>A</p>
+				<input type="color" id="colorSelector" onchange="cChange()" value="#000000"/>
+			</div>
+			<!--Background Color Selector-->
+			<div class="colors">
+				<img src="paintbucket.png" width="20px" height="18px"/>
+				<input type="color" id="bcSelector" onchange="bcChange()" value="#555555"/>
+			</div>
+			<!--Text Alignment-->
+			<button onclick="changeAlign('left')">Left</button>
+			<button onclick="changeAlign('center')">Center</button>
+			<button onclick="changeAlign('right')">Right</button>
+			<br /><br />
 		</div>
-		<!--Background Color Selector-->
-		<div class="colors">
-			<img src="paintbucket.png" width="20px" height="18px"/>
-			<input type="color" id="bcSelector" onchange="bcChange()" value="#555555"/>
-		</div>
-		<!--Text Alignment-->
-		<button onclick="changeAlign('left')">Left</button>
-		<button onclick="changeAlign('center')">Center</button>
-		<button onclick="changeAlign('right')">Right</button>
-		<br /><br />
 		<!--Temporary Row and Col Buttons-->
 		<button onclick="addRow()">Add Row</button>
 		<button onclick="addCol()">Add Col</button>

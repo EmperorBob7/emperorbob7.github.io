@@ -3,6 +3,7 @@ var cols = 0;
 var letter = 65;
 var t = [];
 var selected = "a";
+//Object for every cell
 class Cell {
 	constructor(id) {
 		this.id = id;
@@ -18,6 +19,7 @@ window.onload = function() {
 	var ttt = document.createElement("tr");
 	var th = document.createElement("th");
 	ttt.appendChild(th);
+	//Create the initial Table heads
 	for(var i = 0; i<26; i++) {
 		th = document.createElement("th");
 		th.innerHTML = String.fromCharCode(letter+i);
@@ -26,11 +28,13 @@ window.onload = function() {
 	table.appendChild(ttt);
 	
 	for(var i = 1; i<=26; i++) {
+		//Create each row head
 		var tr = document.createElement("tr");
 		th = document.createElement("th");
 		th.innerHTML = i;
 		tr.appendChild(th);
 		for(var j = 0; j<26; j++) {
+			//Create each cell
 			var td = document.createElement("td");
 			td.setAttribute("id",String.fromCharCode(letter+j)+(rows+1));
 			td.setAttribute("onclick","focusize(this.id)");
@@ -45,8 +49,21 @@ window.onload = function() {
 		cols++;
 		table.appendChild(tr);
 	}
-	//Sets up 10x10 Grid
+	//Sets up 26x26 Grid
 }
+//Detects key inputs so you don't have to press the submit button and can just press enter on your keyboard
+var keys = [];
+function detectEnter(e) {
+	keys[e.key] = true;
+	if(keys["Enter"] && !keys["Shift"]) {
+		submitVal();
+	}
+}
+//Release Keys
+function releaseKey(e) {
+	keys[e.key] = false;
+}
+//Save Function
 function saveDownload() {
 	var tl = 64;
 	var ff = "\u0192\\";
@@ -71,10 +88,12 @@ function saveDownload() {
 	element.click();
 	document.body.removeChild(element);
 }
+//Load Function
 function load(event) {
 	var reader = new FileReader();
 	var file = event.target.files[0];
 	var con = "";
+	//Start reading the inputted file
 	reader.onload = function(event) {
 		con = event.target.result;
 		con = con.split("\u0192\\");
@@ -124,9 +143,11 @@ function load(event) {
 			}
 			table.appendChild(tr);
 		}
+		updateAll();
 	}
 	reader.readAsText(file);
 }
+//Select the input enter box and bring up the content of the cell
 function focusize(given) {
 	selected = given;
 	document.getElementById("typer").value = t[given].value;
@@ -135,6 +156,7 @@ function focusize(given) {
 	document.getElementById("typer").focus();
 	document.getElementById("typer").select();
 }
+//Make the value of the cell updated
 function submitVal() {
 	t[selected].value = document.getElementById("typer").value;
 	document.getElementById(selected).innerHTML = t[selected].value;
@@ -142,27 +164,60 @@ function submitVal() {
 	if(t[selected].value.charAt(0) == '=') {
 		functionality();
 	}
+	updateAll();
+}
+//Updates all cells, might get laggy with big sheets? Useful for function cells
+function updateAll() {
+	for(var i = 0; i<rows; i++) {
+		for(var j = 0; j<cols; j++) {
+			var id = String.fromCharCode(letter+j)+(i+1);
+			selected = id;
+			if(t[selected].value.charAt(0) == '=') {
+				functionality();
+			}
+		}
+	}
 	selected = "a";
 }
+//Regex stuff that I made to much more easily run the User's cell functions although it for sure isn't a perfect system
 function functionality() {
-	var text = t[selected].value.substring(1);
+	var text = t[selected].value.substring(1) + " ";
 	const regex = /\w(1[0-9]|2[0-9]|[1-9])/g;
-	console.log(regex.test(text));
-	text = text.replace(regex,"t[\""+text.match(regex)+"\"]");
-	console.log(text);
+	const regex2 = /\w(1[0-9]|2[0-9]|[1-9])/;
+	const regex3 =  /\w(1[0-9]|2[0-9]|[1-9])[^"]/g;
+	const regex4 =  /\w(1[0-9]|2[0-9]|[1-9])[^"]/;
+	var arr = text.match(regex);
+	if(arr !== null) {
+		for(var i = 0; i<arr.length; i++) {
+			var tt = arr[i].match(regex2);
+			//tt = tt.substring(tt.length-1);
+			arr[i] = arr[i].replace(regex2,"t[\""+arr[i].match(regex)+"\"].value  ");
+		}
+		var extra = text.match(regex3);
+		for(var i = 0; i<arr.length; i++) {
+			var temp = extra[i];
+			temp = temp.substring(temp.length-1);
+			text = text.replace(regex4,arr[i]+temp);
+		}
+	}
+	document.getElementById(selected).innerHTML = eval(text);
 }
+//Text Color Change Update
 function cChange() {
 	t[selected].color = document.getElementById("colorSelector").value;
 	document.getElementById(selected).style.color = t[selected].color;
 }
+//Background Color Change Update
 function bcChange() {
 	t[selected].backgroundColor = document.getElementById("bcSelector").value;
 	document.getElementById(selected).style.backgroundColor = t[selected].backgroundColor;
 }
+//Text Align Change Update
 function changeAlign(ta) {
 	t[selected].textAlign = ta;
 	document.getElementById(selected).style.textAlign = t[selected].textAlign;
 }
+//Adds a new Row DUH
 function addRow() {
 	var table = document.getElementById("table");
 	var ttt = document.createElement("tr");
@@ -184,6 +239,7 @@ function addRow() {
 		ttt.appendChild(td);
 	}
 }
+//Adds a new column
 function addCol() {
 	cols++;
 	var table = document.getElementById("table");
@@ -202,4 +258,41 @@ function addCol() {
 		td.innerHTML = t[td.id].value;
 		table.children[i+1].appendChild(td);
 	}
+}
+//User Functions, more information is on the link at the top of the page!
+function SUM() {
+	var sum = 0;
+	for(var i = 0; i<arguments.length; i++) {
+		sum += parseInt(arguments[i]);
+	}
+	return sum;
+}
+function AVERAGE() {
+	var sum = 0;
+	for(var i = 0; i<arguments.length; i++) {
+		sum += parseInt(arguments[i]);
+	}
+	return sum/arguments.length;
+}
+function MAX() {
+	var max = parseInt(arguments[0]);
+	for(var i = 0; i<arguments.length; i++) {
+		if(parseInt(arguments[i]) > max)
+			max = parseInt(arguments[i]);
+	}
+	return max;
+}
+function MIN() {
+	var min = parseInt(arguments[0]);
+	for(var i = 0; i<arguments.length; i++) {
+		if(parseInt(arguments[i]) < min)
+			min = parseInt(arguments[i]);
+	}
+	return min;
+}
+function TYPE() {
+	if(isNaN(arguments[0]))
+		return "String";
+	else
+		return "Integer";
 }
