@@ -173,7 +173,7 @@ function submitVal() {
 	t[selected].value = document.getElementById("typer").value;
 	document.getElementById(selected).innerHTML = t[selected].value;
 	document.getElementById("typer").value = "";
-	if(t[selected].value.charAt(0) == '=') {
+	if(t[selected].value.charAt(0) == '=' && t[selected].value.length > 2) {
 		functionality();
 	}
 	updateAll();
@@ -185,7 +185,7 @@ function updateAll() {
 		for(var j = 0; j<cols; j++) {
 			var id = String.fromCharCode(letter+j)+(i+1);
 			selected = id;
-			if(t[selected].value.charAt(0) == '=') {
+			if(t[selected].value.length > 1 && t[selected].value.charAt(0) == '=') {
 				functionality();
 			}
 		}
@@ -313,7 +313,7 @@ function TYPE() {
 		return "Boolean";
 	if(isNaN(arguments[0]))
 		return "String";
-	else if(regex.test(arguments[0]))
+	else if(!Number.isInteger(arguments[0]))
 		return "Decimal";
 	else
 		return "Integer";
