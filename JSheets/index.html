@@ -10,8 +10,11 @@
 		<div id="topBar">
 			<!--Element to prevent errors-->
 			<p id="a"></p>
+			<!--Selected Cell-->
+			<button onclick="saveWindow()">Save</button>
+			<p id="selectedCell" style="display:inline; position:absolute; left:20px; transform:translate(5vw, 2.3vh); text-align:left;"></p>
 			<!--Save and Load :P-->
-			<button onclick="saveDownload()">Save</button>
+			
 			<input type="file" onchange="load(event)" id="loadButton" style="display: none;"/>
 			<input type="button" value="Load" onclick="document.getElementById('loadButton').click();" />
 			<!--Input and Submit-->
@@ -36,9 +39,18 @@
 		<!--Temporary Row and Col Buttons-->
 		<button onclick="addRow()">Add Row</button>
 		<button onclick="addCol()">Add Col</button>
-		<!---->
+		<!--Table Grid-->
 		<div id="holder">
 			<table id="table"></table>
+		</div>
+		<!--Save File Pop up-->
+		<div id="popUp">
+			<h1>Save Menu</h1>
+			<span>File Name: </span>
+			<input type="text" id="fileName"/>
+			<button onclick="saveDownload()">Save</button>
+			<br />
+			<button onclick="closeWindow()" id="close">X</button>
 		</div>
 	</body>
 </html>

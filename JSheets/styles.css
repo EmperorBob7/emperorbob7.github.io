@@ -114,3 +114,31 @@ input[type="text"] {
 	transform:translate(0px,-1vh);
 	border:1px solid black;
 }
+#popUp {
+	z-index:100;
+	width:90vw;
+	height:90vh;
+	position:absolute;
+	left:5vw;
+	top:5vh;
+	background-color:#BBB;
+	color:black;
+	display:none;
+}
+#popUp h1 {
+	margin-bottom:10px;
+}
+#popUp input[type="text"] {
+	border:1px solid black;
+	height:3vh;
+	transform:translate(0,0);
+}
+#popUp button {
+	padding:4px;
+	border:1px solid black;
+}
+#popUp #close {
+	padding:10px;
+	margin-top:1vh;
+	border:1px solid black;
+}

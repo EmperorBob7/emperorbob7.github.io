@@ -81,12 +81,21 @@ function saveDownload() {
 	var element = document.createElement('a');
 	
     element.setAttribute('href', 'data:text/bob;charset=utf-16,' + encodeURIComponent(text));
-	element.setAttribute('download', "JSheetFile.bob");
+	if(document.getElementById("fileName").value == "")
+		document.getElementById("fileName").value = "JSheet File";
+	element.setAttribute('download', document.getElementById("fileName").value + ".bob");
 	element.setAttribute("target","_blank");
 	element.style.display = 'none';
 	document.body.appendChild(element);
 	element.click();
 	document.body.removeChild(element);
+	closeWindow();
+}
+function saveWindow() {
+	document.getElementById("popUp").style.display = "block";
+}
+function closeWindow() {
+	document.getElementById("popUp").style.display = "none";
 }
 //Load Function
 function load(event) {
@@ -95,6 +104,8 @@ function load(event) {
 	var con = "";
 	//Start reading the inputted file
 	reader.onload = function(event) {
+		var fileN = document.getElementById("loadButton").files[0].name;
+		document.getElementById("fileName").value = fileN.substring(0,fileN.length-4);
 		con = event.target.result;
 		con = con.split("\u0192\\");
 		rows = con[0];
@@ -150,6 +161,7 @@ function load(event) {
 //Select the input enter box and bring up the content of the cell
 function focusize(given) {
 	selected = given;
+	document.getElementById("selectedCell").innerHTML = selected;
 	document.getElementById("typer").value = t[given].value;
 	document.getElementById("colorSelector").value = t[selected].color;
 	document.getElementById("bcSelector").value = t[selected].backgroundColor;
@@ -165,6 +177,7 @@ function submitVal() {
 		functionality();
 	}
 	updateAll();
+	document.getElementById("selectedCell").innerHTML = "";
 }
 //Updates all cells, might get laggy with big sheets? Useful for function cells
 function updateAll() {
@@ -184,14 +197,17 @@ function functionality() {
 	var text = t[selected].value.substring(1) + " ";
 	const regex = /\w(1[0-9]|2[0-9]|[1-9])/g;
 	const regex2 = /\w(1[0-9]|2[0-9]|[1-9])/;
-	const regex3 =  /\w(1[0-9]|2[0-9]|[1-9])[^"]/g;
-	const regex4 =  /\w(1[0-9]|2[0-9]|[1-9])[^"]/;
+	const regex3 =  /[A-Z](1[0-9]|2[0-9]|[1-9])[^"]/g;
+	const regex4 =  /[A-Z](1[0-9]|2[0-9]|[1-9])[^"]/;
 	var arr = text.match(regex);
 	if(arr !== null) {
 		for(var i = 0; i<arr.length; i++) {
-			var tt = arr[i].match(regex2);
-			//tt = tt.substring(tt.length-1);
-			arr[i] = arr[i].replace(regex2,"t[\""+arr[i].match(regex)+"\"].value  ");
+			console.log(arr[i]);
+			var replacer = t[arr[i].match(regex)].value;
+			if(isNaN(replacer))
+				replacer = "\""+replacer+"\"";
+			arr[i] = arr[i].replace(regex2,replacer);
+			console.log(arr[i]);
 		}
 		var extra = text.match(regex3);
 		for(var i = 0; i<arr.length; i++) {
@@ -200,6 +216,7 @@ function functionality() {
 			text = text.replace(regex4,arr[i]+temp);
 		}
 	}
+	//console.log(text);
 	document.getElementById(selected).innerHTML = eval(text);
 }
 //Text Color Change Update
@@ -263,14 +280,14 @@ function addCol() {
 function SUM() {
 	var sum = 0;
 	for(var i = 0; i<arguments.length; i++) {
-		sum += parseInt(arguments[i]);
+		sum += arguments[i];
 	}
 	return sum;
 }
 function AVERAGE() {
 	var sum = 0;
 	for(var i = 0; i<arguments.length; i++) {
-		sum += parseInt(arguments[i]);
+		sum += arguments[i];
 	}
 	return sum/arguments.length;
 }
@@ -278,7 +295,7 @@ function MAX() {
 	var max = parseInt(arguments[0]);
 	for(var i = 0; i<arguments.length; i++) {
 		if(parseInt(arguments[i]) > max)
-			max = parseInt(arguments[i]);
+			max = arguments[i];
 	}
 	return max;
 }
@@ -286,13 +303,18 @@ function MIN() {
 	var min = parseInt(arguments[0]);
 	for(var i = 0; i<arguments.length; i++) {
 		if(parseInt(arguments[i]) < min)
-			min = parseInt(arguments[i]);
+			min = arguments[i];
 	}
 	return min;
 }
 function TYPE() {
+	const regex = /\.[0-9]/;
+	if(arguments[0] == "true" || arguments[0] == "false")
+		return "Boolean";
 	if(isNaN(arguments[0]))
 		return "String";
+	else if(regex.test(arguments[0]))
+		return "Decimal";
 	else
 		return "Integer";
 }
