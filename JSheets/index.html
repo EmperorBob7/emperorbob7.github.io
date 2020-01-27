@@ -18,12 +18,12 @@
 			<input type="file" onchange="load(event)" id="loadButton" style="display: none;"/>
 			<input type="button" value="Load" onclick="document.getElementById('loadButton').click();" />
 			<!--Input and Submit-->
-			<input type="text" id="typer" onkeydown="detectEnter(event)" onkeyup="releaseKey(event)"/>
+			<input type="text" id="typer" onkeydown="detectEnter(event)" onkeyup="releaseKey(event)" disabled/>
 			<button onclick="submitVal()">Submit</button>
 			<!--Text Color Selector-->
 			<div class="colors">
 				<p>A</p>
-				<input type="color" id="colorSelector" onchange="cChange()" value="#000000"/>
+				<input type="color" id="colorSelector" onchange="cChange()" value="#FFFFFF"/>
 			</div>
 			<!--Background Color Selector-->
 			<div class="colors">

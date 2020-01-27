@@ -142,11 +142,11 @@ function load(event) {
 				td.innerHTML = con[counter++];
 				t[td.id].value = td.innerHTML;
 				
-				td.style.color = con[counter++];
-				t[td.id].color = td.style.color;
+				t[td.id].color = con[counter++];
+				td.style.color = t[td.id].color;
 				
-				td.style.backgroundColor = con[counter++];
-				t[td.id].backgroundColor = td.style.backgroundColor;
+				t[td.id].backgroundColor = con[counter++];
+				td.style.backgroundColor = t[td.id].backgroundColor;
 				
 				td.style.textAlign = con[counter++];
 				t[td.id].textAlign = td.style.textAlign;
@@ -155,12 +155,14 @@ function load(event) {
 			table.appendChild(tr);
 		}
 		updateAll();
+		focusize("A1");
 	}
 	reader.readAsText(file);
 }
 //Select the input enter box and bring up the content of the cell
 function focusize(given) {
 	selected = given;
+	document.getElementById("typer").disabled = false;
 	document.getElementById("selectedCell").innerHTML = selected;
 	document.getElementById("typer").value = t[given].value;
 	document.getElementById("colorSelector").value = t[selected].color;
@@ -178,6 +180,9 @@ function submitVal() {
 	}
 	updateAll();
 	document.getElementById("selectedCell").innerHTML = "";
+	document.getElementById("typer").disabled = true;
+	document.getElementById("colorSelector").value = "#FFFFFF";
+	document.getElementById("bcSelector").value = "#555555";
 }
 //Updates all cells, might get laggy with big sheets? Useful for function cells
 function updateAll() {
