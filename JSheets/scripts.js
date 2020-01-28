@@ -56,6 +56,7 @@ var keys = [];
 function detectEnter(e) {
 	keys[e.key] = true;
 	if(keys["Enter"] && !keys["Shift"]) {
+		keys["Enter"] = false;
 		submitVal();
 	}
 }
@@ -180,7 +181,6 @@ function submitVal() {
 	}
 	updateAll();
 	document.getElementById("selectedCell").innerHTML = "";
-	document.getElementById("typer").disabled = true;
 	document.getElementById("colorSelector").value = "#FFFFFF";
 	document.getElementById("bcSelector").value = "#555555";
 }
@@ -196,6 +196,7 @@ function updateAll() {
 		}
 	}
 	selected = "a";
+	document.getElementById("typer").disabled = true;
 }
 //Regex stuff that I made to much more easily run the User's cell functions although it for sure isn't a perfect system
 function functionality() {
@@ -207,12 +208,10 @@ function functionality() {
 	var arr = text.match(regex);
 	if(arr !== null) {
 		for(var i = 0; i<arr.length; i++) {
-			console.log(arr[i]);
 			var replacer = t[arr[i].match(regex)].value;
 			if(isNaN(replacer))
 				replacer = "\""+replacer+"\"";
 			arr[i] = arr[i].replace(regex2,replacer);
-			console.log(arr[i]);
 		}
 		var extra = text.match(regex3);
 		for(var i = 0; i<arr.length; i++) {
