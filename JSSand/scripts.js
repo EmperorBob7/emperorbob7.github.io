@@ -8,9 +8,12 @@ var METAL = 1;
 var SAND = 2;
 var WATER = 3;
 var ICE = 4;
+var TREE = 5;
+var LEAF = 6;
+var WOOD = 7;
 
 var selected = METAL;
-var colors = ["black","gray","yellow","blue","cyan"];
+var colors = ["black","gray","yellow","blue","cyan","#a1784f","green","#a1784f"];
 
 //Setup Game when page loads
 window.onload = function() {
@@ -77,6 +80,14 @@ function update() {
 			}
 			if(c < grid[0].length-1 && grid[r][c+1] == WATER) {
 				grid[r][c+1] = ICE;
+			}
+		}
+		else if(grid[r][c] == TREE) {
+			if(c > 0 && grid[r][c-1] == VOID) {
+				grid[r][c-1] = TREE;
+			}
+			else if(c == 0) {
+				grid[r][c] = LEAF;
 			}
 		}
 	}
