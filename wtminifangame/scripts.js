@@ -16,6 +16,12 @@ const action = {
     3: 0,
     4: 0
 };
+const movementAction = {
+    1: 0,
+    2: 0,
+    3: 0,
+    4: 0
+};
 let refreshData = {
     1: "",
     2: "",
@@ -24,18 +30,51 @@ let refreshData = {
 };
 const trionArr = [100, 200, 400, 800, 1600, 3200, 6400, 12800, 25600];
 function setTrion(player) {
-    const val = document.getElementById("p" + player + "trion").value;
+    const val = parseInt(document.getElementById("p" + player + "trion").value);
+    if(val < 0) {
+        document.getElementById("p" + player + "trion").value = 0;
+        return;
+    } else if(val > 58) {
+        document.getElementById("p" + player + "trion").value = 58;
+        return;
+    }
     hps[player] = val;
     updateDisplay();
 }
 function setInit(player) {
-    const val = document.getElementById("p" + player + "init").value;
+    const val = parseInt(document.getElementById("p" + player + "init").value);
+    if(val < 0) {
+        document.getElementById("p" + player + "init").value = 0;
+        return;
+    } else if(val > 15) {
+        document.getElementById("p" + player + "init").value = 15;
+        return;
+    }
     init[player] = val;
     updateDisplay();
 }
 function setAction(player) {
-    const val = document.getElementById("p" + player + "action").value;
+    const val = parseInt(document.getElementById("p" + player + "action").value);
+    if(val < 0) {
+        document.getElementById("p" + player + "action").value = 0;
+        return;
+    } else if(val > 10) {
+        document.getElementById("p" + player + "action").value = 10;
+        return;
+    }
     action[player] = val;
+    updateDisplay();
+}
+function setMovementAction(player) {
+    const val = parseInt(document.getElementById("p" + player + "movementaction").value);
+    if(val < 0) {
+        document.getElementById("p" + player + "movementaction").value = 0;
+        return;
+    } else if(val > 4) {
+        document.getElementById("p" + player + "movementaction").value = 4;
+        return;
+    }
+    movementAction[player] = val;
     updateDisplay();
 }
 function addDamage(player) {
@@ -46,7 +85,8 @@ function updateDisplay() {
     for (let i = 1; i <= 4; i++) {
         document.getElementById(`p${i}TrionDisplay`).innerText = "HP: " + hps[i];
         document.getElementById(`p${i}InitDisplay`).innerText = "Initiative: " + init[i];
-        document.getElementById(`p${i}ActionDisplay`).innerText = "Action: " + action[i];
+        document.getElementById(`p${i}ActionDisplay`).innerText = "Action: " + (action[i] + movementAction[i]);
+        document.getElementById(`p${i}MovementActionDisplay`).innerText = "Movement: " + movementAction[i];
     }
 }
 function refresh() {
@@ -59,6 +99,8 @@ function refresh() {
             setInit(i);
             document.getElementById(`p${i}action`).value = parseInt(arr[2]);
             setAction(i);
+            document.getElementById(`p${i}movementaction`).value = parseInt(arr[3]);
+            setMovementAction(i);
         }
         message("Refreshed Successfully");
     }
@@ -69,7 +111,8 @@ function saveData() {
     for (let i = 1; i <= 4; i++) {
         refreshData[i] = hps[i] + " ";
         refreshData[i] += init[i] + " ";
-        refreshData[i] += action[i];
+        refreshData[i] += action[i] + " ";
+        refreshData[i] += movementAction[i];
     }
     message("Data Saved Successfully");
 }
