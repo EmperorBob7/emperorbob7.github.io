@@ -131,3 +131,6 @@ function diceRoll() {
     const max = document.getElementById("rollMax").value;
     document.getElementById("roll").innerText = "Rolled: " + (Math.floor(Math.random() * max) + 1);
 }
+function test() {
+    alert(window.innerWidth);
+}
