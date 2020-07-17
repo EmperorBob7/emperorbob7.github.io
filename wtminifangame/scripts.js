@@ -31,10 +31,10 @@ let refreshData = {
 const trionArr = [100, 200, 400, 800, 1600, 3200, 6400, 12800, 25600];
 function setTrion(player) {
     const val = parseInt(document.getElementById("p" + player + "trion").value);
-    if(val < 0) {
+    if (val < 0) {
         document.getElementById("p" + player + "trion").value = 0;
         return;
-    } else if(val > 58) {
+    } else if (val > 58) {
         document.getElementById("p" + player + "trion").value = 58;
         return;
     }
@@ -43,10 +43,10 @@ function setTrion(player) {
 }
 function setInit(player) {
     const val = parseInt(document.getElementById("p" + player + "init").value);
-    if(val < 0) {
+    if (val < 0) {
         document.getElementById("p" + player + "init").value = 0;
         return;
-    } else if(val > 15) {
+    } else if (val > 15) {
         document.getElementById("p" + player + "init").value = 15;
         return;
     }
@@ -55,10 +55,10 @@ function setInit(player) {
 }
 function setAction(player) {
     const val = parseInt(document.getElementById("p" + player + "action").value);
-    if(val < 0) {
+    if (val < 0) {
         document.getElementById("p" + player + "action").value = 0;
         return;
-    } else if(val > 10) {
+    } else if (val > 10) {
         document.getElementById("p" + player + "action").value = 10;
         return;
     }
@@ -67,10 +67,10 @@ function setAction(player) {
 }
 function setMovementAction(player) {
     const val = parseInt(document.getElementById("p" + player + "movementaction").value);
-    if(val < 0) {
+    if (val < 0) {
         document.getElementById("p" + player + "movementaction").value = 0;
         return;
-    } else if(val > 4) {
+    } else if (val > 4) {
         document.getElementById("p" + player + "movementaction").value = 4;
         return;
     }
@@ -117,19 +117,17 @@ function saveData() {
     message("Data Saved Successfully");
 }
 function message(str) {
-    document.getElementById("systemMessages").innerText = str;
+    //document.getElementById("systemMessages").innerText = str;
 }
 function resetInitiative(player) {
-    init[player] = refreshData[player].split(" ")[1];
-    document.getElementById(`p${player}init`).value = init[player];
-    updateDisplay();
+    document.getElementById(`p${player}init`).value = parseInt(refreshData[player].split(" ")[1]);
+    setInit(player);
 }
 function resetAction(player) {
-    action[player] = refreshData[player].split(" ")[2];
-    document.getElementById(`p${player}action`).value = action[player];
-    updateDisplay();
+    document.getElementById(`p${player}action`).value = parseInt(refreshData[player].split(" ")[2]);
+    setAction(player);
 }
 function diceRoll() {
     const max = document.getElementById("rollMax").value;
-    document.getElementById("roll").innerText = "Rolled: " + (Math.floor(Math.random()*max)+1);
+    document.getElementById("roll").innerText = "Rolled: " + (Math.floor(Math.random() * max) + 1);
 }

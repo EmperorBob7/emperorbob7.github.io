@@ -6,115 +6,109 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 
-<body align="center">
-    <div class="col">
-        <div class="row">
-            <input style="font-size:30px" type='text' class='names' placeholder="Player 1"/>
-            <label class="final">Trion:</label>
-            <input type="number" value="0" id="p1trion" onchange="setTrion(1)" class="final"/>
-            <br />
-            <label class="final">Initiative: </label>
-            <input type="number" value="0" id="p1init" onchange="setInit(1)" class="final" />
-            <br />
-            <label class="final">Action: </label>
-            <input type="number" value="0" id="p1action" onchange="setAction(1)" class="final" />
-            <br />
-            <label class="final">Movement: </label>
-            <input type="number" value="0" id="p1movementaction" onchange="setMovementAction(1)" class="final"/>
-            
-            <h2 id="p1TrionDisplay">HP: 0</h2>
-            <h2 id="p1InitDisplay">Initiative: 0</h2>
-            <h2 id="p1ActionDisplay">Action: 0</h2>
-            <h2 id="p1MovementActionDisplay">Movement: 0</h2>
-            <span>Take Damage: </span>
-            <input type="number" id="p1Damage" />
-            <button onclick="addDamage(1)">Add Damage</button>
-            <br />
-            <button onclick="resetInitiative(1)">Reset Initiative</button>
-            <button onclick="resetAction(1)">Reset Action</button>
-        </div>
-        <hr />
-        <div class="row">
-            <input style="font-size:30px" type='text' class='names' placeholder="Player 3"/>
-            <label class="final">Trion:</label>
-            <input type="number" value="0" id="p3trion" onchange="setTrion(3)" class="final" />
-            <br />
-            <label class="final">Initiative: </label>
-            <input type="number" value="0" id="p3init" onchange="setInit(3)" class="final" />
-            <br />
-            <label class="final">Action: </label>
-            <input type="number" value="0" id="p3action" onchange="setAction(3)" class="final" />
-            <br />
-            <label class="final">Movement: </label>
-            <input type="number" value="0" id="p3movementaction" onchange="setMovementAction(3)" class="final"/>
-            
-            <h2 id="p3TrionDisplay">HP: 0</h2>
-            <h2 id="p3InitDisplay">Initiative: 0</h2>
-            <h2 id="p3ActionDisplay">Action: 0</h2>
-            <h2 id="p3MovementActionDisplay">Movement: 0</h2>
-            <span>Take Damage: </span>
-            <input type="number" id="p3Damage" />
-            <button onclick="addDamage(3)">Add Damage</button>
-            <br />
-            <button onclick="resetInitiative(3)">Reset Initiative</button>
-            <button onclick="resetAction(3)">Reset Action</button>
-        </div>
+<body>
+
+    <div class="row" style="grid-area: p1;">
+        <input style="font-size:30px" type='text' class='names' placeholder="Player 1" />
+        <label class="final">Trion:</label>
+        <input type="number" value="0" id="p1trion" onchange="setTrion(1)" class="final" />
+        <br />
+        <label class="final">Initiative: </label>
+        <input type="number" value="0" id="p1init" onchange="setInit(1)" class="final" />
+        <br />
+        <label class="final">Action: </label>
+        <input type="number" value="0" id="p1action" onchange="setAction(1)" class="final" />
+        <br />
+        <label class="final">Movement: </label>
+        <input type="number" value="0" id="p1movementaction" onchange="setMovementAction(1)" class="final" />
+
+        <h2 id="p1TrionDisplay">HP: 0</h2>
+        <h2 id="p1InitDisplay">Initiative: 0</h2>
+        <h2 id="p1ActionDisplay">Action: 0</h2>
+        <h2 id="p1MovementActionDisplay">Movement: 0</h2>
+        <span>Take Damage: </span>
+        <input type="number" id="p1Damage" />
+        <button onclick="addDamage(1)">Add Damage</button>
+        <br />
+        <button onclick="resetInitiative(1)">Reset Initiative</button>
+        <button onclick="resetAction(1)">Reset Action</button>
     </div>
-    <div class="col">
-        <div class="row">
-            <input style="font-size:30px" type='text' class='names' placeholder="Player 2"/>
-            <label class="final">Trion:</label>
-            <input type="number" value="0" id="p2trion" onchange="setTrion(2)" class="final" />
-            <br />
-            <label class="final">Initiative: </label>
-            <input type="number" value="0" id="p2init" onchange="setInit(2)" class="final" />
-            <br />
-            <label class="final">Action: </label>
-            <input type="number" value="0" id="p2action" onchange="setAction(2)" class="final" />
-            <br />
-            <label class="final">Movement: </label>
-            <input type="number" value="0" id="p2movementaction" onchange="setMovementAction(2)" class="final"/>
-            
-            <h2 id="p2TrionDisplay">HP: 0</h2>
-            <h2 id="p2InitDisplay">Initiative: 0</h2>
-            <h2 id="p2ActionDisplay">Action: 0</h2>
-            <h2 id="p2MovementActionDisplay">Movement: 0</h2>
-            <span>Take Damage: </span>
-            <input type="number" id="p2Damage" />
-            <button onclick="addDamage(2)">Add Damage</button>
-            <br />
-            <button onclick="resetInitiative(2)">Reset Initiative</button>
-            <button onclick="resetAction(2)">Reset Action</button>
-        </div>
-        <hr />
-        <div class="row">
-            <input style="font-size:30px" type='text' class='names' placeholder="Player 4"/>
-            <label class="final">Trion:</label>
-            <input type="number" value="0" id="p4trion" onchange="setTrion(4)" class="final" />
-            <br />
-            <label class="final">Initiative: </label>
-            <input type="number" value="0" id="p4init" onchange="setInit(4)" class="final" />
-            <br />
-            <label class="final">Action: </label>
-            <input type="number" value="0" id="p4action" onchange="setAction(4)" class="final" />
-            <br />
-            <label class="final">Movement: </label>
-            <input type="number" value="0" id="p4movementaction" onchange="setMovementAction(4)" class="final"/>
-            
-            <h2 id="p4TrionDisplay">HP: 0</h2>
-            <h2 id="p4InitDisplay">Initiative: 0</h2>
-            <h2 id="p4ActionDisplay">Action: 0</h2>
-            <h2 id="p4MovementActionDisplay">Movement: 0</h2>
-            <span>Take Damage: </span>
-            <input type="number" id="p4Damage" />
-            <button onclick="addDamage(4)">Add Damage</button>
-            <br />
-            <button onclick="resetInitiative(4)">Reset Initiative</button>
-            <button onclick="resetAction(4)">Reset Action</button>
-        </div>
+    <div class="row" style="grid-area: p2;">
+        <input style="font-size:30px" type='text' class='names' placeholder="Player 2" />
+        <label class="final">Trion:</label>
+        <input type="number" value="0" id="p2trion" onchange="setTrion(2)" class="final" />
+        <br />
+        <label class="final">Initiative: </label>
+        <input type="number" value="0" id="p2init" onchange="setInit(2)" class="final" />
+        <br />
+        <label class="final">Action: </label>
+        <input type="number" value="0" id="p2action" onchange="setAction(2)" class="final" />
+        <br />
+        <label class="final">Movement: </label>
+        <input type="number" value="0" id="p2movementaction" onchange="setMovementAction(2)" class="final" />
+
+        <h2 id="p2TrionDisplay">HP: 0</h2>
+        <h2 id="p2InitDisplay">Initiative: 0</h2>
+        <h2 id="p2ActionDisplay">Action: 0</h2>
+        <h2 id="p2MovementActionDisplay">Movement: 0</h2>
+        <span>Take Damage: </span>
+        <input type="number" id="p2Damage" />
+        <button onclick="addDamage(2)">Add Damage</button>
+        <br />
+        <button onclick="resetInitiative(2)">Reset Initiative</button>
+        <button onclick="resetAction(2)">Reset Action</button>
     </div>
-    <br />
-    <div class="col">
+    <div class="row" style="grid-area: p3;">
+        <input style="font-size:30px" type='text' class='names' placeholder="Player 3" />
+        <label class="final">Trion:</label>
+        <input type="number" value="0" id="p3trion" onchange="setTrion(3)" class="final" />
+        <br />
+        <label class="final">Initiative: </label>
+        <input type="number" value="0" id="p3init" onchange="setInit(3)" class="final" />
+        <br />
+        <label class="final">Action: </label>
+        <input type="number" value="0" id="p3action" onchange="setAction(3)" class="final" />
+        <br />
+        <label class="final">Movement: </label>
+        <input type="number" value="0" id="p3movementaction" onchange="setMovementAction(3)" class="final" />
+
+        <h2 id="p3TrionDisplay">HP: 0</h2>
+        <h2 id="p3InitDisplay">Initiative: 0</h2>
+        <h2 id="p3ActionDisplay">Action: 0</h2>
+        <h2 id="p3MovementActionDisplay">Movement: 0</h2>
+        <span>Take Damage: </span>
+        <input type="number" id="p3Damage" />
+        <button onclick="addDamage(3)">Add Damage</button>
+        <br />
+        <button onclick="resetInitiative(3)">Reset Initiative</button>
+        <button onclick="resetAction(3)">Reset Action</button>
+    </div>
+    <div class="row" style="grid-area: p4;">
+        <input style="font-size:30px" type='text' class='names' placeholder="Player 4" />
+        <label class="final">Trion:</label>
+        <input type="number" value="0" id="p4trion" onchange="setTrion(4)" class="final" />
+        <br />
+        <label class="final">Initiative: </label>
+        <input type="number" value="0" id="p4init" onchange="setInit(4)" class="final" />
+        <br />
+        <label class="final">Action: </label>
+        <input type="number" value="0" id="p4action" onchange="setAction(4)" class="final" />
+        <br />
+        <label class="final">Movement: </label>
+        <input type="number" value="0" id="p4movementaction" onchange="setMovementAction(4)" class="final" />
+
+        <h2 id="p4TrionDisplay">HP: 0</h2>
+        <h2 id="p4InitDisplay">Initiative: 0</h2>
+        <h2 id="p4ActionDisplay">Action: 0</h2>
+        <h2 id="p4MovementActionDisplay">Movement: 0</h2>
+        <span>Take Damage: </span>
+        <input type="number" id="p4Damage" />
+        <button onclick="addDamage(4)">Add Damage</button>
+        <br />
+        <button onclick="resetInitiative(4)">Reset Initiative</button>
+        <button onclick="resetAction(4)">Reset Action</button>
+    </div>
+    <div class="col" style="grid-area: tools;">
         <h1>Tools</h1>
         <button onclick="saveData()">Save Data!</button>
         <br />
@@ -127,12 +121,8 @@
         <button onclick="diceRoll()">Roll</button>
         <br />
         <span id="roll">Rolled: </span>
-        <footer>
-            <span>System Messages: </span>
-            <span id="systemMessages"></span>
-        </footer>
     </div>
-    <script src="scripts.js"></script>
 </body>
+<script src="scripts.js"></script>
 
 </html>

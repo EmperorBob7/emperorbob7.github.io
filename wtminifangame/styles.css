@@ -6,26 +6,26 @@ body {
     background-color:#444;
     color:#DDD;
     font-family: Arial, Helvetica, sans-serif;
-    margin:auto;
-    display: flex;
     height: 100vh;
-    justify-content: center;
+    display: grid;
+    grid-gap:0;
+    text-align: center;
+    grid-template-areas: "p1 p2 tools"
+                         "p3 p4 tools";
+}
+.row {
+    background-color:#122;
+    border:1px solid white;
 }
 .col {
-    width:55vw;
     background-color:#122;
     border:1px solid white;
 }
-.col:nth-child(4) {
-    width:15vw;
-    background-color:#122;
-    border:1px solid white;
-}
-.col:nth-child(4) input, .col:nth-child(4) button, .col:nth-child(4) span {
+.col input, .col button, .col span {
     display: inline-block;
     margin-top: 20px;
 }
-.col:nth-child(4) label {
+.col label {
     margin-top: 10vh;
 }
 .names {
@@ -52,9 +52,6 @@ table {
 td, th {
     border:1px solid white;
 }
-.row {
-    height: 49vh;
-}
 label {
     width: 10vw;
     text-align: left;
@@ -77,7 +74,14 @@ input {
     border: 1px solid black;
     padding:2px;
 }
-footer {
-    position: absolute;
-    bottom: 0;
+@media (max-width: 768px) {
+    body {
+        background-color:#444;
+        color:#DDD;
+        font-family: Arial, Helvetica, sans-serif;
+        height: 100vh;
+        display: grid;
+        text-align: center;
+        grid-template-areas: "p1" "p2" "p3" "p4" "tools";
+    }
 }
