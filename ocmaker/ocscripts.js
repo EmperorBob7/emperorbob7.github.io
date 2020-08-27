@@ -12,7 +12,8 @@ for (let i = 0; i < TriggerNames.length; i++) {
     TriggerImages[TriggerNames[i]] = newImage(TriggerUrls[i]);
 }
 window.onload = function() {
-    begin();
+    console.log(TriggerImages);
+    setTimeout(begin, 1000);
 }
 let SquadRank = "";
 let triggers = ["Free Trigger", "Free Trigger", "Free Trigger", "Free Trigger", "Free Trigger", "Free Trigger", "Free Trigger", "Free Trigger"];
