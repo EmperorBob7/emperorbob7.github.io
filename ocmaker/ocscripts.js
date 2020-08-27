@@ -1,43 +1,25 @@
-var ctx;
-var canvas;
-var position = "", age = "", birthday = "", height = "", bloodtype = "", zodiac = "", occupation = "", likes = "", faction = "";
-var ty = 0, ax = 0, ay = 0, dx = 0, dy = 0, mx = 0, my = 0, sx = 0, sy = 0, rx = 0, ry = 0, cx = 0, cy = 0, tx = 0, tty = 0;
-var name, ranking, emblem;
-var trion = "0", attack = "0", defense = "0", mobility = "0", skill = "0", range = "0", command = "0", tactics = "0", total = "0", reactions = "0", strategy = "0", specialtech = "0", recon = "0", attacker = "0", shooter = "0", sniper = "0", gunner = "0";
-const TriggerImages = {
-    "opt": new Image().src = "https://cdn.discordapp.com/attachments/571784589882949692/588223959292706817/1560313908255.png",
-    "shi": new Image().src = "https://cdn.discordapp.com/attachments/571784589882949692/588226241895858176/1560314451213.png",
-    "sco": new Image().src = "https://cdn.discordapp.com/attachments/571784589882949692/588228644481269761/1560315030622.png",
-    "egret": new Image().src = "https://cdn.discordapp.com/attachments/571784589882949692/591051692724977665/importantIcon.png",
-    "aster": new Image().src = "https://cdn.discordapp.com/attachments/571784589882949692/591053193702539314/importantIcon.png",
-    "handgun": new Image().src = "https://cdn.discordapp.com/attachments/571784589882949692/591054144995983425/importantIcon.png",
-    "kog": new Image().src = "https://cdn.discordapp.com/attachments/571784589882949692/591058852800233503/importantIcon.png",
-    "ray": new Image().src = "https://cdn.discordapp.com/attachments/571784589882949692/591060849754374146/importantIcon.png",
-    "viper": new Image().src = "https://cdn.discordapp.com/attachments/571784589882949692/591062402783772691/importantIcon.png",
-    "mete": new Image().src = "https://cdn.discordapp.com/attachments/571784589882949692/591063097255526400/importantIcon.png",
-    "hound": new Image().src = "https://cdn.discordapp.com/attachments/571784589882949692/591064834523660303/importantIcon.png",
-    "speark": new Image().src = "https://cdn.discordapp.com/attachments/571784589882949692/591067006355374110/importantIcon.png",
-    "ibis": new Image().src = "https://cdn.discordapp.com/attachments/571784589882949692/595070798725906442/importantIcon.png",
-    "light": new Image().src = "https://cdn.discordapp.com/attachments/571784589882949692/595071264087998496/importantIcon.png",
-    "escudo": new Image().src = "https://cdn.discordapp.com/attachments/571784589882949692/595073834692902925/importantIcon.png",
-    "arifle": new Image().src = "https://cdn.discordapp.com/attachments/571784589882949692/595073561467682818/importantIcon.png",
-    "shot": new Image().src = "https://cdn.discordapp.com/attachments/571784589882949692/595074859860492318/importantIcon.png",
-    "grenade": new Image().src = "https://cdn.discordapp.com/attachments/571784589882949692/595076936133246989/importantIcon.png",
-    "free": new Image().src = "https://cdn.discordapp.com/attachments/571784589882949692/596874086341410826/importantIcon.png",
-    "switchbox": new Image().src = "https://cdn.discordapp.com/attachments/571784589882949692/596787826511577119/importantIcon.png",
-    "img": new Image().src = "https://cdn.discordapp.com/attachments/571784589882949692/606222154140221441/importantIcon.png",
-    "blocked": new Image().src = "https://cdn.discordapp.com/attachments/571784589882949692/597287816635875338/importantIcon.png",
-    "soget": new Image().src = "https://cdn.discordapp.com/attachments/571784589882949692/610257477631606811/importantIcon.png"
-};
+let ctx;
+let canvas;
+let position = "", age = "", birthday = "", height = "", bloodtype = "", zodiac = "", occupation = "", likes = "", faction = "";
+let ty = 0, ax = 0, ay = 0, dx = 0, dy = 0, mx = 0, my = 0, sx = 0, sy = 0, rx = 0, ry = 0, cx = 0, cy = 0, tx = 0, tty = 0;
+let name, ranking;
+let trion = "0", attack = "0", defense = "0", mobility = "0", skill = "0", range = "0", command = "0", tactics = "0", total = "0", reactions = "0", strategy = "0", specialtech = "0", recon = "0", attacker = "0", shooter = "0", sniper = "0", gunner = "0";
+const TriggerNames = ["opt", "shi", "sco", "egret", "aster", "handgun", "kog", "ray", "viper", "mete", "hound", "speark", "ibis", "light", "escudo", "arifle", "shot", "grenade", "free", "switchbox", "img", "blocked", "soget"];
+const TriggerUrls = ["https://cdn.discordapp.com/attachments/571784589882949692/588223959292706817/1560313908255.png", "https://cdn.discordapp.com/attachments/571784589882949692/588226241895858176/1560314451213.png", "https://cdn.discordapp.com/attachments/571784589882949692/588228644481269761/1560315030622.png", "https://cdn.discordapp.com/attachments/571784589882949692/591051692724977665/importantIcon.png", "https://cdn.discordapp.com/attachments/571784589882949692/591053193702539314/importantIcon.png", "https://cdn.discordapp.com/attachments/571784589882949692/591054144995983425/importantIcon.png", "https://cdn.discordapp.com/attachments/571784589882949692/591058852800233503/importantIcon.png", "https://cdn.discordapp.com/attachments/571784589882949692/591060849754374146/importantIcon.png", "https://cdn.discordapp.com/attachments/571784589882949692/591062402783772691/importantIcon.png", "https://cdn.discordapp.com/attachments/571784589882949692/591063097255526400/importantIcon.png", "https://cdn.discordapp.com/attachments/571784589882949692/591064834523660303/importantIcon.png", "https://cdn.discordapp.com/attachments/571784589882949692/591067006355374110/importantIcon.png", "https://cdn.discordapp.com/attachments/571784589882949692/595070798725906442/importantIcon.png", "https://cdn.discordapp.com/attachments/571784589882949692/595071264087998496/importantIcon.png", "https://cdn.discordapp.com/attachments/571784589882949692/595073834692902925/importantIcon.png", "https://cdn.discordapp.com/attachments/571784589882949692/595073561467682818/importantIcon.png", "https://cdn.discordapp.com/attachments/571784589882949692/595074859860492318/importantIcon.png", "https://cdn.discordapp.com/attachments/571784589882949692/595076936133246989/importantIcon.png", "https://cdn.discordapp.com/attachments/571784589882949692/596874086341410826/importantIcon.png", "https://cdn.discordapp.com/attachments/571784589882949692/596787826511577119/importantIcon.png", "https://cdn.discordapp.com/attachments/571784589882949692/606222154140221441/importantIcon.png", "https://cdn.discordapp.com/attachments/571784589882949692/597287816635875338/importantIcon.png", "https://cdn.discordapp.com/attachments/571784589882949692/610257477631606811/importantIcon.png"];
+const TriggerImages = {};
+let t0 = new Date();
+for (let i = 0; i < TriggerNames.length; i++) {
+    TriggerImages[TriggerNames[i]] = newImage(TriggerUrls[i]);
+}
 
 setTimeout(begin, 1000);
-var SquadRank = "";
-var triggers = [0, 0, 0, 0, 0, 0, 0, 0];
-var orderProf = ["POSITION: ", "AGE: ", "BIRTHDAY: ", "HEIGHT: ", "BLOOD TYPE: ", "ZODIAC: ", "OCCUPATION: ", "LIKES: ", "FACTION: "];
-var orderProf2 = [];
-var orderStat = ["TRION: ", "MOBILITY: ", "REACTIONS: ", "RECON: ", "STRATEGY: ", "SPECIAL TECHNIQUES: "];
-var orderStat2 = [];
-var texts = ["", "DEFENSE TRIGGER", "OPTION TRIGGER", "ATTACKER TRIGGER", "ATTACKER TRIGGER", "ATTACKER TRIGGER", "ATTACKER TRIGGER", "SHOOTER TRIGGER", "SHOOTER TRIGGER", "SHOOTER TRIGGER", "SHOOTER TRIGGER", "SNIPER TRIGGER", "SNIPER TRIGGER", "SNIPER TRIGGER", "OPTION TRIGGER", "OPTION TRIGGER", "OPTION TRIGGER", "OPTION TRIGGER", "OPTION TRIGGER", "DEFENSE TRIGGER", "OPTION TRIGGER", "OPTION TRIGGER", "OPTION TRIGGER", "OPTION TRIGGER", "OPTION TRIGGER", "OPTION TRIGGER"];
+let SquadRank = "";
+let triggers = ["Free Trigger", "Free Trigger", "Free Trigger", "Free Trigger", "Free Trigger", "Free Trigger", "Free Trigger", "Free Trigger"];
+let orderProf = ["POSITION: ", "AGE: ", "BIRTHDAY: ", "HEIGHT: ", "BLOOD TYPE: ", "ZODIAC: ", "OCCUPATION: ", "LIKES: ", "FACTION: "];
+let orderProf2 = [];
+let orderStat = ["TRION: ", "MOBILITY: ", "REACTIONS: ", "RECON: ", "STRATEGY: ", "SPECIAL TECHNIQUES: "];
+let orderStat2 = [];
+let texts = ["", "DEFENSE TRIGGER", "OPTION TRIGGER", "ATTACKER TRIGGER", "ATTACKER TRIGGER", "ATTACKER TRIGGER", "ATTACKER TRIGGER", "SHOOTER TRIGGER", "SHOOTER TRIGGER", "SHOOTER TRIGGER", "SHOOTER TRIGGER", "SNIPER TRIGGER", "SNIPER TRIGGER", "SNIPER TRIGGER", "OPTION TRIGGER", "OPTION TRIGGER", "OPTION TRIGGER", "OPTION TRIGGER", "OPTION TRIGGER", "DEFENSE TRIGGER", "OPTION TRIGGER", "OPTION TRIGGER", "OPTION TRIGGER", "OPTION TRIGGER", "OPTION TRIGGER", "OPTION TRIGGER"];
 texts[54] = "TRAP TRIGGER";
 texts[55] = "OPTION TRIGGER";
 texts[56] = "OPTION TRIGGER";
@@ -45,36 +27,42 @@ texts[57] = "OPTION TRIGGER";
 texts[58] = "OPTION TRIGGER";
 texts[59] = "ATTACKER TRIGGER";
 texts[60] = "OPTION TRIGGER";
-var trigNames = ["", "SHIELD", "BAGWORM", "RAYGUST", "KOGETSU", "SCORPION", "KOGETSU: SPEAR", "ASTEROID", "HOUND", "METEORA", "VIPER", "EGRET", "IBIS", "LIGHTNING", "GEN'YO", "LEAD BULLET", "SENKU", "STARMAKER", "THRUSTER", "ESCUDO", "CHAMELEON", "DUMMY BEACON", "GRASSHOPPER", "SILENCER", "SPIDER", "TELEPORTER", "Assault Rifle: Viper", "Assault Rifle: Hound", "Assault Rifle: Asteroid", "Assault Rifle: Meteora", "Assault Rifle: Gimlet", "Assault Rifle: Salamander", "Assault Rifle: Tomahawk", "Grenade Gun: Viper", "Grenade Gun: Hound", "Grenade Gun: Asteroid", "Grenade Gun: Meteora", "Grenade Gun: Gimlet", "Grenade Gun: Salamander", "Grenade Gun: Tomahawk", "Shotgun: Viper", "Shotgun: Hound", "Shotgun: Asteroid", "Shotgun: Meteora", "Shotgun: Gimlet", "Shotgun: Salamander", "Shotgun: Tomahawk", "Handgun: Viper", "Handgun: Hound", "Handgun: Asteroid", "Handgun: Meteora", "Handgun: Gimlet", "Handgun: Salamander", "Handgun: Tomahawk", "SWITCHBOX", "BAGWORM TAG", "IDATEN", "GEIST", "CONNECTOR", "SOUGETSU", "FULL ARMS"];
-var trigImg = ["", TriggerImages["shi"], TriggerImages["opt"], TriggerImages["ray"], TriggerImages["kog"], TriggerImages["sco"], TriggerImages["speark"], TriggerImages["aster"], TriggerImages["hound"], TriggerImages["mete"], TriggerImages["viper"], TriggerImages["egret"], TriggerImages["ibis"], TriggerImages["light"], TriggerImages["opt"], TriggerImages["opt"], TriggerImages["opt"], TriggerImages["opt"], TriggerImages["opt"], TriggerImages["escudo"], TriggerImages["opt"], TriggerImages["opt"], TriggerImages["opt"], TriggerImages["opt"], TriggerImages["opt"], TriggerImages["opt"], TriggerImages["arifle"], TriggerImages["arifle"], TriggerImages["arifle"], TriggerImages["arifle"], TriggerImages["arifle"], TriggerImages["arifle"], TriggerImages["arifle"], TriggerImages["grenade"], TriggerImages["grenade"], TriggerImages["grenade"], TriggerImages["grenade"], TriggerImages["grenade"], TriggerImages["grenade"], TriggerImages["grenade"], TriggerImages["shot"], TriggerImages["shot"], TriggerImages["shot"], TriggerImages["shot"], TriggerImages["shot"], TriggerImages["shot"], TriggerImages["shot"], TriggerImages["handgun"], TriggerImages["handgun"], TriggerImages["handgun"], TriggerImages["handgun"], TriggerImages["handgun"], TriggerImages["handgun"], TriggerImages["handgun"], TriggerImages["switchbox"], TriggerImages["opt"], TriggerImages["opt"], TriggerImages["opt"], TriggerImages["opt"], TriggerImages["soget"], TriggerImages["opt"]];
+let trigNames = ["", "SHIELD", "BAGWORM", "RAYGUST", "KOGETSU", "SCORPION", "KOGETSU: SPEAR", "ASTEROID", "HOUND", "METEORA", "VIPER", "EGRET", "IBIS", "LIGHTNING", "GEN'YO", "LEAD BULLET", "SENKU", "STARMAKER", "THRUSTER", "ESCUDO", "CHAMELEON", "DUMMY BEACON", "GRASSHOPPER", "SILENCER", "SPIDER", "TELEPORTER", "Assault Rifle: Viper", "Assault Rifle: Hound", "Assault Rifle: Asteroid", "Assault Rifle: Meteora", "Assault Rifle: Gimlet", "Assault Rifle: Salamander", "Assault Rifle: Tomahawk", "Grenade Gun: Viper", "Grenade Gun: Hound", "Grenade Gun: Asteroid", "Grenade Gun: Meteora", "Grenade Gun: Gimlet", "Grenade Gun: Salamander", "Grenade Gun: Tomahawk", "Shotgun: Viper", "Shotgun: Hound", "Shotgun: Asteroid", "Shotgun: Meteora", "Shotgun: Gimlet", "Shotgun: Salamander", "Shotgun: Tomahawk", "Handgun: Viper", "Handgun: Hound", "Handgun: Asteroid", "Handgun: Meteora", "Handgun: Gimlet", "Handgun: Salamander", "Handgun: Tomahawk", "SWITCHBOX", "BAGWORM TAG", "IDATEN", "GEIST", "CONNECTOR", "SOUGETSU", "FULL ARMS"];
+let trigImg = ["", TriggerImages["shi"], TriggerImages["opt"], TriggerImages["ray"], TriggerImages["kog"], TriggerImages["sco"], TriggerImages["speark"], TriggerImages["aster"], TriggerImages["hound"], TriggerImages["mete"], TriggerImages["viper"], TriggerImages["egret"], TriggerImages["ibis"], TriggerImages["light"], TriggerImages["opt"], TriggerImages["opt"], TriggerImages["opt"], TriggerImages["opt"], TriggerImages["opt"], TriggerImages["escudo"], TriggerImages["opt"], TriggerImages["opt"], TriggerImages["opt"], TriggerImages["opt"], TriggerImages["opt"], TriggerImages["opt"], TriggerImages["arifle"], TriggerImages["arifle"], TriggerImages["arifle"], TriggerImages["arifle"], TriggerImages["arifle"], TriggerImages["arifle"], TriggerImages["arifle"], TriggerImages["grenade"], TriggerImages["grenade"], TriggerImages["grenade"], TriggerImages["grenade"], TriggerImages["grenade"], TriggerImages["grenade"], TriggerImages["grenade"], TriggerImages["shot"], TriggerImages["shot"], TriggerImages["shot"], TriggerImages["shot"], TriggerImages["shot"], TriggerImages["shot"], TriggerImages["shot"], TriggerImages["handgun"], TriggerImages["handgun"], TriggerImages["handgun"], TriggerImages["handgun"], TriggerImages["handgun"], TriggerImages["handgun"], TriggerImages["handgun"], TriggerImages["switchbox"], TriggerImages["opt"], TriggerImages["opt"], TriggerImages["opt"], TriggerImages["opt"], TriggerImages["soget"], TriggerImages["opt"]];
 //0-25 is regular 3-6 Attacker 7-10 Shooter 11-13 Sniper 14-18 Attachments 19-25 Extras 26-32 Assault Rifles 33-39 Grenade Launchers 40-46 Shotguns 47-53 Handguns
 
+function newImage(src) {
+    let newimg = new Image();
+    newimg.src = src;
+    return newimg;
+}
 function begin() {
     canvas = document.getElementById("cv");
     ctx = canvas.getContext("2d");
     ctx.drawImage(TriggerImages["img"], 0, 0, 1280, 720);
+    draw();
     reset();
 }
 function reset() {
-    ctx.drawImage(img, 0, 0, 1280, 720);
+    ctx.drawImage(TriggerImages["img"], 0, 0, 1280, 720);
 }
 function getTrigs() {
-    for (var i = 0; i < 4; i++) {
-        var e = document.getElementById("main" + (i + 1));
-        var ret = e.options[e.selectedIndex].value;
+    for (let i = 0; i < 4; i++) {
+        let e = document.getElementById("main" + (i + 1));
+        let ret = e.options[e.selectedIndex].value;
         triggers[i] = parseInt(ret);
     }
-    var z = 0;
-    for (var i = 4; i < 8; i++) {
-        var e = document.getElementById("sub" + (z + 1));
-        var ret = e.options[e.selectedIndex].value;
+    let z = 0;
+    for (let i = 4; i < 8; i++) {
+        let e = document.getElementById("sub" + (z + 1));
+        let ret = e.options[e.selectedIndex].value;
         triggers[i] = parseInt(ret);
         z++;
     }
 }
 function getRank() {
-    var e = document.getElementById("squadrank");
-    var ret = e.options[e.selectedIndex].value;
+    let e = document.getElementById("squadrank");
+    let ret = e.options[e.selectedIndex].value;
     SquadRank = ret;
 }
 function getParams() {
@@ -104,7 +92,7 @@ function paramText(int) {
     }
 }
 function getTrion(tz) {
-    var tr = tz;
+    let tr = tz;
     switch (tr) {
         case "1":
             ty = 373;
@@ -485,10 +473,10 @@ function paramText() {
     ctx.fillText(tactics, 701, 304);
     ctx.font = "normal normal bold 26px Arial";
     ctx.textAlign = "start";
-    var sum = trion + "+" + attack + "+" + defense + "+" + mobility + "+" + skill + "+" + range + "+" + command + "+" + tactics;
+    let sum = trion + "+" + attack + "+" + defense + "+" + mobility + "+" + skill + "+" + range + "+" + command + "+" + tactics;
     ctx.fillText(eval(sum), 719, 554);
 }
-var textY, imgY, nameY, freeY;
+let textY, imgY, nameY, freeY;
 function drawGuns(xVal, xVal2, xVal3, z) {
     ctx.fillText("GUNNER TRIGGER", xVal, textY);
     ctx.drawImage(trigImg[triggers[z]], xVal2, imgY, 39, 43);
@@ -501,10 +489,10 @@ function trigText() {
     imgY = 260;
     nameY = 290;
     freeY = 251;
-    for (var i = 0; i < 4; i++) {
+    for (let i = 0; i < 4; i++) {
         ctx.font = "normal normal bold 10px Arial";
         if (triggers[i] == 0) {
-            ctx.drawImage(free, 361, freeY);
+            ctx.drawImage(TriggerImages["free"], 361, freeY);
         }
         else if (triggers[i] > 25 && triggers[i] <= 53) {
             drawGuns(418, 372, 420, i);
@@ -537,10 +525,10 @@ function trigText() {
     imgY = 205;
     nameY = 235;
     freeY = 196;
-    for (var i = 4; i < 8; i++) {
+    for (let i = 4; i < 8; i++) {
         ctx.font = "normal normal bold 10px Arial";
         if (triggers[i] == 0) {
-            ctx.drawImage(free, 1049, freeY);
+            ctx.drawImage(TriggerImages["free"], 1049, freeY);
         }
         else if (triggers[i] > 25 && triggers[i] <= 53) {
             drawGuns(1106, 1060, 1108, i);
@@ -558,13 +546,13 @@ function trigText() {
     }
 }
 function writeName() {
-    var charName = document.getElementById("name").value;
+    let charName = document.getElementById("name").value;
     ctx.fillStyle = "white";
     ctx.font = "normal normal normal 59.6px crusader";
     ctx.fillText(charName, 340, 89, 629);
 }
 function writeRank() {
-    var rank = document.getElementById("ranking").value;
+    let rank = document.getElementById("ranking").value;
     ctx.fillStyle = "white";
     ctx.font = "normal normal normal 38px stencil";
     if (SquadRank == "A") {
@@ -575,8 +563,8 @@ function writeRank() {
         ctx.fillText(rank, 101, 63, 55);
     }
 }
-var emblemUrl;
-var emblem;
+let emblemUrl;
+let emblem;
 function drawSquadEmblem() {
     emblemUrl = document.getElementById("emblem").value;
     emblem = new Image();
@@ -586,8 +574,8 @@ function drawSquadEmblem() {
     }
 }
 function testing() {
-    var imgData = ctx.getImageData(613, 210, 394, 398);
-    var imgData2 = ctx.getImageData(1021, 162, 238, 322);
+    let imgData = ctx.getImageData(613, 210, 394, 398);
+    let imgData2 = ctx.getImageData(1021, 162, 238, 322);
     ctx.putImageData(imgData, 0, 0);
 }
 function getProfile() {
@@ -602,15 +590,15 @@ function getProfile() {
     faction = document.getElementById("faction").value.toUpperCase();
 }
 function drawProfile() {
-    var outY = 570;
+    let outY = 570;
     ctx.font = "normal normal normal 12px arial";
     orderProf2 = [position, age, birthday, height, bloodtype, zodiac, occupation, likes, faction];
-    for (var i = 0; i <= 6; i++) {
+    for (let i = 0; i <= 6; i++) {
         ctx.fillText(orderProf[i] + orderProf2[i], 25, outY);
         outY += 12;
     }
     getLines(likes, 230);
-    for (var i = 0; i < lines.length; i++) {
+    for (let i = 0; i < lines.length; i++) {
         if (i == 0) {
             ctx.fillText("LIKES: " + lines[i], 25, outY);
         }
@@ -621,15 +609,15 @@ function drawProfile() {
     }
     ctx.fillText("FACTION: " + orderProf2[8], 25, outY);
 }
-var lines = [];
+let lines = [];
 function getLines(text, maxWidth) {
-    var words = text.split(" ");
+    let words = text.split(" ");
     lines = [];
-    var currentLine = words[0];
+    let currentLine = words[0];
 
-    for (var i = 1; i < words.length; i++) {
-        var word = words[i];
-        var width = ctx.measureText(currentLine + " " + word).width;
+    for (let i = 1; i < words.length; i++) {
+        let word = words[i];
+        let width = ctx.measureText(currentLine + " " + word).width;
         if (width < maxWidth) {
             currentLine += " " + word;
         } else {
@@ -641,11 +629,11 @@ function getLines(text, maxWidth) {
     return lines;
 }
 function drawStats() {
-    var outY = 275;
+    let outY = 275;
     ctx.font = "normal normal normal 12px arial";
     orderStat2 = [trion, mobility, reactions, recon, strategy, specialtech];
     if (parseInt(attacker) > 0 && parseInt(shooter) > 0 && parseInt(sniper) > 0 && parseInt(gunner) > 0) {
-        for (var i = 0; i <= 5; i++) {
+        for (let i = 0; i <= 5; i++) {
             ctx.fillText(orderStat[i] + orderStat2[i], 25, outY);
             outY += 12;
         }
@@ -667,7 +655,7 @@ function drawStats() {
         }
     }
     else {
-        for (var i = 0; i <= 5; i++) {
+        for (let i = 0; i <= 5; i++) {
             ctx.fillText(orderStat[i] + orderStat2[i], 25, outY);
             outY += 14;
         }

@@ -1,0 +1,88 @@
+<!--Finished on 8/13/2020
+https://www.reddit.com/r/dailyprogrammer/comments/pihtx/intermediate_challenge_1/-->
+
+<body>
+    <button onclick="stuff()">Click Me</button>
+    <script>
+        let list = [];
+        let current = 1;
+        function stuff() {
+            let x = prompt("Please enter one of the following: edit, add, view, or delete.");
+            x = x.toLowerCase();
+            if (x == "edit")
+                edit();
+            if (x == "add")
+                add();
+            if (x == "delete")
+                del();
+            if (x == "view")
+                view();
+        }
+        function add() {
+            let t;
+            let name;
+            let reg = /\d/;
+            t = prompt("Enter the time in hours or cancel to cancel: ");
+            while (!reg.test(t)) {
+                if (t == "cancel")
+                    return;
+                alert("Your Data Was Entered Incorrectly");
+                t = prompt("Enter the time in hours: ");
+            }
+            name = prompt("Enter the event name or cancel to cancel: ");
+            if (name == "cancel")
+                return;
+            list.push({
+                "id": current++,
+                "time": t,
+                "name": name
+            });
+            alert("Your Data Was Saved As: " + JSON.stringify(list[list.length - 1]));
+            list.sort((a, b) => a.time - b.time);
+        }
+        function edit() {
+            let id = prompt("Enter the ID of the event you wish to edit or cancel to cancel: ");
+            if (id == "cancel")
+                return;
+            let x = getByProperty("id", id);
+
+            let t = prompt("Enter Time: ");
+            let name = prompt("Enter Event Name: ");
+            list[x] = {
+                "id": id,
+                "time": t,
+                "name": name
+            };
+            alert("Your Data Was Saved As: " + JSON.stringify(list[x]));
+            list.sort((a, b) => a.time - b.time);
+        }
+        function del() {
+            let id = prompt("Enter the ID of the event you wish to delete or cancel to cancel: ");
+            if (id == "cancel")
+                return;
+            console.log(id);
+            let x = getByProperty("id", id);
+            console.log(x);
+            list.splice(x, 1);
+            alert("Deleted");
+            list.sort((a, b) => a.time - b.time);
+        }
+        function getByProperty(attr, value) {
+            for (var i = 0; i < list.length; i += 1) {
+                console.log(list[i]);
+                if (list[i][attr] == value) {
+                    return i;
+                }
+            }
+            return -1;
+        }
+        function view() {
+            var str = "";
+            for (let i = 0; i < list.length; i++) {
+                str += JSON.stringify(list[i]);
+                str += "\n";
+            }
+            alert(str);
+        }
+    </script>
+</body>
