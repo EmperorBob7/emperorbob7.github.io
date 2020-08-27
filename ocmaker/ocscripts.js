@@ -11,8 +11,9 @@ let t0 = new Date();
 for (let i = 0; i < TriggerNames.length; i++) {
     TriggerImages[TriggerNames[i]] = newImage(TriggerUrls[i]);
 }
-
-setTimeout(begin, 1000);
+window.onload = function() {
+    begin();
+}
 let SquadRank = "";
 let triggers = ["Free Trigger", "Free Trigger", "Free Trigger", "Free Trigger", "Free Trigger", "Free Trigger", "Free Trigger", "Free Trigger"];
 let orderProf = ["POSITION: ", "AGE: ", "BIRTHDAY: ", "HEIGHT: ", "BLOOD TYPE: ", "ZODIAC: ", "OCCUPATION: ", "LIKES: ", "FACTION: "];
