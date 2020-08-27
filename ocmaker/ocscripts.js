@@ -9,12 +9,12 @@ const TriggerUrls = ["https://cdn.discordapp.com/attachments/571784589882949692/
 const TriggerImages = {};
 let t0 = new Date();
 for (let i = 0; i < TriggerNames.length; i++) {
-    TriggerImages[TriggerNames[i]] = newImage(TriggerUrls[i]);
+    if (TriggerNames[i] == "soget")
+        TriggerImages[TriggerNames[i]] = newImage(TriggerUrls[i], true);
+    else
+        TriggerImages[TriggerNames[i]] = newImage(TriggerUrls[i], false);
 }
-window.onload = function() {
-    console.log(TriggerImages);
-    setTimeout(begin, 1000);
-}
+
 let SquadRank = "";
 let triggers = ["Free Trigger", "Free Trigger", "Free Trigger", "Free Trigger", "Free Trigger", "Free Trigger", "Free Trigger", "Free Trigger"];
 let orderProf = ["POSITION: ", "AGE: ", "BIRTHDAY: ", "HEIGHT: ", "BLOOD TYPE: ", "ZODIAC: ", "OCCUPATION: ", "LIKES: ", "FACTION: "];
@@ -33,8 +33,13 @@ let trigNames = ["", "SHIELD", "BAGWORM", "RAYGUST", "KOGETSU", "SCORPION", "KOG
 let trigImg = ["", TriggerImages["shi"], TriggerImages["opt"], TriggerImages["ray"], TriggerImages["kog"], TriggerImages["sco"], TriggerImages["speark"], TriggerImages["aster"], TriggerImages["hound"], TriggerImages["mete"], TriggerImages["viper"], TriggerImages["egret"], TriggerImages["ibis"], TriggerImages["light"], TriggerImages["opt"], TriggerImages["opt"], TriggerImages["opt"], TriggerImages["opt"], TriggerImages["opt"], TriggerImages["escudo"], TriggerImages["opt"], TriggerImages["opt"], TriggerImages["opt"], TriggerImages["opt"], TriggerImages["opt"], TriggerImages["opt"], TriggerImages["arifle"], TriggerImages["arifle"], TriggerImages["arifle"], TriggerImages["arifle"], TriggerImages["arifle"], TriggerImages["arifle"], TriggerImages["arifle"], TriggerImages["grenade"], TriggerImages["grenade"], TriggerImages["grenade"], TriggerImages["grenade"], TriggerImages["grenade"], TriggerImages["grenade"], TriggerImages["grenade"], TriggerImages["shot"], TriggerImages["shot"], TriggerImages["shot"], TriggerImages["shot"], TriggerImages["shot"], TriggerImages["shot"], TriggerImages["shot"], TriggerImages["handgun"], TriggerImages["handgun"], TriggerImages["handgun"], TriggerImages["handgun"], TriggerImages["handgun"], TriggerImages["handgun"], TriggerImages["handgun"], TriggerImages["switchbox"], TriggerImages["opt"], TriggerImages["opt"], TriggerImages["opt"], TriggerImages["opt"], TriggerImages["soget"], TriggerImages["opt"]];
 //0-25 is regular 3-6 Attacker 7-10 Shooter 11-13 Sniper 14-18 Attachments 19-25 Extras 26-32 Assault Rifles 33-39 Grenade Launchers 40-46 Shotguns 47-53 Handguns
 
-function newImage(src) {
+function newImage(src, bool) {
     let newimg = new Image();
+    if (bool) {
+        newimg.onload = function () {
+            begin();
+        }
+    }
     newimg.src = src;
     return newimg;
 }
