@@ -506,15 +506,15 @@ function trigText() {
         }
         else if (triggers[i] == 55) {
             ctx.fillText(texts[triggers[i]], 418, textY);
-            ctx.drawImage(trigImg[triggers[i]], 372, imgY, 39, 43);
+            ctx.drawImage(TriggerImages["opt"], 372, imgY, 39, 43);
             ctx.font = "normal normal bold 13px Arial";
             ctx.fillText(trigNames[triggers[i]], 423, nameY);
             freeY += 71;
-            ctx.drawImage(blocked, 361, freeY);
+            ctx.drawImage(TriggerImages["blocked"], 361, freeY);
             freeY += 71;
-            ctx.drawImage(blocked, 361, freeY);
+            ctx.drawImage(TriggerImages["blocked"], 361, freeY);
             freeY += 71;
-            ctx.drawImage(blocked, 361, freeY);
+            ctx.drawImage(TriggerImages["blocked"], 361, freeY);
             break;
         }
         else {
@@ -578,6 +578,15 @@ function drawSquadEmblem() {
     emblem.src = emblemUrl;
     emblem.onload = function () {
         ctx.drawImage(emblem, 30, 73, 133, 121);
+        let imageData = ctx.getImageData(30, 73, 133, 121);
+        let pixels = imageData.data;
+        for (var i = 0; i < pixels.length; i += 4) {
+            let lightness = parseInt((pixels[i] + pixels[i + 1] + pixels[i + 2]) / 3);
+            pixels[i] = lightness;
+            pixels[i + 1] = lightness;
+            pixels[i + 2] = lightness;
+        }
+        ctx.putImageData(imageData, 30, 73);
     }
 }
 function testing() {
