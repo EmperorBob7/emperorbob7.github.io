@@ -1,0 +1,144 @@
+body {
+	text-align:center;
+	background-color:#333;
+	font-family:Arial;
+	padding:10px;
+	color:cyan;
+}
+* {
+	margin:0;
+	padding:0;
+}
+table {
+	border-collapse:collapse;
+	table-layout:fixed;
+	margin:auto;
+	max-width:600px;
+}
+td {
+	border:1px solid black;
+	max-width:100px;
+	height:20px;
+	padding:2px;
+    overflow:hidden;
+}
+#a {
+	display:none;
+}
+th {
+	border:1px solid black;
+	min-width:100px;
+	width:100px;
+	height:20px;
+	padding:2px;
+	background-color:#444;
+	color:#bbb;
+	text-align:center;
+	background-clip: padding-box;
+}
+tr th {
+	position: sticky;
+	top: 0;
+	left:0;
+	z-index: 10;
+}
+#holder {
+	overflow-x:scroll;
+	overflow-y:scroll;
+	max-height:85vh;
+	max-width:98vw;
+	position:absolute;
+}
+#holder::-webkit-scrollbar {
+	width:10px;
+	height:10px;
+	background-color:none;
+	scroll-margin-left:40px;
+}
+#holder::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+#holder::-webkit-scrollbar-thumb {
+  background: #AAA;
+  border-radius: 10px;
+}
+#holder::-webkit-scrollbar-corner {
+  background: rgba(0,0,0,0);
+}
+a {
+	color:springgreen;
+}
+#topBar {
+	background-color:gray;
+	height:6vh;
+	padding:2px;
+}
+#topBar button {
+	width:6vw;
+	height:5vh;
+	background-color:white;
+	border:1px solid black;
+	transform:translate(0px,-1vh);
+}
+.colors {
+	background-color:white;
+	width:6vw;
+	height:5vh;
+	font-weight:bold;
+	display:inline-block;
+	transform:translate(0px,.2vh);
+	border:1px solid black;
+}
+.colors input {
+	width:5vh;
+	border-style:none;
+	background-color:white;
+}
+.colors img {
+	display:block;
+	margin:auto;
+}
+.colors p {
+	color:black;
+}
+input[type="button"] {
+	width:6vw;
+	height:5vh;
+	background-color:white;
+	border:1px solid black;
+	transform:translate(0px,-1vh);
+}
+input[type="text"] {
+	height:4.9vh;
+	transform:translate(0px,-1vh);
+	border:1px solid black;
+}
+#popUp {
+	z-index:100;
+	width:90vw;
+	height:90vh;
+	position:absolute;
+	left:5vw;
+	top:5vh;
+	background-color:#BBB;
+	color:black;
+	display:none;
+}
+#popUp h1 {
+	margin-bottom:10px;
+}
+#popUp input[type="text"] {
+	border:1px solid black;
+	height:3vh;
+	transform:translate(0,0);
+}
+#popUp button {
+	padding:4px;
+	border:1px solid black;
+}
+#popUp #close {
+	padding:10px;
+	margin-top:1vh;
+	border:1px solid black;
+}

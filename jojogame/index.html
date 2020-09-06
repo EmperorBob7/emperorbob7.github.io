@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Paper Clips</title>
+		<link rel="stylesheet" type="text/css" href="styles.css">
+		<script src="scripts.js"></script>
+	</head>
+	<body align="center">
+		<h1 class="h1">Paper Clips</h1>
+		<!--Navigation-->
+		<div id="nav">
+			<button onclick="displayColors()">COLORS</button>
+			<button onclick="displayUpgrades()">UPGRADES</button>
+		</div>
+		<!--Colors-->
+		<div id="colornav">
+			<h1>Colors</h1>
+			<button onclick="homeShow()" class="x">X</button>
+		</div>
+		<!--Upgrades-->
+		<div id="upgradenav">
+			<h1>Upgrades</h1>
+			<button onclick="homeShow()" class="x">X</button>
+			<br />
+			<button onclick="starPlatinum()" class="button">Star Platinum</button> ¥<p id="starPlatinumcount">0</p>
+		</div>
+		<!--Main-->
+		<div id="main">
+			<h1 id="points" class="h1">0</h1>
+			<img src="https://images.vexels.com/media/users/3/153834/isolated/preview/d0679e2704e98a8041508fba4c332d49-paper-clip-stroke-icon-by-vexels.png" id="img" onclick="clicked()" onmousedown="small()" onmouseup="big()"/>
+		</div>
+		
+		<button id="resetscore" onclick="resetScore()">Reset Score</button>
+		<img src="https://steamuserimages-a.akamaihd.net/ugc/955223229303103826/9A968BAA5E9CC6F2DD2CE0DC16CCB56B3B0C3B87/" id="ger" />
+	</body>
+</html>
