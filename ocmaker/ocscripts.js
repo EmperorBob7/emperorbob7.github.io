@@ -1,5 +1,4 @@
-let ctx;
-let canvas;
+let ctx, canvas;
 let position = "", age = "", birthday = "", height = "", bloodtype = "", zodiac = "", occupation = "", likes = "", faction = "";
 let ty = 0, ax = 0, ay = 0, dx = 0, dy = 0, mx = 0, my = 0, sx = 0, sy = 0, rx = 0, ry = 0, cx = 0, cy = 0, tx = 0, tty = 0;
 let name, ranking;
@@ -578,15 +577,6 @@ function drawSquadEmblem() {
     emblem.src = emblemUrl;
     emblem.onload = function () {
         ctx.drawImage(emblem, 30, 73, 133, 121);
-        let imageData = ctx.getImageData(30, 73, 133, 121);
-        let pixels = imageData.data;
-        for (var i = 0; i < pixels.length; i += 4) {
-            let lightness = parseInt((pixels[i] + pixels[i + 1] + pixels[i + 2]) / 3);
-            pixels[i] = lightness;
-            pixels[i + 1] = lightness;
-            pixels[i + 2] = lightness;
-        }
-        ctx.putImageData(imageData, 30, 73);
     }
 }
 function testing() {
