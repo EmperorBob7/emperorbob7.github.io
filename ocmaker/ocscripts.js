@@ -540,7 +540,7 @@ function trigText() {
             drawGuns(1106, 1060, 1108, i);
         }
         else {
-            ctx.fillText(texts[triggers[i]], 1106, textY);
+            ctx.fillText([texts[i]], 1106, textY);
             ctx.drawImage(trigImg[triggers[i]], 1060, imgY, 39, 43);
             ctx.font = "normal normal bold 13px Arial";
             ctx.fillText(trigNames[triggers[i]], 1111, nameY);
@@ -725,4 +725,22 @@ function draw() {
     ctx.lineTo(tx, tty);
     ctx.fill();
     ctx.globalAlpha = 1;
+}
+function addTrigger() {
+    let e = document.getElementById("customImg");
+    let ret = parseInt(e.options[e.selectedIndex].value);
+    let imageUrl = newImage(TriggerUrls[ret], false);
+    let triggerName = document.getElementById("customTriggerName").value.toUpperCase();
+    e = document.getElementById("customTriggerType");
+    ret = e.options[e.selectedIndex].value;
+    let triggerType = ret;
+    texts.push(triggerType);
+    trigNames.push(triggerName);
+    trigImg.push(imageUrl);
+    for (let i = 1; i <= 4; i++) {
+        document.getElementById("main" + i).innerHTML += `<option value="${trigNames.length - 1}">${triggerName}</option>`;
+    }
+    for (let i = 1; i <= 4; i++) {
+        document.getElementById("sub" + i).innerHTML += `<option value="${trigNames.length - 1}">${triggerName}</option>`;
+    }
 }

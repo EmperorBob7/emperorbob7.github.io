@@ -60,4 +60,10 @@
 				text-decoration: none;
 				color:springgreen;
 				font-family:arial;
-			}
+            }
+            #triggerAdder:hover {
+                border-color: rgb(149, 216, 61);
+            }
+            #triggerAdder:active {
+                color: red;
+            }
