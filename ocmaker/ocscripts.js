@@ -520,7 +520,12 @@ function trigText() {
             ctx.fillText(texts[triggers[i]], 418, textY);
             ctx.drawImage(trigImg[triggers[i]], 372, imgY, 39, 43);
             ctx.font = "normal normal bold 13px Arial";
-            ctx.fillText(trigNames[triggers[i]], 423, nameY);
+            let lines = getLines(trigNames[triggers[i]], 122);
+            let add = 0;
+            for (let i = 0; i < lines.length; i++) {
+                ctx.fillText(lines[i], 423, nameY+add);
+                add += 12;
+            }
         }
         textY += 71;
         imgY += 71;
@@ -540,10 +545,15 @@ function trigText() {
             drawGuns(1106, 1060, 1108, i);
         }
         else {
-            ctx.fillText([texts[i]], 1106, textY);
+            ctx.fillText(texts[triggers[i]], 1106, textY);
             ctx.drawImage(trigImg[triggers[i]], 1060, imgY, 39, 43);
             ctx.font = "normal normal bold 13px Arial";
-            ctx.fillText(trigNames[triggers[i]], 1111, nameY);
+            let lines = getLines(trigNames[triggers[i]], 122);
+            let add = 0;
+            for (let i = 0; i < lines.length; i++) {
+                ctx.fillText(lines[i], 1111, nameY+add);
+                add += 12;
+            }
         }
         textY += 71;
         imgY += 71;
@@ -581,7 +591,6 @@ function drawSquadEmblem() {
 }
 function testing() {
     let imgData = ctx.getImageData(613, 210, 394, 398);
-    let imgData2 = ctx.getImageData(1021, 162, 238, 322);
     ctx.putImageData(imgData, 0, 0);
 }
 function getProfile() {
@@ -603,7 +612,7 @@ function drawProfile() {
         ctx.fillText(orderProf[i] + orderProf2[i], 25, outY);
         outY += 12;
     }
-    getLines(likes, 230);
+    let lines = getLines(likes, 230);
     for (let i = 0; i < lines.length; i++) {
         if (i == 0) {
             ctx.fillText("LIKES: " + lines[i], 25, outY);
@@ -615,10 +624,10 @@ function drawProfile() {
     }
     ctx.fillText("FACTION: " + orderProf2[8], 25, outY);
 }
-let lines = [];
+
 function getLines(text, maxWidth) {
     let words = text.split(" ");
-    lines = [];
+    let lines = [];
     let currentLine = words[0];
 
     for (let i = 1; i < words.length; i++) {
