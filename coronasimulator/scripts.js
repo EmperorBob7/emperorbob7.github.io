@@ -75,15 +75,31 @@ function update() {
                     let y = i + r;
                     if (y > 0 && y < grid.length && x > 0 && x < grid[0].length) {
                         if (grid[y][x] == PERSON) {
-                            let rand = Math.floor(Math.random() * (6 - Math.abs(i) - Math.abs(j)));
-                            console.log(rand + "\t" + j + "\t" + i);
-                            if(rand >= 2)
+                            let rand = Math.floor(Math.random() * (7 - Math.abs(i) - Math.abs(j)));
+                            if(rand >= 3)
                                 grid[y][x] = INFECTED;
                         }
                     }
                 }
             }
             grid[r][c] = VOID;
+        } else if(grid[r][c] == INFECTED) {
+            if(r != 0) {
+                if(grid[r-1][c] == PERSON)
+                    grid[r-1][c] = INFECTED;
+            }
+            if(r != grid.length-1) {
+                if(grid[r+1][c] == PERSON)
+                    grid[r+1][c] = INFECTED;
+            }
+            if(c != 0) {
+                if(grid[r][c-1] == PERSON)
+                    grid[r][c-1] = INFECTED;
+            }
+            if(c != grid[0].length-1) {
+                if(grid[r][c+1] == PERSON)
+                    grid[r][c+1] = INFECTED;
+            }
         }
     }
     //Update Visuals
