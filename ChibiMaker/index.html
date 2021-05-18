@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <title>Chibi Maker</title>
+</head>
+
+<body>
+    <div>
+        <h1>Chibi Maker</h1>
+        <br />
+        <input type="radio" id="osamuChibi" name="chibi" value="https://cdn.discordapp.com/attachments/571784589882949692/842912825668141097/important.png" /> <label>Osamu Sillhouette</label>
+        <br /><br />
+        <input type="radio" id="chikaChibi" name="chibi" value="https://cdn.discordapp.com/attachments/571784589882949692/842912897578434610/important.png" /> <label>Chika Sillhouette</label>
+        <br /><br />
+        <label>Custom Chibi</label> <input type="text" id="customChibi" name="customChibi" placeholder="https://..." />
+        <br /><br />
+        <button onclick="render()">Render Image</button>
+        <br /><br />
+    </div>
+    <canvas id="canvas" width="590" height="313"></canvas>
+    <script src="fabric.min.js"></script>
+    <script src="index.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+
+@font-face {
+    font-family: 'Domyouji';
+    src: url('domyouji.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    background-color: #333;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+h1 {
+    color: rgb(81, 209, 166);
+    margin: 5px;
+}
+
+label {
+    margin: 5px;
+}
+
+input {
+    margin: 5px;
+}
+
+canvas {
+    border: 1px solid white;
+}
+
+.canvas-container {
+    margin: auto;
+}
+
+button {
+    background-color: #222;
+    color: white;
+    border: 1px solid white;
+    padding: 5px;
+}
+
+input[type=text] {
+    color: black;
+}
