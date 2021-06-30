@@ -3,11 +3,20 @@ let chibiImage;
 canvas.selection = false;
 
 window.onload = function() {
-    fabric.Image.fromURL('https://cdn.discordapp.com/attachments/571784589882949692/842899882843045928/unknown.png', function(oImg) {
+    fabric.Image.fromURL('./background.png', function(oImg) {
         oImg.selectable = false;
         canvas.add(oImg);
         loadText();
     });
+}
+
+document.getElementById("customChibi").onchange = function(e) {
+    canvas.remove(chibiImage);
+    let img = new Image();
+    img.onload = function() {
+        loadChibi(img.src);
+    };
+    img.src = URL.createObjectURL(this.files[0]);
 }
 
 function loadChibi(src) {
@@ -71,13 +80,8 @@ function loadText() {
 }
 
 function render() {
-    if (document.getElementById("customChibi").value.length > 0) {
-        canvas.remove(chibiImage);
-        loadChibi(document.getElementById("customChibi").value);
-    } else {
-        canvas.remove(chibiImage);
-        loadChibi(getCheckedRadioValue("chibi"));
-    }
+    canvas.remove(chibiImage);
+    loadChibi(getCheckedRadioValue("chibi"));
 }
 
 function getCheckedRadioValue(name) {
@@ -85,4 +89,9 @@ function getCheckedRadioValue(name) {
 
     for (var i = 0, len = elements.length; i < len; ++i)
         if (elements[i].checked) return elements[i].value;
+}
+
+function downloadImage(el) {
+    var image = canvas.toDataURL("image/jpg");
+    el.href = image;
 }

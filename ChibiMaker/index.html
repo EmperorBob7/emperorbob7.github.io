@@ -10,13 +10,15 @@
     <div>
         <h1>Chibi Maker</h1>
         <br />
-        <input type="radio" id="osamuChibi" name="chibi" value="https://cdn.discordapp.com/attachments/571784589882949692/842912825668141097/important.png" /> <label>Osamu Sillhouette</label>
+        <input type="radio" id="osamuChibi" name="chibi" value="osamuChibi.png" /> <label>Osamu Sillhouette</label>
         <br /><br />
-        <input type="radio" id="chikaChibi" name="chibi" value="https://cdn.discordapp.com/attachments/571784589882949692/842912897578434610/important.png" /> <label>Chika Sillhouette</label>
+        <input type="radio" id="chikaChibi" name="chibi" value="chikaChibi.png" /> <label>Chika Sillhouette</label>
         <br /><br />
-        <label>Custom Chibi</label> <input type="text" id="customChibi" name="customChibi" placeholder="https://..." />
+        <label>Custom Chibi</label> <input type="file" id="customChibi" name="customChibi" />
         <br /><br />
         <button onclick="render()">Render Image</button>
+        <br /><br />
+        <a onclick="downloadImage(this)" download="chibi.jpg">Download Image</a>
         <br /><br />
     </div>
     <canvas id="canvas" width="590" height="313"></canvas>
