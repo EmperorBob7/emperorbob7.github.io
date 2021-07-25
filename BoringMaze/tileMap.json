@@ -1,0 +1,134 @@
+{
+    "gr": {
+        "x": 0,
+        "y": 0
+    },
+    "s1": {
+        "x": 1,
+        "y": 0,
+        "canCollide": false
+    },
+    "s2": {
+        "x": 2,
+        "y": 0,
+        "canCollide": false
+    },
+    "s3": {
+        "x": 3,
+        "y": 0,
+        "canCollide": false
+    },
+    "s4": {
+        "x": 1,
+        "y": 1,
+        "canCollide": false
+    },
+    "s5": {
+        "x": 2,
+        "y": 1,
+        "canCollide": false
+    },
+    "s6": {
+        "x": 3,
+        "y": 1,
+        "canCollide": false
+    },
+    "s7": {
+        "x": 1,
+        "y": 2,
+        "canCollide": false
+    },
+    "s8": {
+        "x": 4,
+        "y": 0,
+        "canCollide": true
+    },
+    "s9": {
+        "x": 3,
+        "y": 2,
+        "canCollide": false
+    },
+    "pl": {
+        "x": 2,
+        "y": 2
+    },
+    "t1": {
+        "x": 0,
+        "y": 3,
+        "canCollide": false
+    },
+    "t2": {
+        "x": 1,
+        "y": 3,
+        "canCollide": false
+    },
+    "t3": {
+        "x": 0,
+        "y": 4,
+        "canCollide": false
+    },
+    "t4": {
+        "x": 1,
+        "y": 4,
+        "canCollide": false
+    },
+    "b1": {
+        "x": 0,
+        "y": 1,
+        "canCollide": false
+    },
+    "g2": {
+        "x": 0,
+        "y": 2,
+        "canCollide": false
+    },
+    "g3": {
+        "x": 0,
+        "y": 2,
+        "canCollide": true
+    },
+    "sw": {
+        "x": 4,
+        "y": 1
+    },
+    "w1": {
+        "x": 2,
+        "y": 3
+    },
+    "w2": {
+        "x": 3,
+        "y": 3
+    },
+    "w3": {
+        "x": 4,
+        "y": 3
+    },
+    "w4": {
+        "x": 2,
+        "y": 4
+    },
+    "w5": {
+        "x": 3,
+        "y": 4
+    },
+    "w6": {
+        "x": 4,
+        "y": 4
+    },
+    "w7": {
+        "x": 2,
+        "y": 5
+    },
+    "w8": {
+        "x": 3,
+        "y": 5
+    },
+    "w9": {
+        "x": 4,
+        "y": 5
+    },
+    "fw": {
+        "x": 4,
+        "y": 2
+    }
+}
