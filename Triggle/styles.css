@@ -6,6 +6,9 @@
 :root {
     --background: #212121;
     --text: #DDD;
+    --right: #78b159;
+    --wrong: #dd2e44;
+    --half: #55acee;
 }
 
 * {
@@ -77,5 +80,58 @@ td {
 }
 
 #keyboard .row button:hover {
-    background-color: #222;
+    background-color: #323232;
+}
+
+#popup {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 25vh;
+    font-size: 1.8vw;
+    font-weight: bold;
+    background-color: var(--text);
+    border: 5px solid var(--background);
+    color: var(--background);
+    min-width: 15vw;
+    padding: 10px;
+    border-radius: 20px;
+    display: none;
+}
+
+.shake {
+    animation-name: shake;
+    animation-iteration-count: 3;
+    animation-timing-function: linear;
+    animation-duration: 0.2s;
+}
+
+@keyframes shake {
+    from {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(0.6vw);
+    }
+    75% {
+        transform: translateX(-0.6vw);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+.right {
+    background-color: var(--right);
+    color: var(--background);
+}
+
+.wrong {
+    background-color: var(--wrong);
+    color: var(--background);
+}
+
+.half {
+    background-color: var(--half);
+    color: var(--background);
 }
