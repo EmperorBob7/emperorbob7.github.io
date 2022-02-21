@@ -13,7 +13,7 @@
     --text: #DDD;
     --right: #78b159;
     --wrong: #dd2e44;
-    --half: #55acee;
+    --half: #fdcb58;
 }
 
 * {
@@ -129,16 +129,21 @@ td {
     background-color: var(--text);
     border: 5px solid var(--background);
     color: var(--background);
-    min-width: 50vw;
+    min-width: 30vw;
     padding: 10px;
     border-radius: 20px;
     display: none;
     z-index: 1;
 }
 
+#statsTable {
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
 #statsTable>tbody>tr>td {
     background-color: var(--text);
-    padding: 1vw;
+    padding: 0.2vw;
 }
 
 #statsTable>tbody:nth-child(1)>tr:nth-child(2)>td {
@@ -149,6 +154,7 @@ td {
     background-color: var(--text);
     width: 5vw;
     height: auto;
+    font-size: 1.2vw;
 }
 
 .shake {
@@ -200,4 +206,56 @@ td {
     top: 0;
     opacity: 0.6;
     display: none;
+}
+
+#shareButton {
+    background-color: var(--right);
+    padding-left: 1vw;
+    padding-right: 1vw;
+    padding-bottom: 1vh;
+    padding-top: 1vh;
+    border-radius: 10px;
+    border: 1px solid var(--background);
+    font-size: 1.5vw;
+}
+
+#content {
+    display: none;
+}
+
+#messagePopUp {
+    position: absolute;
+    left: 50%;
+    top: 20%;
+    transform: translate(-50%);
+    z-index: 2;
+    background-color: var(--background);
+    padding: 2vh;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    border-radius: 10px;
+    border: 2px solid var(--wrong);
+    display: none;
+    opacity: 0;
+}
+
+.popper {
+    animation-name: pop;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+    animation-duration: 1.5s;
+}
+
+@keyframes pop {
+    from {
+        opacity: 1;
+    }
+    50% {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+        display: none;
+    }
 }

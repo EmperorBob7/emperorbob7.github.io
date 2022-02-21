@@ -2,6 +2,7 @@ import * as random from "./random-seed.js";
 let table, popUp, blocker;
 let term = [];
 let guessStorage = [];
+let clipboard = [];
 let row = 1;
 const seed = random.default;
 const generator = seed(new Date().toDateString() + "capybaras4life!");
@@ -63,6 +64,9 @@ window.onload = () => {
             handleGuess(x.join(""));
         });
     }
+
+    document.getElementById("help").addEventListener("click", () => alert("Guess the TRIGGLE in five tries.\n\nEach guess must be a valid five-letter word. Hit the enter button to submit.\n\nAfter each guess, the color of the tiles will change to show how close your guess was to the word.\n\nGreen means it's correct.\nYellow means it's in the word but in the wrong spot.\nRed means the letter is not wrong."));
+    document.getElementById("shareButton").addEventListener("click", copyToClipboard);
 };
 
 /**
@@ -100,16 +104,20 @@ function type(char) {
  * @param {String} guess Their guess in all caps 
  */
 function handleGuess(guess) {
+    clipboard.push([]);
     for (let i = 0; i < 5; i++) {
         if (guess[i] == wordOfTheDay[i]) {
             document.querySelector(`#table > tr:nth-child(${row}) > td:nth-child(${i + 1})`).classList.add("right");
             keys[guess[i]].classList.add("right");
+            clipboard[row - 1][i] = "🟩";
         } else if (wordOfTheDay.includes(guess[i])) {
             document.querySelector(`#table > tr:nth-child(${row}) > td:nth-child(${i + 1})`).classList.add("half");
             keys[guess[i]].classList.add("half");
+            clipboard[row - 1][i] = "🟨";
         } else {
             document.querySelector(`#table > tr:nth-child(${row}) > td:nth-child(${i + 1})`).classList.add("wrong");
             keys[guess[i]].classList.add("wrong");
+            clipboard[row - 1][i] = "⬛";
         }
     }
     guessStorage.push(term);
@@ -192,6 +200,40 @@ function popDisplay() {
 function closePopUp() {
     popUp.style.display = "none";
     blocker.style.display = "none";
+}
+
+function copyToClipboard() {
+    let triggleNum = Math.ceil(Math.abs(new Date("Sun Feb 20 2022").getTime() - new Date().getTime()) / (1000 * 3600 * 24));
+    let str = `Triggle ${triggleNum} ${row - 1}/5\n\n`;
+    for (let i = 0; i < clipboard.length; i++) {
+        for (let j = 0; j < 5; j++) {
+            str += clipboard[i][j];
+        }
+        str += "\n";
+    }
+    str = str.trimEnd();
+    save(str);
+}
+
+function save(text) {
+    let c = document.getElementById("content");
+    c.value = text;
+    c.select();
+    navigator.clipboard.writeText(c.value);
+    alertMsg("Copied to Clipboard!");
+}
+
+function alertMsg(msg) {
+    let div = document.getElementById("messagePopUp");
+    if (div.style.display !== "block") {
+        div.style.display = "block";
+        div.innerText = msg;
+        div.classList.add("popper");
+        setTimeout(() => {
+            div.classList.remove("popper");
+            div.style.display = "none";
+        }, 1500);
+    }
 }
 
 const words = ["HOUND", "VIPER", "IZUMI", "YUIGA", "RINDO", "RAIZO", "KOHEI", "ISAMI", "SHIRO", "SAEKI", "KUROE", "SHUJI", "ASUMI", "KARIN", "REIJI", "KIRIE", "USAMI", "TSUJI", "IKOMA", "HOSOI", "MAORI", "AZUMA", "OSAMU", "CHIKA", "HYUSE", "MIURA", "SOMEI", "OSANO", "HIURA", "AKANE", "SHIKI", "TOMOE", "AYUMU", "EBINA", "CHANO", "SAITO", "NANAO", "RYOGO", "MARUI", "SEIJI", "ASAMI", "HANAO", "ASUKA", "KEIZO", "IZUHO", "HINOE", "TRION", "ILGAR", "NABIS", "SCARE", "RADAR", "RIFLE", "COBRA", "EGRET", "SENKU", "GEIST", "TIMER", "TOKEN"];
