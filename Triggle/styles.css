@@ -1,11 +1,13 @@
 @font-face {
     font-family: "Arial Monospaced";
     src: url("ArialMonospaced.ttf");
+    font-display: swap;
 }
 
 @font-face {
     font-family: "Fontello";
     src: url("fontello.ttf");
+    font-display: swap;
 }
 
 :root {

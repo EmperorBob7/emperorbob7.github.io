@@ -1,12 +1,15 @@
 import * as random from "./random-seed.js";
-let table, popUp, blocker;
-let term = [];
-let guessStorage = [];
-let clipboard = [];
-let row = 1;
+const worker = new Worker("./worker.js");
+const clipboard = [];
 const seed = random.default;
 const generator = seed(new Date().toDateString() + "capybaras4life!");
-let keys = {};
+const keys = {};
+
+let table, popUp, blocker; //DOM Variables
+
+let term = []; //Current Guess
+let guessStorage = []; //Storage of all valid guesses
+let row = 1;
 let doneWithGame = false;
 
 window.onload = () => {
@@ -132,21 +135,6 @@ function handleGuess(guess) {
     }
 }
 
-let shakeFlag = false;;
-
-function shake() {
-    if (shakeFlag)
-        return;
-    let r = document.querySelector(`#table > tr:nth-child(${row})`);
-    r.style.transform = "translateX(0)";
-    r.classList.add("shake");
-    shakeFlag = true;
-    setTimeout(() => {
-        r.classList.remove("shake");
-        shakeFlag = false;
-    }, 600);
-}
-
 function updateData(guess) {
     if (localStorage.getItem("played") === null) {
         localStorage.setItem("played", 0);
@@ -178,6 +166,17 @@ function updateData(guess) {
         }
         localStorage.setItem(new Date().toDateString() + "Completed", true);
     }
+}
+
+function shake() {
+    let r = document.querySelector(`#table > tr:nth-child(${row})`);
+    if (r.classList.contains("shake"))
+        return;
+    r.style.transform = "translateX(0)";
+    r.classList.add("shake");
+    setTimeout(() => {
+        r.classList.remove("shake");
+    }, 600);
 }
 
 function share() {
