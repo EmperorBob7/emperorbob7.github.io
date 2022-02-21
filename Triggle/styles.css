@@ -122,17 +122,33 @@ td {
 #popup {
     position: absolute;
     left: 50%;
-    transform: translateX(-50%);
-    top: 25vh;
-    font-size: 1.8vw;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.4vw;
     font-weight: bold;
     background-color: var(--text);
     border: 5px solid var(--background);
     color: var(--background);
-    min-width: 15vw;
+    min-width: 50vw;
     padding: 10px;
     border-radius: 20px;
     display: none;
+    z-index: 1;
+}
+
+#statsTable>tbody>tr>td {
+    background-color: var(--text);
+    padding: 1vw;
+}
+
+#statsTable>tbody:nth-child(1)>tr:nth-child(2)>td {
+    font-size: 1.5vw;
+}
+
+#distTable>tbody>tr>td {
+    background-color: var(--text);
+    width: 5vw;
+    height: auto;
 }
 
 .shake {
@@ -173,4 +189,15 @@ td {
 .half {
     background-color: var(--half) !important;
     color: var(--background) !important;
+}
+
+#blocker {
+    width: 100%;
+    height: 100%;
+    background-color: #212121;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0.6;
+    display: none;
 }

@@ -13,11 +13,50 @@
     <nav>
         <button>?</button>
         <h1>TRIGGLE</h1>
-        <h1 style="font-family: 'Fontello';">&#xe800</h1>
+        <h1 style="font-family: 'Fontello';" id="share">&#xe800</h1>
     </nav>
     <table id="table">
     </table>
-    <div id="popup"></div>
+    <div id="popup">
+        <h3>Statistics</h3>
+        <table id="statsTable">
+            <tr>
+                <td id="played">0</td>
+                <td id="win%">0</td>
+                <td id="streak">0</td>
+            </tr>
+            <tr>
+                <td>Played</td>
+                <td>Win %</td>
+                <td>Streak</td>
+            </tr>
+        </table>
+
+        <h3>Distribution</h3>
+        <table id="distTable">
+            <tr>
+                <td>1</td><td id="1">0</td>
+            </tr>
+            <tr>
+                <td>2</td><td id="2">0</td>
+            </tr>
+            <tr>
+                <td>3</td><td id="3">0</td>
+            </tr>
+            <tr>
+                <td>4</td><td id="4">0</td>
+            </tr>
+            <tr>
+                <td>5</td><td id="5">0</td>
+            </tr>
+            <tr>
+                <td>6</td><td id="6">0</td>
+            </tr>
+            <tr>
+                <td>DNF</td><td id="DNF">0</td>
+            </tr>
+        </table>
+    </div>
     <div id="keyboard">
         <div class="row">
             <button>Q</button>
@@ -58,6 +97,7 @@
                 </svg></button>
         </div>
     </div>
+    <div id="blocker"></div>
     <script src='scripts.js' type="module"></script>
 </body>
 
