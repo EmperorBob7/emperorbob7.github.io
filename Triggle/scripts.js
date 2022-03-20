@@ -108,12 +108,13 @@ function type(char) {
  */
 function handleGuess(guess) {
     clipboard.push([]);
+    let WOTD = wordOfTheDay;
     for (let i = 0; i < 5; i++) {
         if (guess[i] == wordOfTheDay[i]) {
             document.querySelector(`#table > tr:nth-child(${row}) > td:nth-child(${i + 1})`).classList.add("right");
             keys[guess[i]].classList.add("right");
             clipboard[row - 1][i] = "🟩";
-        } else if (wordOfTheDay.includes(guess[i])) {
+        } else if (WOTD.includes(guess[i])) {
             document.querySelector(`#table > tr:nth-child(${row}) > td:nth-child(${i + 1})`).classList.add("half");
             keys[guess[i]].classList.add("half");
             clipboard[row - 1][i] = "🟨";
@@ -122,6 +123,7 @@ function handleGuess(guess) {
             keys[guess[i]].classList.add("wrong");
             clipboard[row - 1][i] = "⬛";
         }
+        WOTD = WOTD.replace(guess[i], ".");
     }
     guessStorage.push(term);
     localStorage.setItem(new Date().toDateString(), JSON.stringify(guessStorage));
@@ -235,6 +237,6 @@ function alertMsg(msg) {
     }
 }
 
-const words = ["HOUND", "VIPER", "IZUMI", "YUIGA", "RINDO", "RAIZO", "KOHEI", "ISAMI", "SHIRO", "SAEKI", "KUROE", "SHUJI", "ASUMI", "KARIN", "REIJI", "KIRIE", "USAMI", "TSUJI", "IKOMA", "HOSOI", "MAORI", "AZUMA", "OSAMU", "CHIKA", "HYUSE", "MIURA", "SOMEI", "OSANO", "HIURA", "AKANE", "SHIKI", "TOMOE", "AYUMU", "EBINA", "CHANO", "SAITO", "NANAO", "RYOGO", "MARUI", "SEIJI", "ASAMI", "HANAO", "ASUKA", "KEIZO", "IZUHO", "HINOE", "TRION", "ILGAR", "NABIS", "SCARE", "RADAR", "RIFLE", "COBRA", "EGRET", "SENKU", "GEIST", "TIMER", "TOKEN"];
+const words = ["HOUND", "VIPER", "IZUMI", "YUIGA", "RINDO", "RAIZO", "KOHEI", "ISAMI", "SHIRO", "SAEKI", "KUROE", "SHUJI", "ASUMI", "KARIN", "REIJI", "KIRIE", "USAMI", "TSUJI", "IKOMA", "HOSOI", "MAORI", "AZUMA", "OSAMU", "CHIKA", "HYUSE", "MIURA", "SOMEI", "OSANO", "HIURA", "AKANE", "SHIKI", "TOMOE", "AYUMU", "EBINA", "CHANO", "SAITO", "NANAO", "RYOGO", "MARUI", "SEIJI", "ASAMI", "HANAO", "ASUKA", "KEIZO", "IZUHO", "HINOE", "TRION", "ILGAR", "NABIS", "SCARE", "RADAR", "COBRA", "EGRET", "SENKU", "GEIST", "TIMER", "TOKEN"];
 
 const wordOfTheDay = words[Math.floor(generator() * words.length)];
