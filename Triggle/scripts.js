@@ -70,6 +70,7 @@ window.onload = () => {
 
     document.getElementById("help").addEventListener("click", () => alert("Guess the TRIGGLE in five tries.\n\nEach guess must be a valid five-letter word. Hit the enter button to submit.\n\nAfter each guess, the color of the tiles will change to show how close your guess was to the word.\n\nGreen means it's correct.\nYellow means it's in the word but in the wrong spot.\nRed means the letter is not wrong."));
     document.getElementById("shareButton").addEventListener("click", copyToClipboard);
+    document.getElementById("displayWord").innerText = "The Word Was: " + wordOfTheDay;
 };
 
 /**
@@ -114,11 +115,15 @@ function handleGuess(guess) {
             document.querySelector(`#table > tr:nth-child(${row}) > td:nth-child(${i + 1})`).classList.add("right");
             keys[guess[i]].classList.add("right");
             clipboard[row - 1][i] = "🟩";
-        } else if (WOTD.includes(guess[i])) {
+            WOTD = WOTD.replace(guess[i], ".");
+        }
+    }
+    for (let i = 0; i < 5; i++) {
+        if (WOTD.includes(guess[i])) {
             document.querySelector(`#table > tr:nth-child(${row}) > td:nth-child(${i + 1})`).classList.add("half");
             keys[guess[i]].classList.add("half");
             clipboard[row - 1][i] = "🟨";
-        } else {
+        } else if (guess[i] != wordOfTheDay[i]) {
             document.querySelector(`#table > tr:nth-child(${row}) > td:nth-child(${i + 1})`).classList.add("wrong");
             keys[guess[i]].classList.add("wrong");
             clipboard[row - 1][i] = "⬛";
@@ -238,5 +243,4 @@ function alertMsg(msg) {
 }
 
 const words = ["HOUND", "VIPER", "IZUMI", "YUIGA", "RINDO", "RAIZO", "KOHEI", "ISAMI", "SHIRO", "SAEKI", "KUROE", "SHUJI", "ASUMI", "KARIN", "REIJI", "KIRIE", "USAMI", "TSUJI", "IKOMA", "HOSOI", "MAORI", "AZUMA", "OSAMU", "CHIKA", "HYUSE", "MIURA", "SOMEI", "OSANO", "HIURA", "AKANE", "SHIKI", "TOMOE", "AYUMU", "EBINA", "CHANO", "SAITO", "NANAO", "RYOGO", "MARUI", "SEIJI", "ASAMI", "HANAO", "ASUKA", "KEIZO", "IZUHO", "HINOE", "TRION", "ILGAR", "NABIS", "SCARE", "RADAR", "COBRA", "EGRET", "SENKU", "GEIST", "TIMER", "TOKEN"];
-
 const wordOfTheDay = words[Math.floor(generator() * words.length)];
