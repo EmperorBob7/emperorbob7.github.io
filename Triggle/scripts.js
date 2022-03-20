@@ -217,7 +217,7 @@ function copyToClipboard() {
             str += clipboard[i][j];
         }
         if (document.getElementById("redditSpoiler").checked)
-            str += ` >!${guessStorage[i].join("")}!<\n`;
+            str += ` >!${guessStorage[i].join("")}!<\n\n`;
         else
             str += ` ||${guessStorage[i].join("")}||\n`;
     }
