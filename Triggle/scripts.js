@@ -115,11 +115,12 @@ function handleGuess(guess) {
             document.querySelector(`#table > tr:nth-child(${row}) > td:nth-child(${i + 1})`).classList.add("right");
             keys[guess[i]].classList.add("right");
             clipboard[row - 1][i] = "🟩";
-            WOTD = WOTD.replace(guess[i], ".");
+            WOTD = WOTD.substring(0, i) + "." + WOTD.substring(i + 1);
         }
     }
     for (let i = 0; i < 5; i++) {
-        if (WOTD.includes(guess[i])) {
+        console.log(WOTD);
+        if (WOTD.includes(guess[i]) && guess[i] != wordOfTheDay[i]) {
             document.querySelector(`#table > tr:nth-child(${row}) > td:nth-child(${i + 1})`).classList.add("half");
             keys[guess[i]].classList.add("half");
             clipboard[row - 1][i] = "🟨";
@@ -209,13 +210,16 @@ function closePopUp() {
 }
 
 function copyToClipboard() {
-    let triggleNum = Math.ceil(Math.abs(new Date("Sun Feb 20 2022").getTime() - new Date().getTime()) / (1000 * 3600 * 24));
+    let triggleNum = Math.ceil(Math.abs(new Date("Sun Mar 20 2022").getTime() - new Date().getTime()) / (1000 * 3600 * 24));
     let str = `Triggle ${triggleNum} ${row - 1}/5\n\n`;
     for (let i = 0; i < clipboard.length; i++) {
         for (let j = 0; j < 5; j++) {
             str += clipboard[i][j];
         }
-        str += ` ||${guessStorage[i].join("")}||\n`;
+        if (document.getElementById("redditSpoiler").checked)
+            str += ` >!${guessStorage[i].join("")}!<\n`;
+        else
+            str += ` ||${guessStorage[i].join("")}||\n`;
     }
     str = str.trimEnd();
     save(str);
