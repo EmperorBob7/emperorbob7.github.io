@@ -210,7 +210,7 @@ function copyToClipboard() {
         for (let j = 0; j < 5; j++) {
             str += clipboard[i][j];
         }
-        str += "\n";
+        str += ` ||${guessStorage[i].join("")}||\n`;
     }
     str = str.trimEnd();
     save(str);
