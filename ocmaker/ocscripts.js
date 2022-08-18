@@ -339,6 +339,7 @@ function getRange(rr) {
         case "4":
             rx = 774;
             ry = 423;
+            break;
         case "5":
             rx = 764;
             ry = 433;
