@@ -41,6 +41,7 @@ async function draw() {
     drawStats();
     drawTriggers();
     await drawEmblem();
+    ctx.restore();
 
     drawToReal();
     //saveImage();
@@ -259,12 +260,12 @@ function drawEmblem() {
     } else {
         ctx.fillText(rank, 1100, 885);
     }
-    clipEmblem();
 
     return new Promise((res) => {
         let t = new Image();
         t.crossOrigin = "anonymous";
         t.addEventListener("load", () => {
+            clipEmblem();
             ctx.drawImage(t, 948, 900, 232, 214);
             ctx.restore();
             res();
