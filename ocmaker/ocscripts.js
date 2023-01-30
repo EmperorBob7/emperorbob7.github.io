@@ -339,6 +339,7 @@ function getRange(rr) {
         case "4":
             rx = 774;
             ry = 423;
+            break;
         case "5":
             rx = 764;
             ry = 433;
@@ -385,6 +386,7 @@ function getCommand(cr) {
         case "4":
             cx = 760;
             cy = 386;
+            break;
         case "5":
             cx = 747;
             cy = 386;
@@ -431,6 +433,7 @@ function getTactics(tr) {
         case "4":
             tx = 775;
             tty = 349;
+            break;
         case "5":
             tx = 766;
             tty = 340;
