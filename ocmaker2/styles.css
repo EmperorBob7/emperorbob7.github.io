@@ -1,0 +1,124 @@
+@font-face {
+  font-family: "universalis";
+  src: url("fonts/UniversalisADFPro-Bold.otf");
+}
+@font-face {
+  font-family: "coda";
+  src: url("fonts/Coda-Regular.ttf");
+}
+@font-face {
+  font-family: "komix";
+  src: url("fonts/Komix.ttf");
+}
+@font-face {
+  font-family: "wild";
+  src: url("fonts/WildWords.ttf")
+}
+@font-face {
+  font-family: "stencil";
+  src: url("fonts/Stencil\ Regular.ttf");
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: #222;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  display: grid;
+  grid-template:
+    "header" auto
+    "inputs" auto
+    "hr" auto
+    "chartInputs" auto
+    "hr2" auto
+    "textInputs" auto
+    "hr3" auto
+    "triggers" auto
+    "drawButton" auto
+    "canvas" auto;
+}
+
+h1 {
+  color: mediumaquamarine;
+  margin: 15px;
+  grid-area: "header";
+}
+
+a {
+  text-decoration: none;
+  color: salmon;
+  margin: 15px;
+}
+
+#buttons {
+  grid-area: "drawButton";
+}
+
+button {
+  border: 1px solid black;
+  background-color: white;
+  padding: 5px;
+  margin: auto;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+canvas {
+  border: 2px solid black;
+  grid-area: "canvas";
+  margin: auto;
+}
+
+label {
+  padding: 5px;
+}
+
+.chartInputs label {
+  display: inline-block;
+  width: 6vw;
+}
+
+.chartInputs select {
+  width: 100%;
+  text-align: center;
+}
+
+input {
+  margin: 5px;
+}
+
+#inputs,
+.chartInputs {
+  margin: auto;
+  text-align: left;
+  grid-area: "chartInputs";
+}
+
+hr {
+  grid-area: "hr";
+  margin: 20px;
+}
+
+input:focus {
+  outline: 1px solid white;
+}
+
+#console {
+  color: #00FFE0;
+  margin-bottom: 1vh;
+}
+
+.triggerInputs table, .triggerInputs th, .triggerInputs td {
+  border: 2px solid cyan;
+  border-collapse: collapse;
+  margin: auto;
+}
+
+.triggerInputs input {
+  width: 10vw;
+}

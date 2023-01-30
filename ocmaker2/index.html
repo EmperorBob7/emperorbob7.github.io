@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>World Trigger OC Template</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <h1>World Trigger Character</h1>
+    <div id="inputs">
+        <label>Character Image: </label><input type="text" placeholder="https://image" id="characterImage" /><br />
+        <label>Character Name: </label><input type="text" placeholder="Bob" id="characterName" /> <br />
+    </div>
+    <hr />
+    <div class="chartInputs">
+        <table>
+            <tr>
+                <td><label>Trion: </label><input type="number" placeholder="5" id="trion" /></td>
+                <td><label>Attack: </label><input type="number" placeholder="5" id="attack" /></td>
+            </tr>
+            <tr>
+                <td><label>Defense: </label><input type="number" placeholder="5" id="defense" /></td>
+                <td><label>Mobility: </label><input type="number" placeholder="5" id="mobility" /></td>
+            </tr>
+            <tr>
+                <td><label>Skill: </label><input type="number" placeholder="5" id="skill" /></td>
+                <td><label>Range: </label><input type="number" placeholder="5" id="range" /></td>
+            </tr>
+            <tr>
+                <td><label>Command: </label><input type="number" placeholder="5" id="command" /></td>
+                <td><label>Special: </label><input type="number" placeholder="5" id="special" /></td>
+            </tr>
+        </table>
+    </div>
+    <hr style="grid-area: hr2;" />
+    <div class="chartInputs" style="grid-area: textInputs;">
+        <table>
+            <tr>
+                <td><label>Age: </label><input type="number" placeholder="24" id="age" /></td>
+                <td><label>Height: </label><input type="text" placeholder="5' 10''" id="height" /></td>
+                <td><label>Zodiac: </label><input type="text" placeholder="The Dragon" id="zodiac" /></td>
+            </tr>
+            <tr>
+                <td><label>Sex: </label><input type="text" placeholder="Female" id="sex" /></td>
+                <td><label>Weight: </label><input type="text" placeholder="145 lbs." id="weight" /></td>
+                <td><label>Occupation: </label><input type="text" placeholder="Middle school student" id="occupation" />
+                </td>
+            </tr>
+            <tr>
+                <td><label>Birthday: </label><input type="text" placeholder="Oct 26th." id="bday" /></td>
+                <td><label>Blood Type: </label><input type="text" placeholder="O+" id="blood" /></td>
+                <td><label>Likes: </label><input type="text" placeholder="Bridges" id="likes" /></td>
+            </tr>
+            <tr>
+                <td>
+                    <br />
+                    <select id="rankText">
+                        <option value="A">A-Rank</option>
+                        <option value="B">B-Rank</option>
+                    </select>
+                </td>
+                <td>
+                    <br />
+                    <label>Emblem: </label>
+                    <input type="text" id="emblem" placeholder="https://..." />
+                </td>
+                <td>
+                    <br />
+                    <label>Rank: </label>
+                    <input type="number" placeholder="5" id="rankValue" />
+                </td>
+            </tr>
+        </table>
+    </div>
+    <hr style="grid-area: hr3;" />
+    <div class="triggerInputs" style="grid-area: triggers;">
+        <table>
+            <thead>
+                <th>Sub</th>
+                <th>Main</th>
+            </thead>
+            <tr>
+                <td>
+                    <input list="sub1list" id="sub1">
+                    <datalist id="sub1list"></datalist>
+                </td>
+                <td>
+                    <input list="main1list" id="main1">
+                    <datalist id="main1list"></datalist>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input list="sub2list" id="sub2">
+                    <datalist id="sub2list"></datalist>
+                </td>
+                <td>
+                    <input list="main2list" id="main2">
+                    <datalist id="main2list"></datalist>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input list="sub3list" id="sub3">
+                    <datalist id="sub3list"></datalist>
+                </td>
+                <td>
+                    <input list="main3list" id="main3">
+                    <datalist id="main3list"></datalist>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input list="sub4list" id="sub4">
+                    <datalist id="sub4list"></datalist>
+                </td>
+                <td>
+                    <input list="main4list" id="main4">
+                    <datalist id="main4list"></datalist>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div id="buttons">
+        <button onclick="draw()">Draw Image</button>
+        <button onclick="saveImage()">Save Image</button>
+    </div>
+    <hr />
+    <span id="console"></span>
+    <canvas width="1200px" height="554px" id="canvas"></canvas>
+    <script src="triggerUrls.js"></script>
+    <script src="scripts.js"></script>
+</body>
+
+</html>
