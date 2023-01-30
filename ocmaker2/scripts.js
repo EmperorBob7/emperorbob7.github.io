@@ -208,7 +208,7 @@ function drawTriggers() {
 function drawTriggerHelper(baseX, baseY, side) {
     ctx.filter = "brightness(0.1)";
     for (let i = 1; i <= 4; i++) {
-        let trigger = document.getElementById(`${side}${i}`).value;
+        let trigger = document.getElementById(`${side}${i}list`).value;
         ctx.filter = "brightness(0.1)";
         if (trigger == "FREE TRIGGER" || !triggers[trigger]) {
             ctx.filter = "brightness(1.5)";
@@ -224,7 +224,7 @@ function drawTriggerType(baseX, baseY, side) {
     ctx.textAlign = "left";
     ctx.font = "16px Arial";
     for (let i = 1; i <= 4; i++) {
-        let trigger = document.getElementById(`${side}${i}`).value;
+        let trigger = document.getElementById(`${side}${i}list`).value;
         if (trigger != "FREE TRIGGER" && triggers[trigger]) {
             ctx.fillText(triggers[trigger].type, baseX, baseY + 101 * (i - 1));
         }
@@ -234,7 +234,7 @@ function drawTriggerType(baseX, baseY, side) {
 function drawTriggerName(baseX, baseY, side) {
     ctx.filter = "brightness(0)";
     for (let i = 1; i <= 4; i++) {
-        let trigger = document.getElementById(`${side}${i}`).value;
+        let trigger = document.getElementById(`${side}${i}list`).value;
         ctx.font = "20px wild";
         if (trigger != "FREE TRIGGER" && triggers[trigger]) {
             if (trigger.includes(": ")) {

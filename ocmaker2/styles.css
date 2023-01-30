@@ -119,6 +119,7 @@ input:focus {
   margin: auto;
 }
 
-.triggerInputs input {
-  width: 10vw;
+.triggerInputs select {
+  width: 15vw;
+  padding: 5px;
 }
