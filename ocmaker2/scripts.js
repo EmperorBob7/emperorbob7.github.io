@@ -58,7 +58,6 @@ function drawPFP(characterImageUrl) {
     log("");
     return new Promise((res) => {
         let t = new Image();
-        t.crossOrigin = "anonymous";
         t.addEventListener("load", () => {
             ctx.save();
             let r = 398.5;
@@ -171,7 +170,7 @@ function drawStats() {
     ctx.fillText(range, 2055, 883);
     ctx.fillText(command, 1975, 719);
 
-    let total = trion + attack + defense + mobility + skill + range + command;
+    let total = trion + attack + defense + mobility + skill + range + command + special;
     ctx.font = "46px universalis";
     ctx.fillText(total, 2062, 953);
 }
@@ -263,7 +262,6 @@ function drawEmblem() {
 
     return new Promise((res) => {
         let t = new Image();
-        t.crossOrigin = "anonymous";
         t.addEventListener("load", () => {
             clipEmblem();
             ctx.drawImage(t, 948, 900, 232, 214);

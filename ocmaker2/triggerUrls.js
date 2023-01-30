@@ -58,6 +58,10 @@ function writeDatalist() {
             let option2 = option.cloneNode();
             option2.innerText = n.replace("_", " ");
             list2.appendChild(option2);
+            if(n == "FREE TRIGGER") {
+                option.selected = "selected";
+                option2.selected = "selected";
+            }
         }
     }
 }
