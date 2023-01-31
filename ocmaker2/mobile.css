@@ -1,0 +1,54 @@
+@media (max-width: 750px) {
+    * {
+        font-size: 7vw;
+    }
+
+    h1 {
+        font-size: 12vw;
+        margin-bottom: 4vh;
+    }
+
+    .chartInputs input {
+        width: 24vw;
+    }
+
+    .chartInputs label {
+        width: 35vw;
+    }
+
+    .triggerInputs select {
+        width: 75vw;
+        padding: 5px;
+    }
+
+    #chartInputs2 label {
+        width: 44vw;
+        display: block;
+    }
+
+    #chartInputs2 select {
+        margin-top: 5.5vh;
+    }
+
+    #chartInputs2 input {
+        width: 44vw;
+    }
+
+    #bigCanvasContainer {
+        overflow-x: visible;
+        max-width: 100vw;
+    }
+
+    #canvas {
+        width: 100vw;
+    }
+
+    button {
+        padding: 15px;
+    }
+
+    option {
+        font-size: 100%;
+    }
+
+}

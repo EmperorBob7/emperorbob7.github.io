@@ -102,7 +102,6 @@ input {
 }
 
 hr {
-  grid-area: "hr";
   margin: 20px;
 }
 
@@ -127,6 +126,6 @@ input:focus {
 }
 
 #bigCanvasContainer {
-  overflow-x: hidden;
+  overflow-x: scroll;
   max-width: 100vw;
 }
