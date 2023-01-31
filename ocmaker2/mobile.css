@@ -103,4 +103,8 @@
     .chartInputs~.chartInputs select {
         max-width: 24vw;
     }
+
+    #inputs label {
+        text-align:center;
+    }
 }
