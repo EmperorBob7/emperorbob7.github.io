@@ -126,6 +126,11 @@ input:focus {
 }
 
 #bigCanvasContainer {
-  overflow-x: scroll;
+  overflow-x: auto;
   max-width: 100vw;
+}
+
+.fontLoader {
+  opacity: 0;
+  height: 0;
 }

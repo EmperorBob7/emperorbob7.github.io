@@ -204,17 +204,28 @@ function drawTriggers() {
     drawTriggerName(baseX + 76, baseY + 50, "main");
     ctx.filter = "none";
 }
+// For Triggers
+let bagwormTag;
 
 function drawTriggerHelper(baseX, baseY, side) {
     ctx.filter = "brightness(0.1)";
+    bagwormTag = false;
     for (let i = 1; i <= 4; i++) {
         let trigger = document.getElementById(`${side}${i}list`).value;
         ctx.filter = "brightness(0.1)";
-        if (trigger == "FREE TRIGGER" || !triggers[trigger]) {
+        if (bagwormTag) {
             ctx.filter = "brightness(1.5)";
-            ctx.drawImage(triggers["FREE TRIGGER"].img, baseX - 9, baseY - 9 + 101 * (i - 1));
+            ctx.drawImage(triggerUrls["Blank"], baseX - 9, baseY - 9 + 101 * (i - 1));
         } else {
-            ctx.drawImage(triggers[trigger].img, baseX, baseY + 101 * (i - 1), 65, 65);
+            if (trigger == "BAGWORM TAG") {
+                bagwormTag = true;
+            }
+            if (trigger == "FREE TRIGGER" || !triggers[trigger]) {
+                ctx.filter = "brightness(1.5)";
+                ctx.drawImage(triggers["FREE TRIGGER"].img, baseX - 9, baseY - 9 + 101 * (i - 1));
+            } else {
+                ctx.drawImage(triggers[trigger].img, baseX, baseY + 101 * (i - 1), 65, 65);
+            }
         }
     }
 }
@@ -224,6 +235,9 @@ function drawTriggerType(baseX, baseY, side) {
     ctx.textAlign = "left";
     ctx.font = "16px Arial";
     for (let i = 1; i <= 4; i++) {
+        if(side == "sub" && bagwormTag && i > 1) {
+            break;
+        }
         let trigger = document.getElementById(`${side}${i}list`).value;
         if (trigger != "FREE TRIGGER" && triggers[trigger]) {
             ctx.fillText(triggers[trigger].type, baseX, baseY + 101 * (i - 1));
@@ -234,6 +248,9 @@ function drawTriggerType(baseX, baseY, side) {
 function drawTriggerName(baseX, baseY, side) {
     ctx.filter = "brightness(0)";
     for (let i = 1; i <= 4; i++) {
+        if(side == "sub" && bagwormTag && i > 1) {
+            break;
+        }
         let trigger = document.getElementById(`${side}${i}list`).value;
         ctx.font = "20px wild";
         if (trigger != "FREE TRIGGER" && triggers[trigger]) {

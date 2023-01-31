@@ -15,8 +15,8 @@ class Trigger {
     }
 }
 
-const names = ["Free_Trigger", "Assault_Rifle", "Asteroid", "Egret", "Escudo", "Gatling_Gun", "Grenade_Launcher", "Handgun", "Hound", "Ibis", "Kogetsu_Spear", "Kogetsu", "Lightning", "Meteor", "Optional", "Raygust", "Scorpion", "Shield", "Shotgun", "Sogetsu", "Spider_Handgun", "Switchbox", "Viper"];
-const allTriggers = [/*"FREE TRIGGER", "SHIELD", "BAGWORM", */"RAYGUST", "KOGETSU", "SCORPION", "KOGETSU: SPEAR", "ASTEROID", "HOUND", "METEOR", "VIPER", "EGRET", "IBIS", "LIGHTNING", "GEN'YO", "LEAD BULLET", "SENKU", "STARMAKER", "THRUSTER", "ESCUDO", "CHAMELEON", "DUMMY BEACON", "GRASSHOPPER", "SILENCER", "SPIDER", "TELEPORTER", "Assault Rifle: Viper", "Assault Rifle: Hound", "Assault Rifle: Asteroid", "Assault Rifle: Meteor", "Assault Rifle: Gimlet", "Assault Rifle: Salamander", "Assault Rifle: Tomahawk", "Grenade Launcher: Viper", "Grenade Launcher: Hound", "Grenade Launcher: Asteroid", "Grenade Launcher: Meteor", "Grenade Launcher: Gimlet", "Grenade Launcher: Salamander", "Grenade Launcher: Tomahawk", "Shotgun: Viper", "Shotgun: Hound", "Shotgun: Asteroid", "Shotgun: Meteor", "Shotgun: Gimlet", "Shotgun: Salamander", "Shotgun: Tomahawk", "Handgun: Viper", "Handgun: Hound", "Handgun: Asteroid", "Handgun: Meteor", "Handgun: Gimlet", "Handgun: Salamander", "Handgun: Tomahawk", "Handgun: Spider", "SWITCHBOX", "BAGWORM TAG", "IDATEN", "GEIST", "CONNECTOR", "SOGETSU", "FULL ARMS", "Gatling Gun: Asteroid", "Gatling Gun: Hound", "Gatling Gun: Meteor", "Gatling Gun: Viper", "Gatling Gun: Tomahawk", "Gatling Gun: Salamander", "Gatling Gun: Gimlet"];
+const names = ["Free_Trigger", "Assault_Rifle", "Asteroid", "Egret", "Escudo", "Gatling_Gun", "Grenade_Launcher", "Handgun", "Hound", "Ibis", "Kogetsu_Spear", "Kogetsu", "Lightning", "Meteor", "Optional", "Raygust", "Scorpion", "Shield", "Shotgun", "Sogetsu", "Spider_Handgun", "Switchbox", "Viper", "Blank"];
+const allTriggers = [/*"FREE TRIGGER", "SHIELD", "BAGWORM", */"RAYGUST", "KOGETSU", "SCORPION", "KOGETSU: SPEAR", "ASTEROID", "HOUND", "METEOR", "VIPER", "EGRET", "IBIS", "LIGHTNING", "GEN'YO", "LEAD BULLET", "SENKU", "STARMAKER", "THRUSTER", "ESCUDO", "CHAMELEON", "DUMMY BEACON", "GRASSHOPPER", "SILENCER", "SPIDER", "TELEPORTER", "Assault Rifle: Viper", "Assault Rifle: Hound", "Assault Rifle: Asteroid", "Assault Rifle: Meteor", "Assault Rifle: Gimlet", "Assault Rifle: Salamander", "Assault Rifle: Tomahawk", "Grenade Launcher: Viper", "Grenade Launcher: Hound", "Grenade Launcher: Asteroid", "Grenade Launcher: Meteor", "Grenade Launcher: Gimlet", "Grenade Launcher: Salamander", "Grenade Launcher: Tomahawk", "Shotgun: Viper", "Shotgun: Hound", "Shotgun: Asteroid", "Shotgun: Meteor", "Shotgun: Gimlet", "Shotgun: Salamander", "Shotgun: Tomahawk", "Handgun: Viper", "Handgun: Hound", "Handgun: Asteroid", "Handgun: Meteor", "Handgun: Gimlet", "Handgun: Salamander", "Handgun: Tomahawk", "Handgun: Spider", "SWITCHBOX", "IDATEN", "GEIST", "CONNECTOR", "SOGETSU", "FULL ARMS", "Gatling Gun: Asteroid", "Gatling Gun: Hound", "Gatling Gun: Meteor", "Gatling Gun: Viper", "Gatling Gun: Tomahawk", "Gatling Gun: Salamander", "Gatling Gun: Gimlet"];
 
 /** @type {String | Image} */
 const triggerUrls = {};
@@ -27,9 +27,11 @@ async function loadImages() {
     for (let n of names) {
         await makeImage(n);
     }
-    for(let t of allTriggers) {
+    for (let t of allTriggers) {
         triggers[t] = new Trigger(triggerUrls["Optional"]);
     }
+
+    triggers["BAGWORM TAG"] = new Trigger(triggerUrls["Optional"]);
     assignTriggers();
 };
 
@@ -49,11 +51,11 @@ function writeDatalist() {
     allTriggers.unshift("FREE TRIGGER");
     allTriggers.unshift("SHIELD");
     allTriggers.unshift("BAGWORM");
-    
-    for(let i = 1; i <= 4; i++) {
+
+    for (let i = 1; i <= 4; i++) {
         let list = document.getElementById(`sub${i}list`);
         let list2 = document.getElementById(`main${i}list`);
-        for(let n of allTriggers) {
+        for (let n of allTriggers) {
             let option = document.createElement("option");
             option.value = n;
             option.innerText = n.replace("_", " ");
@@ -62,12 +64,17 @@ function writeDatalist() {
             let option2 = option.cloneNode();
             option2.innerText = n.replace("_", " ");
             list2.appendChild(option2);
-            if(n == "FREE TRIGGER") {
+            if (n == "FREE TRIGGER") {
                 option.selected = "selected";
                 option2.selected = "selected";
             }
         }
     }
+
+    let option = document.createElement("option");
+    option.value = "BAGWORM TAG";
+    option.innerText = "BAGWORM TAG";
+    document.getElementById("sub1list").appendChild(option);
 }
 
 function assignTriggers() {
@@ -89,9 +96,9 @@ function assignTriggers() {
 
     let bullets = ["Asteroid", "Hound", "Meteor", "Viper", "Gimlet", "Salamander", "Tomahawk"];
     let guns = ["Assault_Rifle", "Handgun", "Gatling_Gun", "Shotgun", "Grenade_Launcher"];
-    for(let g of guns) {
-        for(let b of bullets) {
-            triggers[`${g.replace("_"," ")}: ${b}`].set(triggerUrls[g], "GUNNER TRIGGER");
+    for (let g of guns) {
+        for (let b of bullets) {
+            triggers[`${g.replace("_", " ")}: ${b}`].set(triggerUrls[g], "GUNNER TRIGGER");
         }
     }
 
