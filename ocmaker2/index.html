@@ -12,7 +12,9 @@
         <label>Character Image: </label><input type="text" placeholder="https://image" id="characterImage" /><br />
         <label>Character Name: </label><input type="text" placeholder="Bob" id="characterName" /> <br />
     </div>
+
     <hr />
+
     <div class="chartInputs">
         <table>
             <tr>
@@ -33,7 +35,9 @@
             </tr>
         </table>
     </div>
+
     <hr style="grid-area: hr2;" />
+    <!--Character Information-->
     <div class="chartInputs" style="grid-area: textInputs;">
         <table>
             <tr>
@@ -58,6 +62,7 @@
                     <select id="rankText">
                         <option value="A">A-Rank</option>
                         <option value="B">B-Rank</option>
+                        <option value="C">C-Rank</option>
                     </select>
                 </td>
                 <td>
@@ -73,7 +78,9 @@
             </tr>
         </table>
     </div>
+    
     <hr style="grid-area: hr3;" />
+    <!--Trigger Selection Table-->
     <div class="triggerInputs" style="grid-area: triggers;">
         <table>
             <thead>
@@ -114,21 +121,28 @@
             </tr>
         </table>
     </div>
+
     <div id="buttons">
         <button onclick="draw()">Draw Image</button>
         <button onclick="saveImage()">Save Image</button>
     </div>
+
     <hr />
+
     <span id="console"></span>
     <canvas width="1200px" height="554px" id="canvas"></canvas>
+    <!--For Save Image-->
     <div id="bigCanvasContainer"></div>
 
+    <!--Load Fonts-->
     <div style="font-family: universalis;"> </div>
     <div style="font-family: coda;"> </div>
     <div style="font-family: komix;"> </div>
     <div style="font-family: wild;"> </div>
     <div style="font-family: stencil;"> </div>
+    <!--End of Load Fonts-->
 
+    <!--Load Scripts-->
     <script src="triggerUrls.js"></script>
     <script src="scripts.js"></script>
 </body>
