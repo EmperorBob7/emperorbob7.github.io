@@ -8,6 +8,7 @@ let canvas;
 let visualCanvas;
 /** @type {Image} */
 let img;
+let appended = false; // For Visual Canvas
 
 window.onload = () => {
     loadImages();
@@ -48,10 +49,10 @@ async function draw() {
 }
 
 async function saveImage() {
-    let img = new Image();
-    img.src = canvas.toDataURL();
-    var myWindow = window.open("", "", "width=2610,height=1205");
-    myWindow.document.body.appendChild(img);
+    if (!appended) {
+        document.getElementById("bigCanvasContainer").appendChild(canvas);
+    }
+    appended = true;
 }
 
 function drawPFP(characterImageUrl) {
@@ -283,8 +284,8 @@ function clipEmblem() {
     ctx.moveTo(948, 900);
     ctx.lineTo(1180, 900);
     ctx.lineTo(1180, 1032);
-    ctx.bezierCurveTo(1175,1060,  1090,1100,  1064,1114);
-    ctx.bezierCurveTo(1038,1100,  973,1077,  948,1032);
+    ctx.bezierCurveTo(1175, 1060, 1090, 1100, 1064, 1114);
+    ctx.bezierCurveTo(1038, 1100, 973, 1077, 948, 1032);
     ctx.lineTo(948, 900);
 
     ctx.clip();

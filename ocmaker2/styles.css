@@ -25,7 +25,7 @@
 }
 
 body {
-  background-color: #222;
+  background-color: #121e2a;
   color: white;
   font-family: Arial, Helvetica, sans-serif;
   text-align: center;
@@ -44,7 +44,7 @@ body {
 }
 
 h1 {
-  color: mediumaquamarine;
+  color: rgb(89, 203, 165);
   margin: 15px;
   grid-area: "header";
 }
