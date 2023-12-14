@@ -1,10 +1,9 @@
 let ctx, canvas;
 let position = "", age = "", birthday = "", height = "", bloodtype = "", zodiac = "", occupation = "", likes = "", faction = "";
 let ty = 0, ax = 0, ay = 0, dx = 0, dy = 0, mx = 0, my = 0, sx = 0, sy = 0, rx = 0, ry = 0, cx = 0, cy = 0, tx = 0, tty = 0;
-let name, ranking;
 let trion = "0", attack = "0", defense = "0", mobility = "0", skill = "0", range = "0", command = "0", tactics = "0", total = "0", reactions = "0", strategy = "0", specialtech = "0", recon = "0", attacker = "0", shooter = "0", sniper = "0", gunner = "0";
 const TriggerNames = ["opt", "shi", "sco", "egret", "aster", "handgun", "kog", "ray", "viper", "mete", "hound", "speark", "ibis", "light", "escudo", "arifle", "shot", "grenade", "free", "switchbox", "img", "blocked", "soget"];
-const TriggerUrls = ["https://cdn.discordapp.com/attachments/571784589882949692/588223959292706817/1560313908255.png", "https://cdn.discordapp.com/attachments/571784589882949692/588226241895858176/1560314451213.png", "https://cdn.discordapp.com/attachments/571784589882949692/588228644481269761/1560315030622.png", "https://cdn.discordapp.com/attachments/571784589882949692/591051692724977665/importantIcon.png", "https://cdn.discordapp.com/attachments/571784589882949692/591053193702539314/importantIcon.png", "https://cdn.discordapp.com/attachments/571784589882949692/591054144995983425/importantIcon.png", "https://cdn.discordapp.com/attachments/571784589882949692/591058852800233503/importantIcon.png", "https://cdn.discordapp.com/attachments/571784589882949692/591060849754374146/importantIcon.png", "https://cdn.discordapp.com/attachments/571784589882949692/591062402783772691/importantIcon.png", "https://cdn.discordapp.com/attachments/571784589882949692/591063097255526400/importantIcon.png", "https://cdn.discordapp.com/attachments/571784589882949692/591064834523660303/importantIcon.png", "https://cdn.discordapp.com/attachments/571784589882949692/591067006355374110/importantIcon.png", "https://cdn.discordapp.com/attachments/571784589882949692/595070798725906442/importantIcon.png", "https://cdn.discordapp.com/attachments/571784589882949692/595071264087998496/importantIcon.png", "https://cdn.discordapp.com/attachments/571784589882949692/595073834692902925/importantIcon.png", "https://cdn.discordapp.com/attachments/571784589882949692/595073561467682818/importantIcon.png", "https://cdn.discordapp.com/attachments/571784589882949692/595074859860492318/importantIcon.png", "https://cdn.discordapp.com/attachments/571784589882949692/595076936133246989/importantIcon.png", "https://cdn.discordapp.com/attachments/571784589882949692/596874086341410826/importantIcon.png", "https://cdn.discordapp.com/attachments/571784589882949692/596787826511577119/importantIcon.png", "https://cdn.discordapp.com/attachments/571784589882949692/606222154140221441/importantIcon.png", "https://cdn.discordapp.com/attachments/571784589882949692/597287816635875338/importantIcon.png", "https://cdn.discordapp.com/attachments/571784589882949692/610257477631606811/importantIcon.png"];
+const TriggerUrls = ["https://cdn.discordapp.com/attachments/571784589882949692/588223959292706817/1560313908255.png", "https://cdn.discordapp.com/attachments/571784589882949692/588226241895858176/1560314451213.png", "https://cdn.discordapp.com/attachments/571784589882949692/588228644481269761/1560315030622.png", "https://cdn.discordapp.com/attachments/571784589882949692/591051692724977665/importantIcon.png", "https://cdn.discordapp.com/attachments/571784589882949692/591053193702539314/importantIcon.png", "https://cdn.discordapp.com/attachments/571784589882949692/591054144995983425/importantIcon.png", "https://cdn.discordapp.com/attachments/571784589882949692/591058852800233503/importantIcon.png", "https://cdn.discordapp.com/attachments/571784589882949692/591060849754374146/importantIcon.png", "https://cdn.discordapp.com/attachments/571784589882949692/591062402783772691/importantIcon.png", "https://cdn.discordapp.com/attachments/571784589882949692/591063097255526400/importantIcon.png", "https://cdn.discordapp.com/attachments/571784589882949692/591064834523660303/importantIcon.png", "https://cdn.discordapp.com/attachments/571784589882949692/591067006355374110/importantIcon.png", "https://cdn.discordapp.com/attachments/571784589882949692/595070798725906442/importantIcon.png", "https://cdn.discordapp.com/attachments/571784589882949692/595071264087998496/importantIcon.png", "https://cdn.discordapp.com/attachments/571784589882949692/595073834692902925/importantIcon.png", "https://cdn.discordapp.com/attachments/571784589882949692/595073561467682818/importantIcon.png", "https://cdn.discordapp.com/attachments/571784589882949692/595074859860492318/importantIcon.png", "https://cdn.discordapp.com/attachments/571784589882949692/595076936133246989/importantIcon.png", "https://cdn.discordapp.com/attachments/571784589882949692/596874086341410826/importantIcon.png", "https://cdn.discordapp.com/attachments/571784589882949692/596787826511577119/importantIcon.png", "./OcTemplate.png", "https://cdn.discordapp.com/attachments/571784589882949692/597287816635875338/importantIcon.png", "https://cdn.discordapp.com/attachments/571784589882949692/610257477631606811/importantIcon.png"];
 const TriggerImages = {};
 let t0 = new Date();
 for (let i = 0; i < TriggerNames.length; i++) {
@@ -17,9 +16,7 @@ for (let i = 0; i < TriggerNames.length; i++) {
 let SquadRank = "";
 let triggers = ["Free Trigger", "Free Trigger", "Free Trigger", "Free Trigger", "Free Trigger", "Free Trigger", "Free Trigger", "Free Trigger"];
 let orderProf = ["POSITION: ", "AGE: ", "BIRTHDAY: ", "HEIGHT: ", "BLOOD TYPE: ", "ZODIAC: ", "OCCUPATION: ", "LIKES: ", "FACTION: "];
-let orderProf2 = [];
 let orderStat = ["TRION: ", "MOBILITY: ", "REACTIONS: ", "RECON: ", "STRATEGY: ", "SPECIAL TECHNIQUES: "];
-let orderStat2 = [];
 let texts = ["", "DEFENSE TRIGGER", "OPTION TRIGGER", "ATTACKER TRIGGER", "ATTACKER TRIGGER", "ATTACKER TRIGGER", "ATTACKER TRIGGER", "SHOOTER TRIGGER", "SHOOTER TRIGGER", "SHOOTER TRIGGER", "SHOOTER TRIGGER", "SNIPER TRIGGER", "SNIPER TRIGGER", "SNIPER TRIGGER", "OPTION TRIGGER", "OPTION TRIGGER", "OPTION TRIGGER", "OPTION TRIGGER", "OPTION TRIGGER", "DEFENSE TRIGGER", "OPTION TRIGGER", "OPTION TRIGGER", "OPTION TRIGGER", "OPTION TRIGGER", "OPTION TRIGGER", "OPTION TRIGGER"];
 texts[54] = "TRAP TRIGGER";
 texts[55] = "OPTION TRIGGER";
@@ -97,371 +94,36 @@ function paramText(int) {
         return texts[int];
     }
 }
-function getTrion(tz) {
-    let tr = tz;
-    switch (tr) {
-        case "1":
-            ty = 373;
-            break;
-        case "2":
-            ty = 360;
-            break;
-        case "3":
-            ty = 347;
-            break;
-        case "4":
-            ty = 334;
-            break;
-        case "5":
-            ty = 320;
-            break;
-        case "6":
-            ty = 307;
-            break;
-        case "7":
-            ty = 294;
-            break;
-        case "8":
-            ty = 281;
-            break;
-        case "9":
-            ty = 268;
-            break;
-        case "10":
-            ty = 257;
-            break;
-        default:
-            ty = 257;
-    }
+function getTrion(tr) {
+    ty = 373 + (-13.25 * (Number(tr) - 1));
 }
 function getAttack(ar) {
-    switch (ar) {
-        case "1":
-            ax = 821;
-            ay = 376;
-            break;
-        case "2":
-            ax = 830;
-            ay = 367;
-            break;
-        case "3":
-            ax = 839;
-            ay = 358;
-            break;
-        case "4":
-            ax = 849;
-            ay = 348;
-            break;
-        case "5":
-            ax = 858;
-            ay = 339;
-            break;
-        case "6":
-            ax = 867;
-            ay = 330;
-            break;
-        case "7":
-            ax = 877;
-            ay = 320;
-            break;
-        case "8":
-            ax = 886;
-            ay = 311;
-            break;
-        case "9":
-            ax = 895;
-            ay = 302;
-            break;
-        case "10":
-            ax = 903;
-            ay = 294;
-            break;
-        default:
-            ax = 903;
-            ay = 294;
-    }
+    ax = 821 + (9.25 * (Number(ar) - 1));
+    ay = 376 + (-9.25 * (Number(ar) - 1));
 }
 function getDefense(dr) {
-    switch (dr) {
-        case "1":
-            dx = 825;
-            dy = 386;
-            break;
-        case "2":
-            dx = 838;
-            dy = 386;
-            break;
-        case "3":
-            dx = 851;
-            dy = 386;
-            break;
-        case "4":
-            dx = 864;
-            dy = 386;
-            break;
-        case "5":
-            dx = 878;
-            dy = 386;
-            break;
-        case "6":
-            dx = 891;
-            dy = 386;
-            break;
-        case "7":
-            dx = 904;
-            dy = 386;
-            break;
-        case "8":
-            dx = 917;
-            dy = 386;
-            break;
-        case "9":
-            dx = 930;
-            dy = 386;
-            break;
-        case "10":
-            dx = 942;
-            dy = 386;
-            break;
-        default:
-            dx = 942;
-            dy = 386;
-    }
+    dx = 825 + (13.25 * (Number(dr) - 1));
+    dy = 386;
 }
 function getMobility(mr) {
-    switch (mr) {
-        case "1":
-            mx = 821;
-            my = 395;
-            break;
-        case "2":
-            mx = 830;
-            my = 404;
-            break;
-        case "3":
-            mx = 840;
-            my = 414;
-            break;
-        case "4":
-            mx = 849;
-            my = 423;
-            break;
-        case "5":
-            mx = 859;
-            my = 433;
-            break;
-        case "6":
-            mx = 868;
-            my = 442;
-            break;
-        case "7":
-            mx = 877;
-            my = 451;
-            break;
-        case "8":
-            mx = 886;
-            my = 460;
-            break;
-        case "9":
-            mx = 896;
-            my = 470;
-            break;
-        case "10":
-            mx = 904;
-            my = 478;
-            break;
-        default:
-            mx = 904;
-            my = 478;
-    }
+    mx = 821 + (9.55 * (Number(mr) - 1));
+    my = 395 + (9.55 * (Number(mr) - 1));
 }
 function getSkill(sr) {
-    switch (sr) {
-        case "1":
-            sx = 812;
-            sy = 399;
-            break;
-        case "2":
-            sx = 812;
-            sy = 412;
-            break;
-        case "3":
-            sx = 812;
-            sy = 425;
-            break;
-        case "4":
-            sx = 812;
-            sy = 439;
-            break;
-        case "5":
-            sx = 812;
-            sy = 452;
-            break;
-        case "6":
-            sx = 812;
-            sy = 465;
-            break;
-        case "7":
-            sx = 812;
-            sy = 478;
-            break;
-        case "8":
-            sx = 812;
-            sy = 491;
-            break;
-        case "9":
-            sx = 812;
-            sy = 504;
-            break;
-        case "10":
-            sx = 812;
-            sy = 515;
-            break;
-        default:
-            sx = 812;
-            sy = 515;
-    }
+    sx = 812;
+    sy = 399 + (13.25 * (Number(sr) - 1));
 }
 function getRange(rr) {
-    switch (rr) {
-        case "1":
-            rx = 802;
-            ry = 395;
-            break;
-        case "2":
-            rx = 792;
-            ry = 405;
-            break;
-        case "3":
-            rx = 783;
-            ry = 414;
-            break;
-        case "4":
-            rx = 774;
-            ry = 423;
-            break;
-        case "5":
-            rx = 764;
-            ry = 433;
-            break;
-        case "6":
-            rx = 755;
-            ry = 442;
-            break;
-        case "7":
-            rx = 745;
-            ry = 452;
-            break;
-        case "8":
-            rx = 736;
-            ry = 461;
-            break;
-        case "9":
-            rx = 727;
-            ry = 470;
-            break;
-        case "10":
-            rx = 720;
-            ry = 477;
-            break;
-        default:
-            rx = 720;
-            ry = 477;
-    }
+    rx = 802 + (-9.5 * (Number(rr) - 1));
+    ry = 395 + (9.5 * (Number(rr) - 1));
 }
 function getCommand(cr) {
-    switch (cr) {
-        case "1":
-            cx = 800;
-            cy = 386;
-            break;
-        case "2":
-            cx = 786;
-            cy = 386;
-            break;
-        case "3":
-            cx = 773;
-            cy = 386;
-            break;
-        case "4":
-            cx = 760;
-            cy = 386;
-            break;
-        case "5":
-            cx = 747;
-            cy = 386;
-            break;
-        case "6":
-            cx = 734;
-            cy = 386;
-            break;
-        case "7":
-            cx = 721;
-            cy = 386;
-            break;
-        case "8":
-            cx = 707;
-            cy = 386;
-            break;
-        case "9":
-            cx = 694;
-            cy = 386;
-            break;
-        case "10":
-            cx = 684;
-            cy = 386;
-            break;
-        default:
-            cx = 684;
-            cy = 386;
-    }
+    cx = 800 + (-13.25 * (Number(cr) - 1));
+    cy = 386;
 }
 function getTactics(tr) {
-    switch (tr) {
-        case "1":
-            tx = 803;
-            tty = 375;
-            break;
-        case "2":
-            tx = 794;
-            tty = 368;
-            break;
-        case "3":
-            tx = 784;
-            tty = 358;
-            break;
-        case "4":
-            tx = 775;
-            tty = 349;
-            break;
-        case "5":
-            tx = 766;
-            tty = 340;
-            break;
-        case "6":
-            tx = 757;
-            tty = 331;
-            break;
-        case "7":
-            tx = 747;
-            tty = 321;
-            break;
-        case "8":
-            tx = 738;
-            tty = 312;
-            break;
-        case "9":
-            tx = 729;
-            tty = 303;
-            break;
-        case "10":
-            tx = 722;
-            tty = 296;
-            break;
-        default:
-            tx = 722;
-            tty = 296;
-    }
+    tx = 803 + (-9.4 * (Number(tr) - 1));
+    tty = 375 + (-9.15 * (Number(tr) - 1));
 }
 function paramText() {
     ctx.fillStyle = "black";
@@ -471,10 +133,10 @@ function paramText() {
     ctx.fillText(attack, 922, 299);
     ctx.fillText(defense, 950, 404);
     ctx.fillText(mobility, 928, 503);
-    ctx.font = "normal normal bold 17px Arial";
+    ctx.font = "normal normal bolder 19px Arial";
     ctx.fillText(skill, 812, 543);
-    ctx.font = "normal normal bold 19px Arial";
-    ctx.strokeStyle = "lightgray";
+    // ctx.font = "normal normal bolder 19px Arial";
+    ctx.strokeStyle = "white";
     ctx.strokeText(skill, 812, 543);
     ctx.font = "normal normal bold 13px Arial";
     ctx.fillText(range, 697, 505);
@@ -610,7 +272,7 @@ function getProfile() {
 function drawProfile() {
     let outY = 570;
     ctx.font = "normal normal normal 12px arial";
-    orderProf2 = [position, age, birthday, height, bloodtype, zodiac, occupation, likes, faction];
+    let orderProf2 = [position, age, birthday, height, bloodtype, zodiac, occupation, likes, faction];
     for (let i = 0; i <= 6; i++) {
         ctx.fillText(orderProf[i] + orderProf2[i], 25, outY);
         outY += 12;
@@ -649,7 +311,7 @@ function getLines(text, maxWidth) {
 function drawStats() {
     let outY = 275;
     ctx.font = "normal normal normal 12px arial";
-    orderStat2 = [trion, mobility, reactions, recon, strategy, specialtech];
+    let orderStat2 = [trion, mobility, reactions, recon, strategy, specialtech];
     if (parseInt(attacker) > 0 && parseInt(shooter) > 0 && parseInt(sniper) > 0 && parseInt(gunner) > 0) {
         for (let i = 0; i <= 5; i++) {
             ctx.fillText(orderStat[i] + orderStat2[i], 25, outY);
@@ -725,6 +387,19 @@ function draw() {
     getCommand(command);
     getTactics(tactics);
 
+    ctx.save();
+    ctx.beginPath();
+    ctx.moveTo(812, 255); // Tri
+    ctx.lineTo(905, 291); // Atk
+    ctx.lineTo(944, 385); // Def
+    ctx.lineTo(905, 479); // Mob
+    ctx.lineTo(812, 518); // Skill
+    ctx.lineTo(718, 479); // Range
+    ctx.lineTo(680, 386); // Command
+    ctx.lineTo(719, 293); // Special
+    ctx.lineTo(812, 255); // Tri
+    ctx.clip();
+
     ctx.beginPath();
     ctx.globalAlpha = .45;
     ctx.moveTo(812, ty);
@@ -736,6 +411,7 @@ function draw() {
     ctx.lineTo(cx, cy);
     ctx.lineTo(tx, tty);
     ctx.fill();
+    ctx.restore();
     ctx.globalAlpha = 1;
 }
 function addTrigger() {
