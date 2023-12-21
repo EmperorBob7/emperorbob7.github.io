@@ -7,12 +7,12 @@
     <link rel="stylesheet" href="ocstyles.css">
 </head>
 
-<body align="center">
+<body>
     <h1>World Trigger Character</h1>
     <a href="OcEmblemTemplate.png" download="Oc Emblem Template.png">Download Emblem Template</a>
     <br />
     <br />
-    <div id="form" align="center">
+    <div id="form">
         <input type="text" placeholder="OC Name" id="name" style="text-transform: uppercase" />
         <input type="number" placeholder="Squad Ranking" min="1" id="ranking" />
         <input type="url" placeholder="Squad Emblem Logo" id="emblem" />
@@ -21,9 +21,10 @@
             <option value="B">B-Rank</option>
         </select>
     </div>
-    <div id="parameters" align="center">
-        <h3>Parameters</h3>
+    <div id="parameters">
         <hr />
+        <h3>Parameters</h3>
+        <label>Operator: </label><input type="checkbox" id="operatorCheck" onchange="operatorCheck()"/>
         <table>
             <tr>
                 <td>Trion</td>
@@ -41,44 +42,31 @@
                 <td>Skill</td>
                 <td>Range</td>
                 <td>Command</td>
-                <td>Tactics</td>
+                <td>Special Tactics</td>
             </tr>
             <tr>
-
                 <td><input type="number" value="0" id="skill" min="1" /></td>
                 <td><input type="number" value="0" id="range" min="1" /></td>
                 <td><input type="number" value="0" id="command" min="1" /></td>
                 <td><input type="number" value="0" id="tactics" min="1" /></td>
             </tr>
             <tr>
-                <td>Reactions</td>
-                <td>Strategy</td>
-                <td>Special Techniques</td>
-                <td>Recon</td>
+                <td>Mechanical Operation</td>
+                <td>Data Analysis</td>
+                <td>Parallel Processing</td>
+                <!-- <td>Special Tactics</td> -->
             </tr>
             <tr>
-                <td><input type="number" value="0" id="reactions" min="1" /></td>
-                <td><input type="number" value="0" id="strategy" min="1" /></td>
-                <td><input type="number" value="0" id="specialtech" min="1" /></td>
-                <td><input type="number" value="0" id="recon" min="1" /></td>
-            </tr>
-            <tr>
-                <td>Attacker</td>
-                <td>Shooter</td>
-                <td>Sniper</td>
-                <td>Gunner</td>
-            </tr>
-            <tr>
-                <td><input type="number" value="0" id="attacker" min="1" /></td>
-                <td><input type="number" value="0" id="shooter" min="1" /></td>
-                <td><input type="number" value="0" id="sniper" min="1" /></td>
-                <td><input type="number" value="0" id="gunner" min="1" /></td>
+                <td><input type="number" value="0" id="mechanical" min="1" /></td>
+                <td><input type="number" value="0" id="analysis" min="1" /></td>
+                <td><input type="number" value="0" id="parallel" min="1" /></td>
+                <!-- <td><input type="number" value="0" id="tactics" min="1" /></td> -->
             </tr>
         </table>
     </div>
-    <div id="profile" align="center">
-        <h3>Profile</h3>
+    <div id="profile">
         <hr />
+        <h3>Profile</h3>
         <table>
             <tr>
                 <td>Position</td>
@@ -113,7 +101,8 @@
         </table>
     </div>
     <hr />
-    <div id="triggers" align="center">
+    <h3>Triggers</h3>
+    <div id="triggers">
         <table>
             <tr>
                 <th>Sub</th>
@@ -708,7 +697,7 @@
                 <option value="22">Sougetsu</option>
             </select> <br />
             <label>Trigger Name</label>
-            <input type="text" id="customTriggerName" placeholder="Scorpion"/>
+            <input type="text" id="customTriggerName" placeholder="Scorpion" />
             <label>Trigger Type</label> <br />
             <select id="customTriggerType">
                 <option value="OPTION TRIGGER">Optional</option>
@@ -726,7 +715,8 @@
         <button onclick="draw()">Draw Image</button>
     </div>
     <!--0-25 is regular 3-6 Atacker 7-10 Shooter 11-13 Sniper 14-18 Attachments 19-25 Extras 26-32 Assault Rifles 33-39 Grenade Launchers 40-46 Shotguns 47-53 Handguns-->
-    <canvas width="1280px" height="720px" style="border:2px solid black;" id="cv"></canvas>
+    <canvas width="1280px" height="590px" style="border:2px solid black;" id="cv"></canvas>
     <script src="ocscripts.js"></script>
 </body>
+
 </html>
