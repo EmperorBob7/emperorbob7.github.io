@@ -19,7 +19,12 @@ body {
     padding: 10;
     background-color: #222222;
     font-family: arial;
+    color: #ddd;
+}
+
+h1, h2, h3 {
     color: #00bd8b;
+    margin-bottom: 1vh;
 }
 
 img {
@@ -50,10 +55,12 @@ select {
 
 button {
     padding: 5px;
-    margin-bottom: 5px;
     background-color: transparent;
     color: aqua;
     border: 2px solid cyan;
+    display: block;
+    margin: auto;
+    margin-bottom: 1vh;
 }
 
 p {
@@ -90,4 +97,25 @@ a {
 
 #triggerAdder:active {
     color: red;
+}
+
+paramTable {
+    display: flex;
+    justify-content: center;
+    width: 85%;
+    margin: auto;
+    flex-wrap: wrap;
+}
+
+paramStat {
+    width: 15vw;
+}
+
+paramStat label {
+    display: block;
+    margin-bottom: 0.3vh;
+}
+
+paramStat input {
+    width: 80%;
 }

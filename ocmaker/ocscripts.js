@@ -56,8 +56,25 @@ function reset() {
     }
 }
 
+function elementDisplay(str, mode) {
+    // console.log(str, mode);
+    document.getElementById(str).style.display = mode;
+}
+
 function operatorCheck() {
     isOperator = document.getElementById("operatorCheck").checked;
+    const combatantElems = ["attackP", "defenseP", "mobilityP", "skillP", "rangeP", "triggers"];
+    const opElems = ["mechanicalP", "analysisP", "parallelP"];
+    let hidden = "none";
+    let block = "block";
+    if(isOperator) {
+        console.log('stuff');
+        combatantElems.forEach(str => elementDisplay(str, hidden));
+        opElems.forEach(str => elementDisplay(str, block));
+    } else {
+        combatantElems.forEach(str => elementDisplay(str, block));
+        opElems.forEach(str => elementDisplay(str, hidden));
+    }
 }
 
 function getTrigs() {
@@ -81,6 +98,9 @@ function getRank() {
     squadRank = ret;
 }
 
+/**
+ * Assigns values for parameter stats (combatants and operators)
+ */
 function getParams() {
     trion = Number(document.getElementById("trion").value);
     attack = Number(document.getElementById("attack").value);
@@ -150,7 +170,7 @@ function getTactics(tr) {
 function getOpTrion(tr) {
     const tx = 812;
     let ty = 384 + (-10.5 * tr);;
-    if(tr > 2) {
+    if (tr > 2) {
         ty = 384 + (-12 * tr);
     }
     return [tx, ty];
@@ -159,7 +179,7 @@ function getOpTrion(tr) {
 function getMechanical(mr) {
     let mx = 814 + (10 * mr);
     let my = 385 + (-6 * mr);
-    if(mr > 2) {
+    if (mr > 2) {
         mx = 814 + (10.5 * mr);
     }
     return [mx, my];
@@ -167,8 +187,8 @@ function getMechanical(mr) {
 
 function getData(dr) {
     let dx = 814 + (10 * dr);
-    let dy = 386 + (6 * dr);
-    if(dr > 2) {
+    let dy = 386 + (6.25 * dr);
+    if (dr > 2) {
         dx = 814 + (10.5 * dr);
     }
     return [dx, dy];
@@ -177,7 +197,7 @@ function getData(dr) {
 function getParallel(pr) {
     const px = 812;
     let py = 388 + (11 * pr);
-    if(pr > 2) {
+    if (pr > 2) {
         py = 388 + (12.25 * pr);
     }
     return [px, py];
@@ -185,8 +205,8 @@ function getParallel(pr) {
 
 function getOpTactics(tr) {
     let ttx = 811 + (-10 * tr);
-    const tty = 386 + (6 * tr);
-    if(tr > 2) {
+    const tty = 386 + (6.25 * tr);
+    if (tr > 2) {
         ttx = 811 + (-10.5 * tr);
     }
     return [ttx, tty];
@@ -195,28 +215,46 @@ function getOpTactics(tr) {
 function getOpCommand(cr) {
     let cx = 811 + (-10 * cr);
     const cy = 385 + (-6 * cr);
-    if(cr > 2) {
+    if (cr > 2) {
         cx = 811 + (-10.5 * cr);
     }
     return [cx, cy];
 }
 
-function paramText() {
+/**
+ * Draw text for individual stats and total on the radar chart
+ */
+function drawStats() {
     ctx.fillStyle = "black";
-    ctx.font = "normal normal bold 13px Arial";
     ctx.textAlign = "center";
-    ctx.fillText(trion, 812, 253);
-    ctx.fillText(attack, 925, 299);
-    ctx.fillText(defense, 963, 404);
-    ctx.fillText(mobility, 928, 503);
-    ctx.fillText(skill, 812, 543);
-    ctx.fillText(range, 707, 505);
-    ctx.fillText(command, 663, 405);
-    ctx.fillText(tactics, 701, 304);
+    if (isOperator) {
+        ctx.font = "normal normal bold 15px Arial";
+        ctx.fillText(trion, 812, 257);
+        ctx.fillText(mechanical, 935, 315);
+        ctx.fillText(analysis, 935, 480);
+        ctx.fillText(parallel, 812, 542);
+        ctx.fillText(tactics, 695, 480);
+        ctx.fillText(command, 685, 320);
+    } else {
+        ctx.font = "normal normal bold 13px Arial";
+        ctx.fillText(trion, 812, 253);
+        ctx.fillText(attack, 925, 299);
+        ctx.fillText(defense, 963, 404);
+        ctx.fillText(mobility, 928, 503);
+        ctx.fillText(skill, 812, 543);
+        ctx.fillText(range, 707, 505);
+        ctx.fillText(command, 663, 405);
+        ctx.fillText(tactics, 701, 304);
+    }
     ctx.font = "normal normal bold 26px Arial";
     ctx.textAlign = "start";
-    const sum = trion + attack + defense + mobility + skill + range + command + tactics;
-    ctx.fillText(sum, 719, 554);
+    if (isOperator) {
+        const sum = mechanical + analysis + parallel + tactics + command;
+        ctx.fillText(sum, 722, 552);
+    } else {
+        const sum = trion + attack + defense + mobility + skill + range + command + tactics;
+        ctx.fillText(sum, 719, 554);
+    }
 }
 
 let textY, imgY, nameY, freeY;
@@ -303,6 +341,10 @@ function writeName() {
     ctx.fillStyle = "black";
 }
 
+/**
+ * Writes the rank number.
+ * Smaller text for B-Rank (3 digits)
+ */
 function writeRank() {
     const rank = document.getElementById("ranking").value;
     ctx.fillStyle = "white";
@@ -431,6 +473,9 @@ function getLines(text, maxWidth) {
 //     }
 // }
 
+/**
+ * Does the A or B rank text in the emblem
+ */
 function drawRank() {
     ctx.font = "normal normal normal 37px stencil";
     ctx.fillStyle = "black";
@@ -463,13 +508,12 @@ function draw() {
     getTrigs();
     getParams();
     trigText();
-    paramText();
+    drawStats();
 
     getRank();
     drawRank();
     writeRank();
     drawProfile();
-    // drawStats();
     // Combatants
     let tx, ty, ax, ay, dx, dy, mx, my, sx, sy, rx, ry, cx, cy, ttx, tty;
     //Operators
