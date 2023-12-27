@@ -2,13 +2,13 @@ let ctx, canvas;
 let trion, attack, defense, mobility, skill, range, command, tactics;
 let mechanical, analysis, parallel;
 const TriggerNames = ["opt", "shi", "sco", "egret", "aster", "handgun", "kog", "ray", "viper", "mete", "hound", "speark", "ibis", "light", "escudo", "arifle", "shot", "grenade", "free", "switchbox", "img", "blocked", "soget", "opImg"];
-const TriggerUrls = ["https://cdn.discordapp.com/attachments/571784589882949692/588223959292706817/1560313908255.png", "https://cdn.discordapp.com/attachments/571784589882949692/588226241895858176/1560314451213.png", "https://cdn.discordapp.com/attachments/571784589882949692/588228644481269761/1560315030622.png", "https://cdn.discordapp.com/attachments/571784589882949692/591051692724977665/importantIcon.png", "https://cdn.discordapp.com/attachments/571784589882949692/591053193702539314/importantIcon.png", "https://cdn.discordapp.com/attachments/571784589882949692/591054144995983425/importantIcon.png", "https://cdn.discordapp.com/attachments/571784589882949692/591058852800233503/importantIcon.png", "https://cdn.discordapp.com/attachments/571784589882949692/591060849754374146/importantIcon.png", "https://cdn.discordapp.com/attachments/571784589882949692/591062402783772691/importantIcon.png", "https://cdn.discordapp.com/attachments/571784589882949692/591063097255526400/importantIcon.png", "https://cdn.discordapp.com/attachments/571784589882949692/591064834523660303/importantIcon.png", "https://cdn.discordapp.com/attachments/571784589882949692/591067006355374110/importantIcon.png", "https://cdn.discordapp.com/attachments/571784589882949692/595070798725906442/importantIcon.png", "https://cdn.discordapp.com/attachments/571784589882949692/595071264087998496/importantIcon.png", "https://cdn.discordapp.com/attachments/571784589882949692/595073834692902925/importantIcon.png", "https://cdn.discordapp.com/attachments/571784589882949692/595073561467682818/importantIcon.png", "https://cdn.discordapp.com/attachments/571784589882949692/595074859860492318/importantIcon.png", "https://cdn.discordapp.com/attachments/571784589882949692/595076936133246989/importantIcon.png", "https://cdn.discordapp.com/attachments/571784589882949692/596874086341410826/importantIcon.png", "https://cdn.discordapp.com/attachments/571784589882949692/596787826511577119/importantIcon.png", "./OcTemplate.png", "https://cdn.discordapp.com/attachments/571784589882949692/597287816635875338/importantIcon.png", "https://cdn.discordapp.com/attachments/571784589882949692/610257477631606811/importantIcon.png", "./Template_OP.png"];
 const TriggerImages = {};
 for (let i = 0; i < TriggerNames.length; i++) {
-    if (TriggerNames[i] === "opImg") {
-        TriggerImages[TriggerNames[i]] = newImage(TriggerUrls[i], true);
+    const name = TriggerNames[i];
+    if (name === "opImg") {
+        TriggerImages[name] = newImage(`./images/${name}.png`, true);
     } else {
-        TriggerImages[TriggerNames[i]] = newImage(TriggerUrls[i], false);
+        TriggerImages[name] = newImage(`./images/${name}.png`, false);
     }
 }
 
@@ -529,7 +529,7 @@ function draw() {
 function addTrigger() {
     let e = document.getElementById("customImg");
     let ret = parseInt(e.options[e.selectedIndex].value);
-    const imageUrl = newImage(TriggerUrls[ret], false);
+    const imageUrl = TriggerImages[TriggerNames[ret]];
     const triggerName = document.getElementById("customTriggerName").value.toUpperCase();
     e = document.getElementById("customTriggerType");
     ret = e.options[e.selectedIndex].value;
@@ -543,4 +543,11 @@ function addTrigger() {
     for (let i = 1; i <= 4; i++) {
         document.getElementById("sub" + i).innerHTML += `<option value="${trigNames.length - 1}">${triggerName}</option>`;
     }
+}
+
+function saveImage() {
+    var link = document.createElement('a');
+    link.download = 'ocmaker.png';
+    link.href = canvas.toDataURL()
+    link.click();
 }
