@@ -373,9 +373,10 @@ let emblem;
 function drawSquadEmblem() {
     emblemUrl = document.getElementById("emblem").value;
     emblem = new Image();
+    emblem.crossOrigin = 'anonymous';
     emblem.src = emblemUrl;
     emblem.onload = () => {
-        ctx.drawImage(emblem, 30, 73, 133, 121);
+        ctx.drawImage(emblem, 30, 72, 133, 121);
     };
 }
 

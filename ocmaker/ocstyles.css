@@ -58,7 +58,6 @@ button {
     background-color: transparent;
     color: aqua;
     border: 2px solid cyan;
-    display: block;
     margin: auto;
     margin-bottom: 1vh;
 }
