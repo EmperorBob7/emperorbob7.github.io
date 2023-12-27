@@ -49,10 +49,14 @@ async function draw() {
 }
 
 async function saveImage() {
-    if (!appended) {
-        document.getElementById("bigCanvasContainer").appendChild(canvas);
-    }
-    appended = true;
+    // if (!appended) {
+    //     document.getElementById("bigCanvasContainer").appendChild(canvas);
+    // }
+    // appended = true;
+    var link = document.createElement('a');
+    link.download = 'ocmaker.png';
+    link.href = canvas.toDataURL()
+    link.click();
 }
 
 function drawPFP(characterImageUrl) {
@@ -77,6 +81,7 @@ function drawPFP(characterImageUrl) {
             log("Invalid Image URL");
             res();
         });
+        t.crossOrigin = "anonymous";
         t.src = characterImageUrl;
     });
 }
@@ -290,6 +295,7 @@ function drawEmblem() {
             log("Invalid Emblem URL");
             res();
         });
+        t.crossOrigin = "anonymous";
         t.src = document.getElementById("emblem").value;
     });
 }
