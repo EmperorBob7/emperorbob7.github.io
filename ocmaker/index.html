@@ -42,7 +42,7 @@
             <label>Operator: </label>
             <input type="checkbox" id="operatorCheck" onchange="operatorCheck()" />
         </paramStat>
-        <paramTable>
+        <paramTable style="width: 61vw;">
             <paramStat id="trionP">
                 <label>Trion</label>
                 <input type="number" value="0" id="trion" min="1" />
@@ -92,38 +92,44 @@
     <hr />
     <div id="profile">
         <h3>Profile</h3>
-        <table>
-            <tr>
-                <td>Position</td>
-                <td>Age</td>
-                <td>Birthday</td>
-            </tr>
-            <tr>
-                <td><input type="text" id="position" /></td>
-                <td><input type="text" id="age" /></td>
-                <td><input type="text" id="birthday" /></td>
-            </tr>
-            <tr>
-                <td>Height</td>
-                <td>Blood-Type</td>
-                <td>Zodiac</td>
-            </tr>
-            <tr>
-                <td><input type="text" id="height" /></td>
-                <td><input type="text" id="blood-type" /></td>
-                <td><input type="text" id="zodiac" /></td>
-            </tr>
-            <tr>
-                <td>Occupation</td>
-                <td>Likes</td>
-                <td>Faction</td>
-            </tr>
-            <tr>
-                <td><input type="text" id="occupation" /></td>
-                <td><input type="text" id="likes" /></td>
-                <td><input type="text" id="faction" /></td>
-            </tr>
-        </table>
+        <paramTable style="width: 51vw;">
+            <paramStat>
+                <label>Position</label>
+                <input type="text" id="position" />
+            </paramStat>
+            <paramStat>
+                <label>Age</label>
+                <input type="number" id="age" />
+            </paramStat>
+            <paramStat>
+                <label>Birthday</label>
+                <input type="text" id="birthday" />
+            </paramStat>
+            <paramStat>
+                <label>Height</label>
+                <input type="text" id="height" />
+            </paramStat>
+            <paramStat>
+                <label>Blood-Type</label>
+                <input type="text" id="blood-type" />
+            </paramStat>
+            <paramStat>
+                <label>Zodiac</label>
+                <input type="text" id="zodiac" />
+            </paramStat>
+            <paramStat>
+                <label>Occupation</label>
+                <input type="text" id="occupation" />
+            </paramStat>
+            <paramStat>
+                <label>Likes</label>
+                <input type="text" id="likes" />
+            </paramStat>
+            <paramStat>
+                <label>Faction</label>
+                <input type="text" id="faction" />
+            </paramStat>
+        </paramTable>
     </div>
     <hr />
     <div id="triggers">
