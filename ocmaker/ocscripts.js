@@ -284,9 +284,6 @@ function drawGuns(xVal, xVal2, xVal3, z, textY, imgY, nameY) {
 }
 
 function trigText() {
-    if (isOperator) {
-        return;
-    }
     ctx.fillStyle = "black";
     let textY = 264;
     let imgY = 260;
@@ -295,7 +292,7 @@ function trigText() {
     // Sub Triggers
     for (let i = 0; i < 4; i++) {
         ctx.font = FONTS.TRIGGER_TYPE;
-        if (triggers[i] === 0) {
+        if (isOperator || triggers[i] === 0) {
             ctx.drawImage(TriggerImages.free, 361, freeY);
         } else if (triggers[i] > 25 && triggers[i] <= 53) {
             drawGuns(418, 372, 420, i, textY, imgY, nameY);
@@ -335,7 +332,7 @@ function trigText() {
     // Main Triggers
     for (let i = 4; i < 8; i++) {
         ctx.font = FONTS.TRIGGER_TYPE;
-        if (triggers[i] === 0) {
+        if (isOperator || triggers[i] === 0) {
             ctx.drawImage(TriggerImages.free, 1049, freeY);
         } else if (triggers[i] > 25 && triggers[i] <= 53) {
             drawGuns(1106, 1060, 1108, i, textY, imgY, nameY);
