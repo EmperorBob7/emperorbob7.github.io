@@ -42,6 +42,7 @@ function loadTriggerImages() {
 
 function newImage(src, bool) {
     const newimg = new Image();
+    newimg.crossOrigin = "anonymous";
     if (bool) {
         newimg.onload = () => {
             begin();
@@ -543,13 +544,19 @@ function draw() {
 function addTrigger() {
     let e = document.getElementById("customImg");
     let ret = parseInt(e.options[e.selectedIndex].value);
-    const imageUrl = TriggerImages[TriggerNames[ret]];
+    let imageUrl = TriggerImages[TriggerNames[ret]];
     const triggerName = document.getElementById("customTriggerName").value.toUpperCase();
     e = document.getElementById("customTriggerType");
     ret = e.options[e.selectedIndex].value;
     const triggerType = ret;
     texts.push(triggerType);
     trigNames.push(triggerName);
+
+    const customURL = document.getElementById("customTriggerIcon").value;
+    if (customURL.length > 0) {
+        imageUrl = newImage(customURL, false);
+    }
+
     trigImg.push(imageUrl);
     for (let i = 1; i <= 4; i++) {
         document.getElementById("main" + i).innerHTML += `<option value="${trigNames.length - 1}">${triggerName}</option>`;
