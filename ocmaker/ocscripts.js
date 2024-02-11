@@ -116,14 +116,14 @@ function getParams() {
  * @returns {Array} Coordinates for Trion [tx, ty]
  */
 function getTrion(tr) {
-    const tx = 812;
-    const ty = 373 + (-13.25 * (tr - 1));
+    const tx = 813;
+    const ty = 373 + (-13.15 * (tr - 1));
     return [tx, ty];
 }
 
 function getAttack(ar) {
-    const ax = 821 + (9.25 * (ar - 1));
-    const ay = 376 + (-9.25 * (ar - 1));
+    const ax = 821 + (9.35 * (ar - 1));
+    const ay = 376 + (-9.35 * (ar - 1));
     return [ax, ay];
 }
 
@@ -134,32 +134,32 @@ function getDefense(dr) {
 }
 
 function getMobility(mr) {
-    const mx = 821 + (9.55 * (mr - 1));
-    const my = 395 + (9.55 * (mr - 1));
+    const mx = 821 + (9.25 * (mr - 1));
+    const my = 395 + (9.25 * (mr - 1));
     return [mx, my];
 }
 
 function getSkill(sr) {
-    const sx = 812;
-    const sy = 399 + (13.25 * (sr - 1));
+    const sx = 813;
+    const sy = 399 + (12.75 * (sr - 1));
     return [sx, sy];
 }
 
 function getRange(rr) {
-    const rx = 802 + (-9.5 * (rr - 1));
-    const ry = 395 + (9.5 * (rr - 1));
+    const rx = 802 + (-9 * (rr - 1));
+    const ry = 395 + (9 * (rr - 1));
     return [rx, ry];
 }
 
 function getCommand(cr) {
-    const cx = 800 + (-13.25 * (cr - 1));
+    const cx = 800 + (-13.15 * (cr - 1));
     const cy = 386;
     return [cx, cy];
 }
 
 function getTactics(tr) {
-    const ttx = 803 + (-9.4 * (tr - 1));
-    const tty = 375 + (-9.15 * (tr - 1));
+    const ttx = 803 + (-9.20 * (tr - 1));
+    const tty = 375 + (-9 * (tr - 1));
     return [ttx, tty];
 }
 
@@ -505,6 +505,7 @@ function draw() {
     clipStats();
 
     ctx.beginPath();
+    ctx.fillStyle = "red";
     ctx.globalAlpha = 0.45;
     ctx.moveTo(tx, ty);
     if (isOperator) {
