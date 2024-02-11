@@ -1,19 +1,6 @@
-let ctx, canvas;
-let trion, attack, defense, mobility, skill, range, command, tactics;
-let mechanical, analysis, parallel;
 const TriggerNames = ["opt", "shi", "sco", "egret", "aster", "handgun", "kog", "ray", "viper", "mete", "hound", "speark", "ibis", "light", "escudo", "arifle", "shot", "grenade", "free", "switchbox", "img", "blocked", "soget", "opImg"];
 const TriggerImages = {};
-for (let i = 0; i < TriggerNames.length; i++) {
-    const name = TriggerNames[i];
-    if (name === "opImg") {
-        TriggerImages[name] = newImage(`./images/${name}.png`, true);
-    } else {
-        TriggerImages[name] = newImage(`./images/${name}.png`, false);
-    }
-}
-
-let squadRank = "";
-const triggers = ["Free Trigger", "Free Trigger", "Free Trigger", "Free Trigger", "Free Trigger", "Free Trigger", "Free Trigger", "Free Trigger"];
+const triggers = [0, 0, 0, 0, 0, 0, 0, 0];
 const orderProf = ["POSITION: ", "AGE: ", "BIRTHDAY: ", "HEIGHT: ", "BLOOD TYPE: ", "ZODIAC: ", "OCCUPATION: ", "LIKES: ", "FACTION: "];
 const texts = ["", "DEFENSE TRIGGER", "OPTION TRIGGER", "ATTACKER TRIGGER", "ATTACKER TRIGGER", "ATTACKER TRIGGER", "ATTACKER TRIGGER", "SHOOTER TRIGGER", "SHOOTER TRIGGER", "SHOOTER TRIGGER", "SHOOTER TRIGGER", "SNIPER TRIGGER", "SNIPER TRIGGER", "SNIPER TRIGGER", "OPTION TRIGGER", "OPTION TRIGGER", "OPTION TRIGGER", "OPTION TRIGGER", "OPTION TRIGGER", "DEFENSE TRIGGER", "OPTION TRIGGER", "OPTION TRIGGER", "OPTION TRIGGER", "OPTION TRIGGER", "OPTION TRIGGER", "OPTION TRIGGER"];
 texts[54] = "TRAP TRIGGER";
@@ -23,10 +10,35 @@ texts[57] = "OPTION TRIGGER";
 texts[58] = "OPTION TRIGGER";
 texts[59] = "ATTACKER TRIGGER";
 texts[60] = "OPTION TRIGGER";
-const trigNames = ["", "SHIELD", "BAGWORM", "RAYGUST", "KOGETSU", "SCORPION", "KOGETSU: SPEAR", "ASTEROID", "HOUND", "METEORA", "VIPER", "EGRET", "IBIS", "LIGHTNING", "GEN'YO", "LEAD BULLET", "SENKU", "STARMAKER", "THRUSTER", "ESCUDO", "CHAMELEON", "DUMMY BEACON", "GRASSHOPPER", "SILENCER", "SPIDER", "TELEPORTER", "Assault Rifle: Viper", "Assault Rifle: Hound", "Assault Rifle: Asteroid", "Assault Rifle: Meteora", "Assault Rifle: Gimlet", "Assault Rifle: Salamander", "Assault Rifle: Tomahawk", "Grenade Gun: Viper", "Grenade Gun: Hound", "Grenade Gun: Asteroid", "Grenade Gun: Meteora", "Grenade Gun: Gimlet", "Grenade Gun: Salamander", "Grenade Gun: Tomahawk", "Shotgun: Viper", "Shotgun: Hound", "Shotgun: Asteroid", "Shotgun: Meteora", "Shotgun: Gimlet", "Shotgun: Salamander", "Shotgun: Tomahawk", "Handgun: Viper", "Handgun: Hound", "Handgun: Asteroid", "Handgun: Meteora", "Handgun: Gimlet", "Handgun: Salamander", "Handgun: Tomahawk", "SWITCHBOX", "BAGWORM TAG", "IDATEN", "GEIST", "CONNECTOR", "SOUGETSU", "FULL ARMS"];
-const trigImg = ["", TriggerImages.shi, TriggerImages.opt, TriggerImages.ray, TriggerImages.kog, TriggerImages.sco, TriggerImages.speark, TriggerImages.aster, TriggerImages.hound, TriggerImages.mete, TriggerImages.viper, TriggerImages.egret, TriggerImages.ibis, TriggerImages.light, TriggerImages.opt, TriggerImages.opt, TriggerImages.opt, TriggerImages.opt, TriggerImages.opt, TriggerImages.escudo, TriggerImages.opt, TriggerImages.opt, TriggerImages.opt, TriggerImages.opt, TriggerImages.opt, TriggerImages.opt, TriggerImages.arifle, TriggerImages.arifle, TriggerImages.arifle, TriggerImages.arifle, TriggerImages.arifle, TriggerImages.arifle, TriggerImages.arifle, TriggerImages.grenade, TriggerImages.grenade, TriggerImages.grenade, TriggerImages.grenade, TriggerImages.grenade, TriggerImages.grenade, TriggerImages.grenade, TriggerImages.shot, TriggerImages.shot, TriggerImages.shot, TriggerImages.shot, TriggerImages.shot, TriggerImages.shot, TriggerImages.shot, TriggerImages.handgun, TriggerImages.handgun, TriggerImages.handgun, TriggerImages.handgun, TriggerImages.handgun, TriggerImages.handgun, TriggerImages.handgun, TriggerImages.switchbox, TriggerImages.opt, TriggerImages.opt, TriggerImages.opt, TriggerImages.opt, TriggerImages.soget, TriggerImages.opt];
+const trigNames = ["", "SHIELD", "BAGWORM", "RAYGUST", "KOGETSU", "SCORPION", "KOGETSU: SPEAR", "ASTEROID", "HOUND", "METEOR", "VIPER", "EGRET", "IBIS", "LIGHTNING", "GEN'YO", "LEAD BULLET", "SENKU", "STARMAKER", "THRUSTER", "ESCUDO", "CHAMELEON", "DUMMY BEACON", "GRASSHOPPER", "SILENCER", "SPIDER", "TELEPORTER", "ASSAULT RIFLE: VIPER", "ASSAULT RIFLE: HOUND", "ASSAULT RIFLE: ASTEROID", "ASSAULT RIFLE: METEOR", "ASSAULT RIFLE: GIMLET", "ASSAULT RIFLE: SALAMANDER", "ASSAULT RIFLE: TOMAHAWK", "GRENADE GUN: VIPER", "GRENADE GUN: HOUND", "GRENADE GUN: ASTEROID", "GRENADE GUN: METEOR", "GRENADE GUN: GIMLET", "GRENADE GUN: SALAMANDER", "GRENADE GUN: TOMAHAWK", "SHOTGUN: VIPER", "SHOTGUN: HOUND", "SHOTGUN: ASTEROID", "SHOTGUN: METEOR", "SHOTGUN: GIMLET", "SHOTGUN: SALAMANDER", "SHOTGUN: TOMAHAWK", "HANDGUN: VIPER", "HANDGUN: HOUND", "HANDGUN: ASTEROID", "HANDGUN: METEOR", "HANDGUN: GIMLET", "HANDGUN: SALAMANDER", "HANDGUN: TOMAHAWK", "SWITCHBOX", "BAGWORM TAG", "IDATEN", "GEIST", "CONNECTOR", "SOUGETSU", "FULL ARMS"];
+const FONTS = {
+    TRIGGER_TEXT: "normal normal bold 13px Arial",
+    TRIGGER_TYPE: "normal normal bold 10px Arial",
+    STATS: "normal normal bold 15px Arial"
+};
+
+let ctx, canvas;
+let trion, attack, defense, mobility, skill, range, command, tactics;
+let mechanical, analysis, parallel;
+let squadRank = "";
+let trigImg = [];
 // 0-25 is regular 3-6 Attacker 7-10 Shooter 11-13 Sniper 14-18 Attachments 19-25 Extras 26-32 Assault Rifles 33-39 Grenade Launchers 40-46 Shotguns 47-53 Handguns
 let isOperator = false;
+
+window.onload = () => {
+    loadTriggerImages();
+};
+
+function loadTriggerImages() {
+    for (let i = 0; i < TriggerNames.length; i++) {
+        const name = TriggerNames[i];
+        if (name === "opImg") {
+            TriggerImages[name] = newImage(`./images/${name}.png`, true);
+        } else {
+            TriggerImages[name] = newImage(`./images/${name}.png`, false);
+        }
+    }
+}
 
 function newImage(src, bool) {
     const newimg = new Image();
@@ -40,6 +52,7 @@ function newImage(src, bool) {
 }
 
 function begin() {
+    trigImg = ["", TriggerImages.shi, TriggerImages.opt, TriggerImages.ray, TriggerImages.kog, TriggerImages.sco, TriggerImages.speark, TriggerImages.aster, TriggerImages.hound, TriggerImages.mete, TriggerImages.viper, TriggerImages.egret, TriggerImages.ibis, TriggerImages.light, TriggerImages.opt, TriggerImages.opt, TriggerImages.opt, TriggerImages.opt, TriggerImages.opt, TriggerImages.escudo, TriggerImages.opt, TriggerImages.opt, TriggerImages.opt, TriggerImages.opt, TriggerImages.opt, TriggerImages.opt, TriggerImages.arifle, TriggerImages.arifle, TriggerImages.arifle, TriggerImages.arifle, TriggerImages.arifle, TriggerImages.arifle, TriggerImages.arifle, TriggerImages.grenade, TriggerImages.grenade, TriggerImages.grenade, TriggerImages.grenade, TriggerImages.grenade, TriggerImages.grenade, TriggerImages.grenade, TriggerImages.shot, TriggerImages.shot, TriggerImages.shot, TriggerImages.shot, TriggerImages.shot, TriggerImages.shot, TriggerImages.shot, TriggerImages.handgun, TriggerImages.handgun, TriggerImages.handgun, TriggerImages.handgun, TriggerImages.handgun, TriggerImages.handgun, TriggerImages.handgun, TriggerImages.switchbox, TriggerImages.opt, TriggerImages.opt, TriggerImages.opt, TriggerImages.opt, TriggerImages.soget, TriggerImages.opt];
     canvas = document.getElementById("cv");
     ctx = canvas.getContext("2d");
     ctx.drawImage(TriggerImages.img, 0, 0, 1280, 590);
@@ -75,20 +88,20 @@ function operatorCheck() {
     }
 }
 
-function getTrigs() {
+function updateTrigs() {
     for (let i = 0; i < 4; i++) {
-        const e = document.getElementById("main" + (i + 1));
+        const e = document.getElementById("sub" + (i + 1));
         const ret = e.options[e.selectedIndex].value;
         triggers[i] = parseInt(ret);
     }
     for (let i = 4; i < 8; i++) {
-        const e = document.getElementById("sub" + (i - 3));
+        const e = document.getElementById("main" + (i - 3));
         const ret = e.options[e.selectedIndex].value;
         triggers[i] = parseInt(ret);
     }
 }
 
-function getRank() {
+function updateRank() {
     const e = document.getElementById("squadrank");
     const ret = e.options[e.selectedIndex].value;
     squadRank = ret;
@@ -97,7 +110,7 @@ function getRank() {
 /**
  * Assigns values for parameter stats (combatants and operators)
  */
-function getParams() {
+function updateParams() {
     trion = Number(document.getElementById("trion").value);
     attack = Number(document.getElementById("attack").value);
     defense = Number(document.getElementById("defense").value);
@@ -174,7 +187,7 @@ function getOpTrion(tr) {
 
 function getMechanical(mr) {
     let mx = 814 + (10 * mr);
-    let my = 385 + (-6 * mr);
+    const my = 385 + (-6 * mr);
     if (mr > 2) {
         mx = 814 + (10.5 * mr);
     }
@@ -183,7 +196,7 @@ function getMechanical(mr) {
 
 function getData(dr) {
     let dx = 814 + (10 * dr);
-    let dy = 386 + (6.25 * dr);
+    const dy = 386 + (6.25 * dr);
     if (dr > 2) {
         dx = 814 + (10.5 * dr);
     }
@@ -223,24 +236,23 @@ function getOpCommand(cr) {
 function drawStats() {
     ctx.fillStyle = "black";
     ctx.textAlign = "center";
+    ctx.font = FONTS.STATS;
     if (isOperator) {
-        ctx.font = "normal normal bold 15px Arial";
         ctx.fillText(trion, 812, 257);
-        ctx.fillText(mechanical, 935, 315);
+        ctx.fillText(mechanical, 942, 320);
         ctx.fillText(analysis, 935, 480);
         ctx.fillText(parallel, 812, 542);
         ctx.fillText(tactics, 695, 480);
-        ctx.fillText(command, 685, 320);
+        ctx.fillText(command, 673, 320);
     } else {
-        ctx.font = "normal normal bold 13px Arial";
-        ctx.fillText(trion, 812, 253);
-        ctx.fillText(attack, 925, 299);
-        ctx.fillText(defense, 963, 404);
-        ctx.fillText(mobility, 928, 503);
-        ctx.fillText(skill, 812, 543);
-        ctx.fillText(range, 707, 505);
-        ctx.fillText(command, 663, 405);
-        ctx.fillText(tactics, 701, 304);
+        ctx.fillText(trion, 812, 248);
+        ctx.fillText(attack, 945, 299);
+        ctx.fillText(defense, 970, 404);
+        ctx.fillText(mobility, 915, 512);
+        ctx.fillText(skill, 812, 550);
+        ctx.fillText(range, 707, 512);
+        ctx.fillText(command, 653, 405);
+        ctx.fillText(tactics, 678, 299);
     }
     ctx.font = "normal normal bold 26px Arial";
     const fontSmaller = "normal normal bold 20px Arial";
@@ -253,8 +265,8 @@ function drawStats() {
         cy = 552;
     } else {
         sum = trion + attack + defense + mobility + skill + range + command + tactics;
-        cx = 719;
-        cy = 554;
+        cx = 690;
+        cy = 562;
     }
     if (sum % 1 !== 0) {
         ctx.font = fontSmaller;
@@ -262,12 +274,13 @@ function drawStats() {
     ctx.fillText(sum, cx, cy);
 }
 
-let textY, imgY, nameY, freeY;
-function drawGuns(xVal, xVal2, xVal3, z) {
+function drawGuns(xVal, xVal2, xVal3, z, textY, imgY, nameY) {
     ctx.fillText("GUNNER TRIGGER", xVal, textY);
     ctx.drawImage(trigImg[triggers[z]], xVal2, imgY, 39, 43);
-    ctx.font = "normal normal bold 11.5px Arial";
-    ctx.fillText(trigNames[triggers[z]], xVal3, nameY);
+    ctx.font = FONTS.TRIGGER_TEXT;
+    const text = trigNames[triggers[z]];
+    ctx.fillText(text.substring(0, text.indexOf(":") + 1), xVal3, nameY);
+    ctx.fillText(text.substring(text.indexOf(":") + 2), xVal3, nameY + 13);
 }
 
 function trigText() {
@@ -275,20 +288,22 @@ function trigText() {
         return;
     }
     ctx.fillStyle = "black";
-    textY = 264;
-    imgY = 260;
-    nameY = 290;
-    freeY = 251;
+    let textY = 264;
+    let imgY = 260;
+    let nameY = 290;
+    let freeY = 251;
+    // Sub Triggers
     for (let i = 0; i < 4; i++) {
-        ctx.font = "normal normal bold 10px Arial";
+        ctx.font = FONTS.TRIGGER_TYPE;
         if (triggers[i] === 0) {
             ctx.drawImage(TriggerImages.free, 361, freeY);
         } else if (triggers[i] > 25 && triggers[i] <= 53) {
-            drawGuns(418, 372, 420, i);
+            drawGuns(418, 372, 420, i, textY, imgY, nameY);
         } else if (triggers[i] === 55) {
+            // Bagworm Tag
             ctx.fillText(texts[triggers[i]], 418, textY);
             ctx.drawImage(TriggerImages.opt, 372, imgY, 39, 43);
-            ctx.font = "normal normal bold 13px Arial";
+            ctx.font = FONTS.TRIGGER_TEXT;
             ctx.fillText(trigNames[triggers[i]], 423, nameY);
             freeY += 71;
             ctx.drawImage(TriggerImages.blocked, 361, freeY);
@@ -300,7 +315,7 @@ function trigText() {
         } else {
             ctx.fillText(texts[triggers[i]], 418, textY);
             ctx.drawImage(trigImg[triggers[i]], 372, imgY, 39, 43);
-            ctx.font = "normal normal bold 13px Arial";
+            ctx.font = FONTS.TRIGGER_TEXT;
             const lines = getLines(trigNames[triggers[i]], 122);
             let add = 0;
             for (let i = 0; i < lines.length; i++) {
@@ -317,16 +332,17 @@ function trigText() {
     imgY = 205;
     nameY = 235;
     freeY = 196;
+    // Main Triggers
     for (let i = 4; i < 8; i++) {
-        ctx.font = "normal normal bold 10px Arial";
+        ctx.font = FONTS.TRIGGER_TYPE;
         if (triggers[i] === 0) {
             ctx.drawImage(TriggerImages.free, 1049, freeY);
         } else if (triggers[i] > 25 && triggers[i] <= 53) {
-            drawGuns(1106, 1060, 1108, i);
+            drawGuns(1106, 1060, 1108, i, textY, imgY, nameY);
         } else {
             ctx.fillText(texts[triggers[i]], 1106, textY);
             ctx.drawImage(trigImg[triggers[i]], 1060, imgY, 39, 43);
-            ctx.font = "normal normal bold 13px Arial";
+            ctx.font = FONTS.TRIGGER_TEXT;
             const lines = getLines(trigNames[triggers[i]], 122);
             let add = 0;
             for (let i = 0; i < lines.length; i++) {
@@ -373,7 +389,7 @@ let emblem;
 function drawSquadEmblem() {
     emblemUrl = document.getElementById("emblem").value;
     emblem = new Image();
-    emblem.crossOrigin = 'anonymous';
+    emblem.crossOrigin = "anonymous";
     emblem.src = emblemUrl;
     emblem.onload = () => {
         ctx.drawImage(emblem, 30, 72, 133, 121);
@@ -454,15 +470,15 @@ function clipStats() {
         ctx.lineTo(706, 325); // Command
         ctx.lineTo(812, 265); // Tri
     } else {
-        ctx.moveTo(812, 255); // Tri
-        ctx.lineTo(905, 291); // Atk
-        ctx.lineTo(944, 385); // Def
-        ctx.lineTo(905, 479); // Mob
-        ctx.lineTo(812, 518); // Skill
-        ctx.lineTo(718, 479); // Range
-        ctx.lineTo(680, 386); // Command
-        ctx.lineTo(719, 293); // Special
-        ctx.lineTo(812, 255); // Tri
+        ctx.moveTo(813, 256); // Tri
+        ctx.lineTo(904, 294); // Atk
+        ctx.lineTo(942, 385); // Def
+        ctx.lineTo(904, 476); // Mob
+        ctx.lineTo(813, 513); // Skill
+        ctx.lineTo(721, 476); // Range
+        ctx.lineTo(683, 384); // Command
+        ctx.lineTo(721, 295); // Special
+        ctx.lineTo(813, 256); // Tri
     }
     ctx.clip();
 }
@@ -471,18 +487,18 @@ function draw() {
     reset();
     writeName();
     drawSquadEmblem();
-    getTrigs();
-    getParams();
+    updateTrigs();
+    updateParams();
     trigText();
     drawStats();
 
-    getRank();
+    updateRank();
     drawRank();
     writeRank();
     drawProfile();
     // Combatants
     let tx, ty, ax, ay, dx, dy, mx, my, sx, sy, rx, ry, cx, cy, ttx, tty;
-    //Operators
+    // Operators
     let mox, moy, dax, day, ppx, ppy;
 
     if (isOperator) {
@@ -505,7 +521,6 @@ function draw() {
     clipStats();
 
     ctx.beginPath();
-    ctx.fillStyle = "red";
     ctx.globalAlpha = 0.45;
     ctx.moveTo(tx, ty);
     if (isOperator) {
@@ -548,8 +563,8 @@ function addTrigger() {
 }
 
 function saveImage() {
-    var link = document.createElement('a');
-    link.download = 'ocmaker.png';
-    link.href = canvas.toDataURL()
+    const link = document.createElement("a");
+    link.download = "ocmaker.png";
+    link.href = canvas.toDataURL();
     link.click();
 }
