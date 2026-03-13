@@ -68,7 +68,7 @@ window.onload = () => {
         });
     }
 
-    document.getElementById("help").addEventListener("click", () => alert("Guess the TRIGGLE in five tries.\n\nEach guess must be a valid five-letter word. Hit the enter button to submit.\n\nAfter each guess, the color of the tiles will change to show how close your guess was to the word.\n\nGreen means it's correct.\nYellow means it's in the word but in the wrong spot.\nRed means the letter is not wrong."));
+    document.getElementById("help").addEventListener("click", () => alert("You can use any 5 letter name or World Trigger related term. E.g: Trion, Osamu, Hosoi...\nEach guess must be a valid five-letter word. Hit the enter button to submit.\n\nAfter each guess, the color of the tiles will change to show how close your guess was to the word.\n\nGreen means it's correct.\nYellow means it's in the word but in the wrong spot.\nRed means the letter is not wrong."));
     document.getElementById("shareButton").addEventListener("click", copyToClipboard);
     document.getElementById("displayWord").innerText = "The Word Was: " + wordOfTheDay;
 };
